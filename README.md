@@ -1,5 +1,7 @@
 # European and American Option Pricing
 
+**[Read the report (PDF)](report/main.pdf)** — draft prose; it is rebuilt from `report/main.tex` and goes stale when the text or the notebook changes.
+
 Binomial trees, Brownian motion, Monte Carlo and the variational PDE, applied to a one-year European call on NVIDIA (NVDA) and to an American put.
 
 The repository contains one executable notebook, one LaTeX report and the code that links them. Every figure, table and number in the report is produced by the notebook.
