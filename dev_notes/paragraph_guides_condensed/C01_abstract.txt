@@ -1,0 +1,46 @@
+CONDENSED PARAGRAPH C01: Abstract
+==============================================================================
+Section: Abstract
+Replaces the detailed guides: P00  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+One paragraph that states the question, the two contracts, the three or four headline results and
+the one practical warning.
+
+SENTENCE PLAN
+  S1 [1] The question: discrete-time versus continuous-time models for pricing and hedging, tested
+        on a European call on NVIDIA and an American put.
+  S2-S3 [2] Part A and B result: the walk converges to Brownian motion at rate N^-1/2 (constant
+        KSconst); the CRR tree reaches Black-Scholes to CRRtenkErr at N = 10,000 while Monte Carlo
+        has standard error MCbestSE at 5e5 paths.
+  S4-S5 [2] Faster methods: a Leisen-Reimer tree with 101 steps (DeskLrErr) and a control variate
+        (variance cut by VRcv).
+  S6-S7 [2] Part C result: tree, PDE solver and least-squares Monte Carlo agree on about TreeRichV;
+        early-exercise premium EEPatmPct percent at the money, NvdaPutEEPpct percent for the NVIDIA
+        put.
+  S8 [1] Warning: a wrong volatility hurts the exercise rule asymmetrically (too early costs far
+        more than too late) and daily delta hedging still leaves HedgeSDdailyPct percent of the
+        premium as risk.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \KSconst -> 0.399
+  \CRRtenkErr -> 0.0009
+  \MCbestSE -> 0.096
+  \DeskLrErr -> 0.0002
+  \VRcv -> 7.7
+  \TreeRichV -> 0.71108
+  \EEPatmPct -> 2.5
+  \NvdaPutEEPpct -> 2.03
+  \HedgeSDdailyPct -> 4.9
+
+FIGURES AND TABLES
+No figures or tables.
+
+WHAT TO CUT OR MOVE
+Every other number; no notation; no section references.
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

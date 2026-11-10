@@ -1,0 +1,44 @@
+CONDENSED PARAGRAPH C13: Early-exercise premium, dividends and the NVIDIA put
+==============================================================================
+Section: 5.7-5.9
+Replaces the detailed guides: P43, P44, P45  (dev_notes/paragraph_guides/)
+Length: 7 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+Says when American pricing matters and applies it to the stock of Part B.
+
+SENTENCE PLAN
+  S1-S2 [2] Premium computed on the same lattice: zero for r = 0 and for a call without dividends;
+        at the money EEPatm (EEPatmPct percent), up to EEPmaxPct percent in the plotted region.
+  S3-S4 [2] Dividends: with yield q the tree uses p = (e^{(r-q)dt} - d)/(u - d); premium grows with
+        q (DivPremSix at 6 percent); boundary falls as q rises; intuition qS versus rK.
+  S5-S6 [2] NVIDIA put: European NvdaPutEu, American NvdaPutAm, premium NvdaPutEEPpct percent;
+        implied volatility NvdaPutIV percent (NvdaPutIVup points up).
+  S7 [1] Delta NvdaPutDelta against NvdaPutDeltaEu; boundary NvdaBhalfPct percent of strike at t =
+        0.5.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \EEPatm -> 0.0175
+  \EEPatmPct -> 2.5
+  \EEPmaxPct -> 13
+  \DivPremSix -> 0.229
+  \NvdaPutEu -> 31.9207
+  \NvdaPutAm -> 32.5674
+  \NvdaPutEEPpct -> 2.03
+  \NvdaPutIV -> 38.43
+  \NvdaPutIVup -> 0.70
+  \NvdaPutDelta -> -0.407
+  \NvdaPutDeltaEu -> -0.395
+  \NvdaBhalfPct -> 61.9
+
+FIGURES AND TABLES
+Keep Figure eep_map, Table nvda_put, Table div. Move eep_curves, boundary_regimes, am_greeks,
+dividend_boundary to supplementary.
+
+WHAT TO CUT OR MOVE
+The parity-bound sentence (one clause if wanted).
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

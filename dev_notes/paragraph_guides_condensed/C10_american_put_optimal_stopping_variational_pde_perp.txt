@@ -1,0 +1,36 @@
+CONDENSED PARAGRAPH C10: American put: optimal stopping, variational PDE, perpetual put
+==============================================================================
+Section: 5.1-5.2
+Replaces the detailed guides: P27, P28, P29, P30  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+The theory paragraph of Part C: it defines the problem and states the system the tree must solve.
+
+SENTENCE PLAN
+  S1-S2 [2] V(t,x) = sup E[e^{-r(tau-t)}(K-S_tau)^+]; bounds V >= payoff and V >= V_Eur; regions C
+        and D with free boundary b(t).
+  S3-S5 [3] Ito on e^{-rt}V: supermartingale so drift <= 0, martingale in C; the system (L-r)V <= 0,
+        V >= (K-x)^+, complementarity; (L-r)(K-x) = -rK < 0 in D.
+  S6 [1] Smooth fit V_x = -1 and hedging: Delta = V_x, equal to -1 in D, replication exact up to
+        tau*.
+  S7-S8 [2] Perpetual put: V = A x^{-beta}, beta = 2r/sigma^2, S* = beta K/(beta+1), V_inf; baseline
+        S* = PerpSstar, V_inf = PerpV.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \PerpSstar -> 5
+  \PerpV -> 2.5
+
+FIGURES AND TABLES
+Keep Figure Vinf. Move the beta/S*/K sensitivity figure to supplementary.
+
+WHAT TO CUT OR MOVE
+The four-step European warm-up (one clause); the second derivation of the perpetual put (appendix).
+
+DERIVATIONS
+Display the variational system and the perpetual-put formula; details in P28, P30 and appendix P66.
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

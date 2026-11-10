@@ -1,0 +1,40 @@
+CONDENSED PARAGRAPH C15: Method comparison, conclusions and limits
+==============================================================================
+Section: 6-7
+Replaces the detailed guides: P50, P51, P52, P53, P54, P55, P56, P57  (dev_notes/paragraph_guides/)
+Length: 9 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+The decision paragraph: which method for which job, supported by the two desk tables, and the limits
+of the study.
+
+SENTENCE PLAN
+  S1-S2 [2] European call: Leisen-Reimer (DeskLrErr in DeskLrMs ms) or smoothing plus Richardson
+        beat Monte Carlo (WPmcSec s extrapolated for the same tolerance) by orders of magnitude.
+  S3-S4 [2] American put: tree for prices, boundary and hedge (DeskPutTreeMs ms); PDE when high
+        accuracy is needed (DeskPdeFineErr); Longstaff-Schwartz for high dimension; Barone-Adesi-
+        Whaley for screening.
+  S5 [1] Monte Carlo wins for path-dependent or multi-asset payoffs because its rate does not depend
+        on dimension.
+  S6-S7 [2] Volatility input matters more than the numerical scheme; a wrong volatility corrupts
+        hedges and the exercise rule.
+  S8-S9 [2] Limits: constant volatility, historical volatility and Canadian rate, no costs or jumps;
+        next steps are calibration, dividends schedule, baskets.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \DeskLrErr -> 0.0002
+  \DeskLrMs -> 0.2
+  \WPmcSec -> 162
+  \DeskPutTreeMs -> 51
+  \DeskPdeFineErr -> 0.00001
+
+FIGURES AND TABLES
+Keep Table deskcall, Table deskput and Figure workprecision.
+
+WHAT TO CUT OR MOVE
+The separate recaps of Part B and Part C.
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

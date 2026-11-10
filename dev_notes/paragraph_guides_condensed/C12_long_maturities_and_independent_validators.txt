@@ -1,0 +1,54 @@
+CONDENSED PARAGRAPH C12: Long maturities and independent validators
+==============================================================================
+Section: 5.4-5.6
+Replaces the detailed guides: P38, P39, P40, P41, P42  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+Shows that the tree is right (PDE, regression Monte Carlo, approximation, replication) and that the
+old long-maturity anomaly was a lattice artefact.
+
+SENTENCE PLAN
+  S1-S2 [2] Price and boundary approach V_inf and S* as T grows; the first T = 1000 row (b = 5.5) is
+        a lattice artefact (dt = 1.25).
+  S3-S4 [2] Refined lattice: values coincide for T >= 500 (LongVthousand); the remaining gap
+        LongGapThousand is lattice error that shrinks with dt (boundary LatBcoarse to LatBfine);
+        decay rate about LongDecay per year.
+  S5 [1] Replication in the tree holds to ReplError.
+  S6-S7 [2] PDE (Crank-Nicolson plus penalty): PdeV against TreeRichV (difference PdeTreeDiff);
+        boundaries within BoundGap.
+  S8 [1] Least-squares Monte Carlo LSMfifty (s.e. LSMfiftySE) against Bermudan BermFifty; Barone-
+        Adesi-Whaley BAWV (error BAWerr).
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \LongVthousand -> 2.4980
+  \LongGapThousand -> \ensuremath{2.0x10^{-3}}
+  \LatBcoarse -> 5.25
+  \LatBfine -> 5.09
+  \LongDecay -> 0.040
+  \ReplError -> \ensuremath{4x10^{-15}}
+  \PdeV -> 0.71107
+  \TreeRichV -> 0.71108
+  \PdeTreeDiff -> \ensuremath{9.5x10^{-6}}
+  \BoundGap -> 0.10
+  \LSMfifty -> 0.7095
+  \LSMfiftySE -> 0.0018
+  \BermFifty -> 0.7105
+  \BAWV -> 0.7100
+  \BAWerr -> -0.0011
+
+FIGURES AND TABLES
+Keep Table long_T_refined and Table pde_convergence, Figure pde_vs_tree. Move the coarse table, the
+lattice table, lsm and baw tables to supplementary.
+
+WHAT TO CUT OR MOVE
+The 3 coarse-table figures; the lattice-floor details can be one sentence.
+
+PITFALL
+Say 'independent' only about the time stepping and data structures: the PDE and tree discretise the
+same equation.
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

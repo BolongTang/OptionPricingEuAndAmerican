@@ -1,0 +1,40 @@
+CONDENSED PARAGRAPH C08: European Greeks and implied volatility
+==============================================================================
+Section: 4.7-4.8
+Replaces the detailed guides: P22, P23  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+Shows the sensitivities by three routes and expresses numerical error in volatility points.
+
+SENTENCE PLAN
+  S1-S2 [2] Delta from closed form BSdelta, tree TreeDelta, pathwise Monte Carlo MCdeltaPW; the tree
+        gives Delta and Gamma from its first two layers.
+  S3-S4 [2] Gamma: likelihood-ratio times pathwise (s.e. MCgammaLRSE) beats bump-and-revalue (s.e.
+        MCgammaBumpSE); vega pathwise beats likelihood ratio.
+  S5-S6 [2] Theta BSthetaDay per calendar day and rho BSrhoPct per point.
+  S7-S8 [2] Implied volatility: unique root; tree at N = 100 is IVcrrHundred points off; the 95
+        percent Monte Carlo interval maps to IVmcLo to IVmcHi percent.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \BSdelta -> 0.6047
+  \TreeDelta -> 0.6047
+  \MCdeltaPW -> 0.6048
+  \MCgammaLRSE -> 0.00001
+  \MCgammaBumpSE -> 0.00003
+  \BSthetaDay -> -0.056
+  \BSrhoPct -> 1.057
+  \IVcrrHundred -> -0.10
+  \IVmcLo -> 37.49
+  \IVmcHi -> 37.90
+
+FIGURES AND TABLES
+Keep Table greeks. Move the implied-volatility table and figure to supplementary.
+
+WHAT TO CUT OR MOVE
+The pathwise/LR formulas (appendix P62).
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

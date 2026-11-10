@@ -1,0 +1,44 @@
+CONDENSED PARAGRAPH C04: Part A: random walk and Brownian motion
+==============================================================================
+Section: 3 Part A
+Replaces the detailed guides: P06 to P11  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+Shows, in one paragraph, that the scaled walk converges to Brownian motion and measures how fast,
+with the three diagnostics.
+
+SENTENCE PLAN
+  S1-S2 [2] Definition of Brownian motion (four properties) and of the scaled walk W^(N) with mean 0
+        and variance t; Donsker; why it matters for the tree.
+  S3 [1] Visual comparison for N2 = 10, 50, 200, 1000 (Figure part1).
+  S4-S5 [2] Quadratic variation (QVBMtenk, exactly 1 for the walk) versus total variation (TVBMtenk
+        against theory TVtheorytenk): why Ito calculus is needed.
+  S6-S7 [2] Exact Kolmogorov distance at t = 1: rate N^-1/2 with limit constant KSconst = 1/sqrt(2
+        pi).
+  S8 [1] Running maximum and the reflection principle: gap MaxGapTen at N = 10, MaxGapTwoHundred at
+        N = 200; discretely monitored barriers are biased.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \QVBMtenk -> 1.0000
+  \TVBMtenk -> 79.8
+  \TVtheorytenk -> 79.8
+  \KSconst -> 0.399
+  \MaxGapTen -> 0.238
+  \MaxGapTwoHundred -> 0.049
+
+FIGURES AND TABLES
+Keep Figure part1 and Table ks_table. Move Table variation, the histograms, ks_rate and running_max
+to a supplementary section or drop them.
+
+WHAT TO CUT OR MOVE
+The Berry-Esseen remark, the lattice-cell explanation of the constant, the 0.58 sigma sqrt(dt)
+barrier shift (keep only if you cite it).
+
+DERIVATIONS
+See guides P06, P10, P11 for the formulas (scaled walk, exact KS, lattice reflection identity).
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

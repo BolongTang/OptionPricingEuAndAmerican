@@ -1,0 +1,34 @@
+CONDENSED PARAGRAPH C02: Introduction: problem, contracts, roadmap, how to reproduce
+==============================================================================
+Section: 1 Introduction
+Replaces the detailed guides: P01, P02, P03  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+Tells the reader why the comparison matters, what is studied, in what order, and that every number
+comes from one notebook that builds on the hand-written classes.
+
+SENTENCE PLAN
+  S1-S2 [2] Why numerical pricing matters: closed forms are rare, so trees, simulation and PDE
+        solvers do the work and each trades accuracy for time.
+  S3-S4 [2] Two modelling languages (lattice random walk, Brownian motion) that agree in the limit;
+        the question is how fast and at what cost.
+  S5-S6 [2] The two contracts: the European call (benchmark exists) and the American put (free
+        boundary), and the roadmap Part A, B, C, comparison.
+  S7-S8 [2] Reproducibility and design: hand-written classes kept as written, extensions as
+        subclasses/new functions, one seeded notebook, numbers generated into the text, constant-
+        volatility scope.
+
+FIGURES AND TABLES
+None in the main text.
+
+WHAT TO CUT OR MOVE
+The long list of what each part contains; the sentence about run time can go to the README.
+
+PITFALL
+Do not mention the course, grading or the AI workflow here.
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

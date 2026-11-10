@@ -1,0 +1,42 @@
+CONDENSED PARAGRAPH C07: European results: Monte Carlo and variance reduction
+==============================================================================
+Section: 4.6
+Replaces the detailed guides: P19, P20, P21  (dev_notes/paragraph_guides/)
+Length: 7 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+One paragraph on what Monte Carlo costs and how to make it cheaper.
+
+SENTENCE PLAN
+  S1-S2 [2] Euler Monte Carlo at 5e5 paths: price MCbest, s.e. MCbestSE; statistical error
+        dominates, steps barely matter.
+  S3-S4 [2] Euler orders: strong 1/2 (slope EMstrongSlope), weak 1 (slope EMweakSlope); pricing
+        needs only the weak order.
+  S5-S6 [2] Variance reduction at M = VRM: antithetic VRanti, control variate VRcv, scrambled Sobol
+        VRsobol; why Sobol is strong in one dimension only.
+  S7 [1] Intervals are honest (coverage MCcoverage percent); pricing with drift 10 percent instead
+        of r gives WrongMuPrice instead of BSprice.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \MCbest -> 38.7236
+  \MCbestSE -> 0.096
+  \EMstrongSlope -> -0.49
+  \EMweakSlope -> -0.96
+  \VRM -> 262,144
+  \VRanti -> 1.8
+  \VRcv -> 7.7
+  \VRsobol -> 76727
+  \MCcoverage -> 95.2
+  \WrongMuPrice -> 49.96
+
+FIGURES AND TABLES
+Keep Table vr (variance reduction). Move the 3x5 Monte Carlo table and the Euler-order table to
+supplementary.
+
+WHAT TO CUT OR MOVE
+The cell-by-cell comments on the 3x5 table; the 5e9-path extrapolation (or keep it as one clause).
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

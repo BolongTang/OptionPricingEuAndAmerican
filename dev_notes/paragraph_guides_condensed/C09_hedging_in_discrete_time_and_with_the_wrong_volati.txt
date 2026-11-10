@@ -1,0 +1,40 @@
+CONDENSED PARAGRAPH C09: Hedging in discrete time and with the wrong volatility
+==============================================================================
+Section: 4.9 and Part B summary
+Replaces the detailed guides: P24, P25, P26  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+The risk paragraph of Part B, ending with the decision rule.
+
+SENTENCE PLAN
+  S1-S2 [2] Hedging error of a short call: sd falls as n^-1/2 (slope HedgeSlope); daily
+        HedgeSDdailyPct percent of premium, weekly HedgeSDweeklyPct percent.
+  S3 [1] Same under real-world drift: the hedge works whatever mu is.
+  S4-S5 [2] Gamma identity: profit = integral of e^{-rt} (1/2) Gamma S^2 (sigma_h^2 - sigma_real^2);
+        at 55 percent realised volatility simulated WrongVolLoss against formula WrongVolTheory.
+  S6-S7 [2] Consequence: a wrong volatility costs more than any rebalancing frequency; hence the
+        input matters more than the numerics.
+  S8 [1] Bridge to Part C.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \HedgeSlope -> -0.49
+  \HedgeSDdailyPct -> 4.9
+  \HedgeSDweeklyPct -> 10.7
+  \WrongVolLoss -> -15.78
+  \WrongVolTheory -> -15.72
+
+FIGURES AND TABLES
+Keep Figure hedge (three panels) and Table hedgewrong. Drop Table hedgefreq (the slope is in the
+text).
+
+WHAT TO CUT OR MOVE
+The recap of Part B (P26); it moves to the final conclusions paragraph.
+
+DERIVATIONS
+Appendix P63 for the identity.
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

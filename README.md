@@ -34,7 +34,7 @@ The repository contains one executable notebook, one LaTeX report and the code t
 | `report/figures/`, `report/tables/` | figures and tables written by the notebook |
 | `report/code/` | the code listing of the appendix, cut out of the notebook (`handwritten.py`, `extensions.py`) |
 | `todo.txt` | open decisions and clean-up steps |
-| `dev_notes/` | working notes and per-paragraph writing guides (development branch only) |
+| `dev_notes/` | working notes and writing guides: `paragraph_guides/` (67 detailed) and `paragraph_guides_condensed/` (15 paragraphs); development branch only |
 
 ## Design
 

@@ -1,0 +1,40 @@
+CONDENSED PARAGRAPH C03: Setting, data and parameters
+==============================================================================
+Section: 2 Setting
+Replaces the detailed guides: P04, P05  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+Fixes the model, the pricing principle and the inputs, including the one questionable input (a
+Canadian rate on a US stock).
+
+SENTENCE PLAN
+  S1-S2 [2] Model: bond, GBM under P, Q-drift r, price as discounted expectation; drift mu
+        irrelevant for pricing, relevant for risk.
+  S3-S4 [2] Assumptions (constant sigma and r, no dividends or costs, continuous trading) and
+        completeness, which turns a price into a hedge.
+  S5-S6 [2] NVDA inputs: close NvdaS, sigma NvdaSigma percent from 250 daily returns (252-day
+        convention), rate NvdaR percent.
+  S7 [1] Caveat on the rate: rho is BSrhoPct dollars per point, so the effect is small.
+  S8 [1] American baseline S0 = K = 10, 20 percent, 2 percent, T = 1, mu = 5 percent; boundary
+        scaled by K is unit-free.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \NvdaS -> 238.90
+  \NvdaSigma -> 37.73
+  \NvdaR -> 2.9
+  \BSrhoPct -> 1.057
+
+FIGURES AND TABLES
+Keep Table params (parameters of both problems).
+
+WHAT TO CUT OR MOVE
+The separate sentence on dividends and discrete trading; say it once in the limitations paragraph.
+
+DERIVATIONS
+Girsanov line (see P04 guide): W^Q_t = W_t + (mu - r) t / sigma.
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

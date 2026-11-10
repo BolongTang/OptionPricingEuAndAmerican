@@ -45,6 +45,9 @@ E. ADDED WHILE BUILDING THE COMBINED PROJECT
  [ ] 20. The mis-specified-volatility regret in the original grid has standard error up to 0.007 at 10,000 paths, so differences of
          ~0.01 are only 1-2 standard errors; the new map uses 100,000 paths per cell.
 
+ [ ] 21. SHORT PLAN: dev_notes/paragraph_guides_condensed/ distils the 67 guides into 15 paragraphs (118 sentences). Decide whether to
+         write from the short plan (then drop the unused \input lines in report/main.tex) or keep the 67 drafts. The old guides stay as reference.
+
 D. CARRIED OVER FROM THE OLD american/todo.txt (resolved here)
  [x] CRRTree tie tolerance 1e-12 kept as is (matters for r = 0 only).
  [x] 2f long maturities: T = 1000 with 800 steps was coarse; the notebook now also runs a finer-step check and reports b(0;T) on a finer grid.

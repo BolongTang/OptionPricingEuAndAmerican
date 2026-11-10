@@ -1,0 +1,53 @@
+CONDENSED PARAGRAPH C14: Profit and loss, tail risk and mis-specified volatility
+==============================================================================
+Section: 5.8-5.9
+Replaces the detailed guides: P46, P47, P48, P49  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+The risk paragraph of Part C: what the buyer earns and what a wrong volatility costs.
+
+SENTENCE PLAN
+  S1-S2 [2] Under Q the mean P&L is PnLmean (s.e. PnLse), sd PnLsd, p_ex PnLpex, mean tau PnLtau.
+  S3-S4 [2] Under P with mu = 5 percent the mean is PnLPmean (PnLPmeanTen at 10 percent); P(lose
+        premium) rises from PnLQtot to PnLPtot percent; the seller's right tail barely moves.
+  S5-S6 [2] Pricing at 20 percent: realised 10 percent gives mean tau MisLowTau against MisLowTauOpt
+        (too late, loss MisLowLoss); realised 30 percent gives MisHighTau against MisHighTauOpt (too
+        early, loss MisHighLoss).
+  S7-S8 [2] Full map: regret MapRegretLowHigh (priced low, realised high) against MapRegretHighLow;
+        premium mismatch dominates; standard error up to MapSE.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \PnLmean -> -0.004
+  \PnLse -> 0.008
+  \PnLsd -> 0.83
+  \PnLpex -> 0.52
+  \PnLtau -> 0.877
+  \PnLPmean -> -0.094
+  \PnLPmeanTen -> -0.246
+  \PnLQtot -> 48.8
+  \PnLPtot -> 54.4
+  \MisLowTau -> 0.977
+  \MisLowTauOpt -> 0.854
+  \MisLowLoss -> 0.016
+  \MisHighTau -> 0.766
+  \MisHighTauOpt -> 0.883
+  \MisHighLoss -> 0.036
+  \MapRegretLowHigh -> 0.326
+  \MapRegretHighLow -> 0.017
+  \MapSE -> 0.0034
+
+FIGURES AND TABLES
+Keep Figure 3a (baseline P&L), Table pnlreal, Figure misspecmap. Move the 3x3 grids and 3c summary
+to supplementary.
+
+WHAT TO CUT OR MOVE
+The three-sentence description of the 3x3 grid.
+
+PITFALL
+Correct the direction: realised volatility below the priced one means exercising too LATE.
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

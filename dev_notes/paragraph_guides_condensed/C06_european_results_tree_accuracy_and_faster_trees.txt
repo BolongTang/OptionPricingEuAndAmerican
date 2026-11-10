@@ -1,0 +1,43 @@
+CONDENSED PARAGRAPH C06: European results: tree accuracy and faster trees
+==============================================================================
+Section: 4.4-4.5
+Replaces the detailed guides: P16, P17, P18  (dev_notes/paragraph_guides/)
+Length: 7 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+Reports the tree numbers and the saw-tooth, and ends with a recommendation.
+
+SENTENCE PLAN
+  S1-S2 [2] CRR converges to BSprice: error CRRhundredErr at N = 100, CRRthousandErr at N = 1000,
+        CRRtenkErr at N = 10,000; first order (N times error constant).
+  S3-S4 [2] Sign alternates with parity of N; N times error is SawEven for even and SawOdd for odd
+        N.
+  S5-S6 [2] Faster trees: Leisen-Reimer error LRerrHundred at N = 101 and LRerrThousand at N = 1001
+        (slope -2); smoothing and averaging remove the oscillation.
+  S7 [1] Recommendation: LR or smoothing plus Richardson for European payoffs; plain CRR for
+        American ones.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \CRRhundredErr -> 0.0882
+  \CRRthousandErr -> 0.0088
+  \CRRtenkErr -> 0.0009
+  \SawEven -> -8.81
+  \SawOdd -> 8.54
+  \LRerrHundred -> \ensuremath{1.7x10^{-4}}
+  \LRerrThousand -> \ensuremath{1.7x10^{-6}}
+
+FIGURES AND TABLES
+Keep Table bin and Figure variants (or the saw-tooth figure, not both). Keep the sample-path figures
+only if you want a picture of the lattice.
+
+WHAT TO CUT OR MOVE
+The separate paragraph describing the sample-path figures; the table of all seven variants (keep one
+line in text).
+
+PITFALL
+Constants are for the at-the-money strike only.
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

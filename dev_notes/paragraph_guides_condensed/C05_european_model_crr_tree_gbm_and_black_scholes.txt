@@ -1,0 +1,40 @@
+CONDENSED PARAGRAPH C05: European model: CRR tree, GBM and Black-Scholes
+==============================================================================
+Section: 4.1-4.3
+Replaces the detailed guides: P12, P13, P14, P15  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+The theory paragraph of Part B. It derives p, states the backward recursion, solves GBM, and gives
+the closed form and Greeks used as the benchmark.
+
+SENTENCE PLAN
+  S1-S2 [2] Lattice u = exp(sigma sqrt(dt)), d = 1/u; p = (e^{r dt} - d)/(u - d) from the martingale
+        condition; one-step replication so price and hedge coincide.
+  S3 [1] Backward recursion; class is O(N^2) memory and vectorised pricer is O(N).
+  S4-S5 [2] Convergence by the CLT and the parity oscillation of the error at the strike (order 1/N
+        with sign (-1)^N).
+  S6-S7 [2] GBM by Ito on ln S; lognormal law; Euler-Maruyama versus the exact step; pricing under Q
+        only.
+  S8 [1] Black-Scholes price (BSprice) and the Greeks; Delta BSdelta, vega BSvegaPct per vol point.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \BSprice -> 38.7493
+  \BSdelta -> 0.6047
+  \BSvegaPct -> 0.920
+
+FIGURES AND TABLES
+Keep Figure bsgreeks. Drop bs_surface or move it to supplementary.
+
+WHAT TO CUT OR MOVE
+Meaning of each Greek in words (one clause is enough); the details of the terminal-log-price
+expansion go to the appendix.
+
+DERIVATIONS
+Full algebra stays in the appendix: Ito/GBM (P58), BS by integration (P59), BS PDE (P60), tree CLT
+(P61).
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.

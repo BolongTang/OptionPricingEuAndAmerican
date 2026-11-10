@@ -1,0 +1,47 @@
+CONDENSED PARAGRAPH C11: American tree and baseline results
+==============================================================================
+Section: 5.3-5.4
+Replaces the detailed guides: P31, P32, P33, P34, P35, P36, P37  (dev_notes/paragraph_guides/)
+Length: 8 sentences (target 6-9); the plan below sums to exactly this.
+
+ROLE
+Defines the tree, argues it solves the variational inequality, and reports the baseline results.
+
+SENTENCE PLAN
+  S1-S2 [2] Recursion with max, boundary as the largest strictly better node (tie tolerance), hedge
+        ratio, stopping rule; CRRTree extends CRRBinomialModel.
+  S3 [1] Tree is an explicit finite-difference scheme for the variational inequality (expansion of
+        one step; details in the appendix).
+  S4-S5 [2] Price converges at first order: AmVeight at M = 800, AmV at M = 1600; two-step example
+        TwoStepAm against TwoStepEu.
+  S6-S7 [2] Boundary rises from AmBearly to K; b(0.5) = AmBhalf; sigma lowers it (BhalfLow,
+        BhalfMid, BhalfHigh) and r raises it (BhalfRhigh); no early exercise at r = 0.
+  S8 [1] Hedge ratio runs from DeltaStart to about -1 on a stopped path.
+
+NUMBERS TO QUOTE (macro -> value in the committed run; macros update when the notebook is re-run)
+  \AmVeight -> 0.7109
+  \AmV -> 0.7110
+  \TwoStepAm -> 0.6527
+  \TwoStepEu -> 0.6034
+  \AmBearly -> 7.4
+  \AmBhalf -> 7.87
+  \BhalfLow -> 9.06
+  \BhalfMid -> 7.86
+  \BhalfHigh -> 6.68
+  \BhalfRhigh -> 8.20
+  \DeltaStart -> -0.44
+
+FIGURES AND TABLES
+Keep Table amconv, Figure b (boundary), Figure delta, Table amsr. Move the rest (convergence plot,
+path plot, sigma-r figures) to supplementary.
+
+WHAT TO CUT OR MOVE
+The hand-worked two-step table (one clause); the nine-case delta range.
+
+DERIVATIONS
+Expansion of the recursion: appendix, guide P32.
+
+STYLE
+Dense, not padded: every sentence carries a number, an equation, or a decision. Vary sentence
+length. State the claim first, the evidence second, the caveat last. If a sentence cannot be backed
+by a macro, an equation or a reference, delete it.
