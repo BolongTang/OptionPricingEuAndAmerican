@@ -1,8 +1,25 @@
 # European and American Option Pricing
 
-**[Read the report (PDF)](report/main.pdf)** — draft prose; it is rebuilt from `report/main.tex` and goes stale when the text or the notebook changes.
+This project prices a European call option (based on the NVDA stock price) and an American put option (based on defined parameters). It explores multiple aspects of option pricing: 
+- European call: 
+  - Comparing Scaled Random Walks with Geometric Brownian Motion 
+  - Relating the CRR Binomial Model and the Geometric Brownian Motion model
+  - Observing Euler-Maruyama Discretization compared to the Exact log-Euler simulation, verified with the closed-form Black-Scholes formula
+  - Performing Monte Carlo pricing with Geometric Brownian Motion
+- American put: 
+  - Deriving the Variational PDE for an American Put option
+  - Finding the ODE system for an American Perpetual Put
+  - Pricing with the CRR Binomial Model
+  - Displaying simulations involving early exercise and expiration cases
+  - Exploring how changes in volatility and r affect the option price
+  - Pinpointing the distribution of P&L, stopping time, and probability of early exercise on different volatilities and rates
+  - Elaborating on how differences between the assumed and the actual volatility lead to mispricing
 
-Binomial trees, Brownian motion, Monte Carlo and the variational PDE, applied to a one-year European call on NVIDIA (NVDA) and to an American put.
+# Difficulties and Takeaways
+
+
+
+**[Read the report (PDF)](report/main.pdf)** — draft prose; it is rebuilt from `report/main.tex` and goes stale when the text or the notebook changes.
 
 The repository contains one executable notebook, one LaTeX report and the code that links them. Every figure, table and number in the report is produced by the notebook.
 
