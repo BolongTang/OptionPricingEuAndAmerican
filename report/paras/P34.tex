@@ -1,0 +1,8 @@
+% P34 | 5.4 Results | Result: a two-step tree worked by hand
+% guide: dev_notes/paragraph_guides/P34_result_a_two_step_tree_worked_by_hand.txt
+With $M=2$ steps, $\Delta t=0.5$, $u=e^{0.2\sqrt{0.5}}=1.15191$, $d=0.86812$, $p=0.50012$ and $e^{-r\Delta t}=0.99005$.
+The stock takes the values $10$, then $8.6812$ or $11.5191$, then $7.5364$, $10$ or $13.2690$.
+At the lower node of the first layer, where $S=8.68$, exercising pays $1.3188$ while waiting is worth $0.99005\,(0.50012\cdot0+0.49988\cdot2.4636)=1.2193$.
+The holder therefore exercises early at this node, which is the first place where the American recursion differs from the European one.
+This lifts the price from the European value of \TwoStepEu\ to the American value of \TwoStepAm.
+The hedge ratio at the root is $\Delta_{0,0}=\frac{0-1.3188}{11.5191-8.6812}=\TwoStepDelta$, so the replicating portfolio of the put is short about half a share, and the seller of the put hedges by holding that much.

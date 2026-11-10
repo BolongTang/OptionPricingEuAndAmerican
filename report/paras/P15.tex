@@ -1,0 +1,12 @@
+% P15 | 4.3 Black-Scholes benchmark | The Black-Scholes formula and the Greeks
+% guide: dev_notes/paragraph_guides/P15_the_black_scholes_formula_and_the_greeks.txt
+Evaluating $e^{-rT}\mathbb E^{\mathbb Q}[(S_T-K)^+]$ for the lognormal $S_T$ gives
+\begin{equation}\label{eq:bs}
+ C=S_0\Phi(d_1)-Ke^{-rT}\Phi(d_2),\qquad d_{1,2}=\frac{\ln(S_0/K)+(r\pm\frac12\sigma^2)T}{\sigma\sqrt T},
+\end{equation}
+and the put follows from put--call parity $C-P=S_0-Ke^{-rT}$.
+The sensitivities are $\Delta=\Phi(d_1)$, $\Gamma=\varphi(d_1)/(S_0\sigma\sqrt T)$, $\mathcal V=S_0\varphi(d_1)\sqrt T$, $\rho=KTe^{-rT}\Phi(d_2)$ and $\Theta=-\frac{S_0\varphi(d_1)\sigma}{2\sqrt T}-rKe^{-rT}\Phi(d_2)$, where $\varphi$ is the standard normal density.
+For the NVIDIA call they take the values $\Delta=\BSdelta$, $\Gamma=\BSgamma$, vega $\BSvega$ (that is, \BSvegaPct\ dollars per volatility point), $\Theta=\BStheta$ per year and $\rho=\BSrho$.
+Delta is the number of shares that hedges the option, gamma measures how quickly that number changes and therefore how large the hedging error is when rebalancing is discrete, and vega is the exposure to the volatility input, which is the least certain one.
+Theta is the loss of value from the passage of time alone, about \BSthetaDay\ dollars per calendar day at the money, and rho the exposure to the interest rate.
+The price \$\BSprice\ from Equation~\eqref{eq:bs} is the reference against which every numerical estimate in this part is measured.

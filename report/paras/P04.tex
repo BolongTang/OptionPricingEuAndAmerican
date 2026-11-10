@@ -1,0 +1,13 @@
+% P04 | 2 Setting and notation | The market model and risk-neutral pricing
+% guide: dev_notes/paragraph_guides/P04_the_market_model_and_risk_neutral_pricing.txt
+The market has a bond $B_t=e^{rt}$ and a stock whose price follows, under the real-world measure $\mathbb P$,
+\begin{equation}\label{eq:gbm}
+ dS_t=\mu S_t\,dt+\sigma S_t\,dW_t,
+\end{equation}
+where $W$ is a Brownian motion, $\mu$ is the real-world drift and $\sigma$ the volatility.
+Under the risk-neutral measure $\mathbb Q$ the drift $\mu$ is replaced by $r$, so that $e^{-rt}S_t$ is a martingale, and the arbitrage-free price at time $0$ of a European claim paying $h(S_T)$ is $e^{-rT}\mathbb E^{\mathbb Q}[h(S_T)]$.
+The drift $\mu$ therefore plays no role in pricing; it matters only when we simulate profit and loss under $\mathbb P$ in Section~\ref{sec:C}.
+We assume a constant volatility and interest rate, no dividends, no transaction costs and trading in continuous time, which are the textbook assumptions and are violated in real markets in ways that Section~\ref{sec:concl} lists.
+Dividends are introduced in Section~\ref{sec:div} and discrete trading in Section~\ref{sec:hedge}.
+With one stock driven by one Brownian motion and one bond the market is complete, so $\mathbb Q$ is unique and every claim is replicable by a self-financing portfolio.
+This is what makes the price of an option the cost of its hedge, and it is the principle behind the hedging experiments of Sections~\ref{sec:hedge} and~\ref{sec:replication}.

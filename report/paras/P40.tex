@@ -1,0 +1,8 @@
+% P40 | 5.5 Replication check | Result: the replication property in the tree
+% guide: dev_notes/paragraph_guides/P40_result_the_replication_property_in_the_tree.txt
+We simulate $200$ paths of the baseline tree with $800$ steps and, at every date before exercise, compare the value of the replicating portfolio one step later with the option value at the node that was reached.
+The portfolio holds $\Delta_{j,i}$ shares and $B=V_{j,i}-\Delta_{j,i}S_{j,i}$ in the bond.
+The largest discrepancy over all hedge dates on all paths is \ReplError, which is rounding error.
+Replication is therefore exact in the tree up to the optimal exercise time.
+Inside the exercise region the identity fails by construction, because the holder is paid $K-S$, which exceeds the continuation value that the hedge replicates.
+The excess is the seller's surplus when the holder exercises, and at the boundary nodes we sampled it is tiny, of the order of $0.0002$ in price units.

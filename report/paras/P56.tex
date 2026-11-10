@@ -1,0 +1,9 @@
+% P56 | 7 Conclusions | Conclusions: the American put
+% guide: dev_notes/paragraph_guides/P56_conclusions_the_american_put.txt
+The CRR tree is an explicit finite-difference scheme for the variational inequality, and the tree, a finite-difference solver and least-squares Monte Carlo agree on the price of the American put.
+The perpetual put is the limit of the long-dated put, and the one case that seemed to contradict this, a thousand-year maturity on a coarse lattice, was an artefact of the lattice.
+Early exercise adds a few percent at the money and more deep in the money, and it needs a positive interest rate for a put and a dividend for a call.
+The boundary falls when volatility rises and rises when the interest rate rises, which is what the cost and the value of waiting predict.
+The price does not depend on the real-world drift but the buyer's expected profit does, and a seller who does not hedge carries that dependence.
+A wrong volatility corrupts the exercise rule, and the loss is asymmetric: exercising too early costs much more than exercising too late.
+In practice the volatility input and the exercise rule should be monitored together, because an error in the first propagates into the second.

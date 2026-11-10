@@ -1,0 +1,10 @@
+% P39 | 5.4 Results | Result: long maturities with a refined lattice
+% guide: dev_notes/paragraph_guides/P39_result_long_maturities_with_a_refined_lattice.txt
+Table~\ref{tbl:amlongfine} uses $M_{bin}=\max(800,8T)$ steps, so that $\Delta t\le0.125$, and finds the boundary at date zero by bisection on the decision at the root, which determines $b(0;T)$ to the accuracy of the bisection instead of to a grid of step $0.1$.
+The price and the boundary now increase and decrease monotonically with $T$ up to $T=200$.
+For $T=500$ and $T=1000$ the rows coincide, with $V=\LongVthousand$ and $b=\LongBthousand$, so the gap of \LongGapThousand\ to the perpetual value is no longer a maturity effect: it is a lattice effect.
+At $T=1000$ the effect of maturity is of order $e^{-40}$.
+Table~\ref{tbl:amlonglattice} refines the lattice at $T=500$: the gap to $2.5$ falls from \LatVgapCoarse\ to \LatVgap\ and the boundary comes down from \LatBcoarse\ to \LatBfine\ as $\Delta t$ goes from $0.25$ to $0.03$.
+The price gap is not monotone in $M_{bin}$ (it oscillates with the position of the nodes relative to $S^*$), whereas the boundary error decreases steadily.
+After subtracting the lattice floor of \LongFloor, the distance $V_\infty(S_0)-V(0,S_0)$ decays roughly exponentially in $T$, with a fitted rate of \LongDecay\ per year between $T=5$ and $T=100$ (Figure~\ref{fig:longT}).
+This rate is an empirical fit, not a derived constant, and it applies to this parameter set only.

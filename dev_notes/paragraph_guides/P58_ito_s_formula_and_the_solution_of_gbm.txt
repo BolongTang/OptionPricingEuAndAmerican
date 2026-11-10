@@ -1,0 +1,58 @@
+PARAGRAPH P58: Ito's formula and the solution of GBM
+==============================================================================
+Where it goes : Appendix A: derivations  (draft file report/paras/P58.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Gives the full computation behind Equation gbmsol, so the main text can state the solution and the
+reader can check it.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader knows Brownian motion and the quadratic variation facts of Section 3.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1  [1 sentence]  FOCUS: The multiplication table: (dt)^2 = 0, dt dW = 0, (dW)^2 = dt; the last is the quadratic variation of Section 3.
+  S2-S3  [2 sentences]  FOCUS: Ito's formula for f(S): df = f' dS + (1/2) f'' (dS)^2, with (dS)^2 = sigma^2 S^2 dt.
+  S4-S5  [2 sentences]  FOCUS: For f = ln: f' = 1/S, f'' = -1/S^2, so d ln S = (mu - sigma^2/2) dt + sigma dW; integrate and exponentiate.
+  S6  [1 sentence]  FOCUS: Check: apply Ito to g(t,W) = S_0 exp((mu - sigma^2/2) t + sigma W) and recover dS = mu S dt + sigma S dW.
+  S7-S8  [2 sentences]  FOCUS: Moments: ln S_t is normal with mean ln S_0 + (mu - sigma^2/2)t and variance sigma^2 t; E[S_t] = S_0 e^{mu t} and Var[S_t] = S_0^2 e^{2 mu t}(e^{sigma^2 t} - 1), from E[e^{sigma W_t}] = e^{sigma^2 t/2}.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. The rules of It\^o calculus follow from the quadratic variation of Brownian motion:
+      $(dt)^2=0$, $dt\,dW=0$ and $(dW)^2=dt$.
+  S2. For a twice differentiable $f$ and $dS=\mu S\,dt+\sigma S\,dW$ it gives, using
+      $(dS)^2=\sigma^2S^2\,dt$,
+  S3. \begin{equation}  df(S_t)=f'(S_t)\,dS_t+\tfrac12f''(S_t)\,\sigma^2S_t^2\,dt . \end{equation}
+  S4. With $f=\ln$ one has $f'=1/S$ and $f''=-1/S^2$, so $d\ln
+      S_t=(\mu-\tfrac12\sigma^2)\,dt+\sigma\,dW_t$.
+  S5. Integrating from $0$ to $t$ and exponentiating gives
+      $S_t=S_0\exp\big((\mu-\tfrac12\sigma^2)t+\sigma W_t\big)$.
+  S6. To check this, apply It\^o's formula to $g(t,W)=S_0e^{(\mu-\frac12\sigma^2)t+\sigma W}$:
+      $dg=(\mu-\tfrac12\sigma^2)g\,dt+\sigma g\,dW+\tfrac12\sigma^2g\,dt=\mu g\,dt+\sigma g\,dW$.
+  S7. Hence $\ln S_t$ is normal with mean $\ln S_0+(\mu-\tfrac12\sigma^2)t$ and variance
+      $\sigma^2t$, and since $\mathbb E[e^{\sigma W_t}]=e^{\sigma^2t/2}$ one gets $\mathbb
+      E[S_t]=S_0e^{\mu t}$ and $\operatorname{Var}[S_t]=S_0^2e^{2\mu t}\big(e^{\sigma^2t}-1\big)$.
+  S8. The variance is what sets the size of the Monte Carlo standard errors of Section~\ref{sec:B}.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equation eq:gbmsol.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+$\mathbb E[e^{aZ}]=e^{a^2/2}$ for $Z\sim N(0,1)$, so $\mathbb E[S_t^2]=S_0^2e^{(2\mu-\sigma^2)t}e^{2\sigma^2t}=S_0^2e^{(2\mu+\sigma^2)t}$ and $\operatorname{Var}=S_0^2e^{2\mu t}(e^{\sigma^2t}-1)$.
+
+PITFALLS / DO NOT SAY
+This appendix has 8 sentences but one is an equation-only statement; keep the equations numbered in
+your own scheme.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Appendix B uses this law to derive the Black-Scholes formula.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

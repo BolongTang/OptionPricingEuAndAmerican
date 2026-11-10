@@ -1,0 +1,9 @@
+% P33 | 5.4 Results | Result: the perpetual put
+% guide: dev_notes/paragraph_guides/P33_result_the_perpetual_put.txt
+For the baseline $\kappa=0.5$, so $\beta=\PerpBeta$, $S^*=\PerpSstar$ and $V_\infty(10)=\PerpV$ (Figure~\ref{fig:Vinf}).
+The perpetual put is worth $2.5$ at the money, more than three times the one-year American put of Section~\ref{sec:C-conv}.
+A numerical check confirms that $V_\infty$ solves the system~\eqref{eq:perp}: the ODE residual is below \PerpResidual\ on $x>S^*$, the generator equals $-rK<0$ on $x<S^*$, the value is above the payoff everywhere and the slope on the right of $S^*$ is within $2\cdot10^{-4}$ of $-1$.
+The value and the payoff coincide at $S^*$.
+Since $\beta=2r/\sigma^2$ and $S^*/K=\beta/(\beta+1)$, a higher interest rate raises $\beta$ and moves $S^*/K$ towards one, so one exercises earlier because the strike earns interest.
+A higher volatility lowers $\beta$ and $S^*/K$, because the option to wait is worth more; Figure~\ref{fig:beta} shows both dependences.
+The level $S^*$ is the price below which waiting no longer pays for its cost, and the perpetual put is the limit of the long-dated puts tested in Section~\ref{sec:C-long}.

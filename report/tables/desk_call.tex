@@ -1,0 +1,16 @@
+\begin{tabular}{lcccr}
+\toprule
+Method & price & error vs BS & s.e. & CPU (ms) \\
+\midrule
+Black-Scholes closed form & 38.7493 & +0.0000 & -- & 0.2 \\
+CRR tree, $N=252$ (class, lists) & 38.7142 & -0.0350 & -- & 11.8 \\
+CRR tree, $N=252$ (vectorised) & 38.7142 & -0.0350 & -- & 0.6 \\
+CRR tree, $N=1000$ (vectorised) & 38.7404 & -0.0088 & -- & 3.4 \\
+CRR + smoothing + Richardson, $N=252$ & 38.7493 & +0.0000 & -- & 2.5 \\
+Leisen-Reimer tree, $N=101$ & 38.7491 & -0.0002 & -- & 0.2 \\
+Monte Carlo plain, $M=10^5$ (exact sampler) & 38.5401 & -0.2092 & 0.2155 & 3.5 \\
+Monte Carlo control variate, $M=10^5$ & 38.6810 & -0.0682 & 0.0821 & 3.4 \\
+Monte Carlo Euler $N=252$, $M=10^5$ & 38.6841 & -0.0652 & 0.2156 & 398.1 \\
+Scrambled Sobol QMC, $2^{16}$ points & 38.7479 & -0.0013 & -- & 2.6 \\
+\bottomrule
+\end{tabular}

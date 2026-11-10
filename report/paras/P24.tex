@@ -1,0 +1,14 @@
+% P24 | 4.9 Hedging | Result: delta hedging in discrete time
+% guide: dev_notes/paragraph_guides/P24_result_delta_hedging_in_discrete_time.txt
+The seller of the call receives the Black--Scholes price $C_0$, holds $\Delta_k=\Phi(d_1)$ shares at $n$ equally spaced dates and finances the position at rate $r$.
+The discounted profit is
+\begin{equation}\label{eq:hedgeerr}
+ \varepsilon=C_0+\sum_{k=0}^{n-1}\Delta_k\big(e^{-rt_{k+1}}S_{t_{k+1}}-e^{-rt_k}S_{t_k}\big)-e^{-rT}(S_T-K)^+,
+\end{equation}
+which is zero in continuous time.
+Table~\ref{tbl:hedgefreq} and Figure~\ref{fig:hedge} show that the standard deviation of $\varepsilon$ decays like $n^{-1/2}$, with a fitted slope of \HedgeSlope.
+With daily rebalancing it is \$\HedgeSDdaily, which is \HedgeSDdailyPct\% of the premium, and with weekly rebalancing it is \$\HedgeSDweekly, or \HedgeSDweeklyPct\%.
+The mean error is close to zero and the dispersion is the same, within simulation noise, when the stock is simulated with the real-world drift instead of the risk-neutral one.
+The hedge therefore works whatever the drift, which is the practical content of the statement that $\mu$ does not enter the price.
+The residual error is the sum of $n$ gamma-weighted surprises of the squared return, each of size proportional to $1/n$, which explains the square-root law.
+Cutting the hedging risk in half therefore needs four times as many trades, and with transaction costs this is where hedging becomes a cost-benefit decision.

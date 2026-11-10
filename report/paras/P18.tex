@@ -1,0 +1,10 @@
+% P18 | 4.5 Tree quality | Result: the saw-tooth and the faster trees
+% guide: dev_notes/paragraph_guides/P18_result_the_saw_tooth_and_the_faster_trees.txt
+Figure~\ref{fig:saw} shows that the signed error alternates with the parity of $N$: $N$ times the error settles at $\SawEven$ for even $N$ and at $\SawOdd$ for odd $N$.
+In absolute value both sequences decay like $1/N$, so parity changes the sign of the error but not its order.
+Table~\ref{tbl:variants} compares seven trees at odd $N$.
+At $N=101$ the Leisen--Reimer tree has an error of \LRerrHundred\ against \CRRerrHundredOdd\ for plain CRR, and at $N=1001$ its error is \LRerrThousand.
+On the log--log plot of Figure~\ref{fig:variants} plain CRR, Jarrow--Rudd and Tian follow slope $-1$ with visible oscillation, while averaging and smoothing remove most of the oscillation.
+Only the Leisen--Reimer tree changes the slope, to $-2$.
+For a European payoff with a kink the practical choice is therefore the Leisen--Reimer tree or smoothing combined with Richardson extrapolation.
+For an American payoff we stay with plain CRR and control the error by refinement, because the accelerations rely on a closed-form value at the last step.

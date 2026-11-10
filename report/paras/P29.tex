@@ -1,0 +1,9 @@
+% P29 | 5.1 Optimal stopping | Smooth fit and hedging
+% guide: dev_notes/paragraph_guides/P29_smooth_fit_and_hedging.txt
+The boundary $b(t)$ is part of the unknown, and the condition that fixes it is smooth fit: $\partial_xV$ is continuous across the boundary, so $\partial_xV(t,b(t))=-1$.
+Heuristically, if $\partial_xV$ jumped at the boundary, the stopping rule could be improved by moving the boundary slightly.
+A numerical solver never has to impose smooth fit, because the maximum in the tree recursion, or the projection in a finite-difference scheme, solves the obstacle problem directly.
+Because the market is complete, the second fundamental theorem of asset pricing implies that the claim exercised at $\tau^*$ can be replicated by holding $\Delta_t=\partial_xV(t,S_t)$ shares and the rest in the bond.
+This is the delta hedge of the European option with the American value function: the formula is the same, the function is different, and $\Delta=-1$ in the stopping region because there $V=K-x$.
+The replication is exact up to $\tau^*$, and if the holder exercises at any other time the seller is left with a surplus, so the hedge super-replicates every exercise date.
+Section~\ref{sec:replication} checks this statement numerically in the tree.

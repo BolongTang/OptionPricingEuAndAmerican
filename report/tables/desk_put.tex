@@ -1,0 +1,15 @@
+\begin{tabular}{lccrr}
+\toprule
+Method & price & error vs reference & s.e. & CPU (ms) \\
+\midrule
+European put (Black-Scholes), for reference & 0.69359 & -0.01749 & -- & 0 \\
+CRR tree, $M=800$ (class, lists) & 0.71094 & -0.00014 & -- & 24 \\
+CRR tree, $M=800$ (vectorised) & 0.71094 & -0.00014 & -- & 15 \\
+CRR tree, $M=1600$ (vectorised) & 0.71101 & -0.00007 & -- & 51 \\
+CRR tree + Richardson ($M=3200,6400$): reference & 0.71108 & +0.00000 & -- & 533 \\
+PDE, Crank-Nicolson + penalty, $801\times200$ & 0.71100 & -0.00008 & -- & 132 \\
+PDE, Crank-Nicolson + penalty, $3201\times800$ & 0.71107 & -0.00001 & -- & 1361 \\
+Longstaff-Schwartz, 50 dates, $2\cdot10^5$ paths & 0.71267 & +0.00159 & 0.0019 & 1402 \\
+Barone-Adesi-Whaley approximation & 0.70999 & -0.00109 & -- & 1 \\
+\bottomrule
+\end{tabular}

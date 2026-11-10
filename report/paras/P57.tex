@@ -1,0 +1,9 @@
+% P57 | 7 Conclusions | Limitations and next steps
+% guide: dev_notes/paragraph_guides/P57_limitations_and_next_steps.txt
+The model assumes a constant volatility, whereas real markets show an implied-volatility smile and term structure, so a local- or stochastic-volatility model would be the natural next step.
+The tree would then no longer recombine so simply, and the PDE would gain a second dimension.
+The inputs are simplified: a historical volatility instead of an implied one, a Canadian rate for a US-dollar stock, and no dividends for NVIDIA.
+In practice each of these would be replaced by market data, and the sensitivities of Section~\ref{sec:B-greeks} say how much the price would move.
+There are no transaction costs and no jumps in the model, and discrete hedging is studied only for the call.
+Jump or gap risk would leave a residual that no rebalancing frequency removes.
+Natural next steps are to calibrate to an option chain, to add a discrete dividend schedule, and to extend the regression Monte Carlo to a basket of underlyings.

@@ -1,0 +1,15 @@
+% P30 | 5.2 Perpetual put | The perpetual put in closed form
+% guide: dev_notes/paragraph_guides/P30_the_perpetual_put_in_closed_form.txt
+If $T=\infty$ nothing depends on $t$, so the boundary is a constant $b(t)\equiv S^*$ and the system~\eqref{eq:VI} becomes an ODE,
+\begin{equation}\label{eq:perp}
+ \tfrac12\sigma^2x^2V''+rxV'-rV=0\ (x>S^*),\qquad V=K-x\ (x\le S^*),\qquad V\ge(K-x)^+,
+\end{equation}
+with $V$ and $V'$ continuous at $S^*$.
+Trying $V=Ax^{-\beta}$ with $\beta>0$, so that $V\to0$ as $x\to\infty$, turns the ODE into $(\beta+1)\big(\tfrac12\sigma^2\beta-r\big)=0$, hence $\beta=2r/\sigma^2$.
+In the notation $\kappa=r/\sigma^2$ and $\Delta=\sqrt{(\kappa-\frac12)^2+2\kappa}=\kappa+\frac12$ this reads $\beta=\kappa-\frac12+\Delta=2\kappa$.
+Matching the value and the slope at $S^*$, that is $A(S^*)^{-\beta}=K-S^*$ and $-\beta A(S^*)^{-\beta-1}=-1$, determines both constants:
+\begin{equation}\label{eq:Vinf}
+ S^*=\frac{\beta K}{\beta+1},\qquad V_\infty(x)=\frac{K}{\beta+1}\Big(\frac{S^*}{x}\Big)^{\beta}\quad(x>S^*).
+\end{equation}
+A second derivation avoids smooth fit: exercising at the first time the price falls to a threshold $b$ is worth $V_b(x)=(K-b)(b/x)^\beta$, because $\mathbb E[e^{-r\tau_b}]=(b/x)^\beta$.
+Maximising $(K-b)b^\beta$ over $b$ gives $b=\beta K/(\beta+1)=S^*$, so smooth fit is nothing but the first-order condition of the stopping problem.

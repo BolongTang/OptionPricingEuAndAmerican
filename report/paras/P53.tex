@@ -1,0 +1,9 @@
+% P53 | 6 Comparison of methods | Result: the American put on one footing
+% guide: dev_notes/paragraph_guides/P53_result_the_american_put_on_one_footing.txt
+Table~\ref{tbl:deskput} shows that the tree with $M=1600$ steps is within \DeskPutTreeErr\ of the extrapolated reference and takes \DeskPutTreeMs\ ms.
+The list-based class needs \DeskPutClassMs\ ms for $800$ steps against \DeskPutVecMs\ ms for the vectorised pricer, and the reference itself costs \DeskPutRefMs\ ms.
+The finite-difference solver on a $801\times200$ grid has an error of \DeskPdeCoarseErr\ in \DeskPdeCoarseMs\ ms, and on a $3201\times800$ grid an error of \DeskPdeFineErr\ in \DeskPdeFineMs\ ms.
+In one dimension the PDE solver is therefore at least as accurate as the tree for comparable time, and it gives the boundary and the Greeks from the same grid.
+Least-squares Monte Carlo has an error of \DeskLsmErr\ against a standard error of \DeskLsmSE\ and takes \DeskLsmMs\ ms, so it is the slowest method here, and its error is of the size of its own statistical noise.
+The Barone--Adesi--Whaley approximation is off by \DeskBawErr\ but takes \DeskBawMs\ ms, which is why it remains useful for screening.
+Least-squares Monte Carlo is worth having nonetheless, because its cost does not grow exponentially with the number of underlyings, which is the case where the tree and the grid fail.

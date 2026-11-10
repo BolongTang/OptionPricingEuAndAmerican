@@ -1,0 +1,10 @@
+% P35 | 5.4 Results | Result: convergence in the number of steps and the exercise boundary
+% guide: dev_notes/paragraph_guides/P35_result_convergence_in_the_number_of_steps_and_th.txt
+Table~\ref{tbl:amconv} shows that the tree price increases from $0.7088$ at $M_{bin}=50$ to \AmVeight\ at $M_{bin}=800$ and \AmV\ at $M_{bin}=1600$.
+The successive changes halve each time $M_{bin}$ doubles, so the ratio in the fourth column stays close to $2$.
+A ratio of two is the signature of first-order convergence, $O(1/M_{bin})$, as for the European tree.
+Extrapolating, the limit is close to $0.7111$, a value confirmed by independent methods in Section~\ref{sec:validators}.
+The exercise boundary $b(t;1)$ in Figure~\ref{fig:b} rises from about \AmBearly\ near $t=0$ to the strike at maturity, and the curves for the six step counts lie on top of each other.
+At $t=0.5$ it equals \AmBhalf\ for the finest tree, and the column of Table~\ref{tbl:amconv} varies only by about one lattice spacing between step counts.
+With six months left the holder exercises once the stock has fallen about a fifth below the strike, and close to maturity the boundary approaches $K$.
+This shape reflects the trade-off behind the problem: waiting forgoes interest on the strike, which is worth more than the remaining optionality when the option is deep in the money.

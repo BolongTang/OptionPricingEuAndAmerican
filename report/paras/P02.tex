@@ -1,0 +1,9 @@
+% P02 | 1 Introduction | Roadmap of the three parts
+% guide: dev_notes/paragraph_guides/P02_roadmap_of_the_three_parts.txt
+Section~\ref{sec:A} shows that a scaled symmetric random walk converges to Brownian motion and measures the convergence in three ways: quadratic and total variation, an exact Kolmogorov distance at the terminal time, and the law of the running maximum.
+This is the bridge between the discrete and the continuous language, because the binomial tree is a random walk with drift.
+Section~\ref{sec:B} prices a one-year at-the-money call on NVIDIA with the Cox--Ross--Rubinstein (CRR) tree and with Monte Carlo simulation of geometric Brownian motion, and benchmarks both against Black--Scholes.
+It then asks what a practitioner would ask next: how to make each method more accurate, how to compute sensitivities, how to read the price as an implied volatility, and how well the option can be hedged in discrete time.
+Section~\ref{sec:C} turns to the American put: the optimal stopping problem and its variational PDE, the closed-form perpetual put, the CRR tree with its exercise boundary and hedge, and independent checks by a finite-difference solver, least-squares Monte Carlo and a quasi-analytic approximation.
+It closes with the early-exercise premium, dividends, an American put on the NVIDIA inputs, and the profit and loss of the buyer under the pricing measure and under the real-world measure.
+Section~\ref{sec:compare} compares every method on accuracy and run time, and Section~\ref{sec:concl} states the conclusions and their limits.

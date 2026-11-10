@@ -1,0 +1,60 @@
+PARAGRAPH P06: Brownian motion and the scaled random walk
+==============================================================================
+Where it goes : 3 Part A: Brownian motion and random walks  (draft file report/paras/P06.tex, pulled into report/main.tex with \input)
+Type          : method
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Defines the two objects compared in Part A and states what is the same and what differs.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader knows the Gaussian distribution and independence. The definition of Brownian motion is
+given in full because every later argument uses its four properties.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Definition of Brownian motion by its four properties (adapted and W_0 = 0; N(0,t-s) increments; independence from the past; continuous paths).
+  S3-S4  [2 sentences]  FOCUS: The scaled symmetric random walk: steps plus or minus 1 with probability 1/2, scaled by sqrt(T/N); display the formula and the mean and variance.
+  S5-S6  [2 sentences]  FOCUS: What is shared and what is not: mean and variance agree for every N and the increments are independent, but the walk lives on a lattice and its increments are not Gaussian; Donsker's theorem says the whole path converges in law.
+  S7  [1 sentence]  FOCUS: Why it matters for pricing: the CRR tree is a scaled walk with drift, so its convergence is a consequence of this one.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. A process $W=\{W_t\}_{t\ge0}$ is a Brownian motion on $(\Omega,\mathcal F,\{\mathcal
+      F_t\},\mathbb P)$ if it is adapted with $W_0=0$, if $W_t-W_s\sim N(0,t-s)$ for $0\le s\le t$,
+      if $W_t-W_s$ is independent of $\mathcal F_s$, and if $t\mapsto W_t(\omega)$ is continuous.
+  S2. Independence and the Gaussian law of increments fix all finite-dimensional distributions, and
+      continuity of the paths is what separates Brownian motion from other processes with the same
+      increments.
+  S3. The scaled symmetric random walk replaces the Gaussian increments by coin flips: with
+      $\xi_i=\pm1$ equally likely,
+  S4. \begin{equation}\label{eq:scaledwalk}  W^{(N)}_{t_k}=\sqrt{T/N}\sum_{i=1}^{k}\xi_i,\qquad
+      t_k=kT/N, \end{equation} so that $\mathbb E\,W^{(N)}_{t_k}=0$ and
+      $\operatorname{Var}W^{(N)}_{t_k}=t_k$ for every $N$.
+  S5. Mean, variance and independence of increments therefore agree with Brownian motion for every
+      $N$, whereas the lattice support and the non-Gaussian increments do not.
+  S6. Donsker's theorem states that the whole path $W^{(N)}$ converges in law to $W$ as
+      $N\to\infty$, which is the statement we test numerically.
+  S7. This matters for pricing because the CRR tree of Section~\ref{sec:B} is exactly such a walk
+      with a drift, so its convergence to geometric Brownian motion is a consequence of the
+      convergence studied here.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equation eq:scaledwalk.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+Mean/variance of the walk: $\mathbb E[\xi_i]=0$, $\operatorname{Var}\xi_i=1$, independence $\Rightarrow \operatorname{Var}W^{(N)}_{t_k}=\frac TN k=t_k$.
+Connection to the tree: log-price $\ln S_{t_k}=\ln S_0+\sigma\sqrt{\Delta t}\sum \xi_i+(\text{drift})$ in the CRR tree.
+
+PITFALLS / DO NOT SAY
+Do not say the walk 'is' Brownian motion; say it converges to it. Do not write 'pseudo-random'.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Describe how both objects were simulated.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Write what you did and why you chose it, in the first person plural or passive as your field
+prefers. Name the object (class, function, scheme) in the sentence where it first matters. Every
+formula must be introduced by one sentence in words and followed by what it means for the numbers.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

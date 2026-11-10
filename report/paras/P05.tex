@@ -1,0 +1,10 @@
+% P05 | 2 Setting and notation | Data and parameters
+% guide: dev_notes/paragraph_guides/P05_data_and_parameters.txt
+The European problem uses the NVIDIA (NVDA) closing price of \$\NvdaS\ on 2026-10-05, a strike $K=S_0$ (at the money) and a maturity of one year, which is 252 trading days.
+Time is measured in trading years, so a tree step of one day is $\Delta t=1/252$.
+The volatility is the standard deviation of the last 250 daily log returns multiplied by $\sqrt{252}$, which gives $\sigma=\NvdaSigma\%$.
+Using a historical volatility assumes that the next year looks like the last one; an implied volatility from market quotes would replace it in practice.
+The risk-free rate is the Bank of Canada one-year Treasury-bill yield, $r=\NvdaR\%$, chosen to match the one-year maturity.
+A Canadian rate is not the natural choice for a US-dollar asset, but the call is not very sensitive to it: its rho is about \BSrhoPct\ dollars per percentage point of the rate (Section~\ref{sec:B-greeks}).
+The American put uses a deliberately simple baseline, $S_0=K=10$, $\sigma=20\%$, $r=2\%$, $T=1$ and a real-world drift $\mu=5\%$, for which the perpetual limit is known exactly.
+Because the exercise boundary scaled by the strike depends only on $\sigma$, $r$ and the time to maturity, results for this baseline carry over to any strike; Table~\ref{tbl:params} lists both parameter sets.

@@ -1,0 +1,57 @@
+PARAGRAPH P65: The Barone-Adesi-Whaley approximation
+==============================================================================
+Where it goes : Appendix A: derivations  (draft file report/paras/P65.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Sketches the idea behind a formula that is quoted in Section 5.6 without derivation, enough for a
+reader to see where its error comes from.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the Black-Scholes PDE and the notion of an early-exercise premium.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Idea: write P_A = P_E + eps; both P_A and P_E satisfy the Black-Scholes PDE in the continuation region, hence so does eps.
+  S3-S4  [2 sentences]  FOCUS: Approximation: take eps = kappa(T) f(S) with kappa = 1 - e^{-rT}; neglecting the term in d f/d kappa turns the PDE into an Euler ODE S^2 f'' + N S f' - (M/kappa) f = 0 with M = 2r/sigma^2 and N = 2(r-q)/sigma^2.
+  S5-S6  [2 sentences]  FOCUS: Boundary conditions: value matching and smooth fit at the critical price S** give the equation for S** and the constant A_1; display the result.
+  S7-S8  [2 sentences]  FOCUS: Where the error comes from: the neglected term is exactly zero only for kappa = constant, so the error grows with maturity; the formula has a constant boundary, while the true boundary depends on time.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Write the American put as $P_A=P_E+\varepsilon$, the European put plus the early-exercise
+      premium.
+  S2. Both $P_A$ and $P_E$ satisfy the Black--Scholes PDE in the continuation region, hence so does
+      $\varepsilon$.
+  S3. Barone-Adesi and Whaley set $\varepsilon=\kappa(T)f(S)$ with $\kappa=1-e^{-rT}$ and neglect a
+      term that is small, which turns the PDE into an Euler equation
+      $S^2f''+NSf'-\frac{M}{\kappa}f=0$ with $M=2r/\sigma^2$ and $N=2(r-q)/\sigma^2$.
+  S4. Its decaying solution is a power of the spot, $f=A_1S^{q_1}$, where
+      $q_1=\tfrac12\big[-(N-1)-\sqrt{(N-1)^2+4M/\kappa}\big]<0$.
+  S5. Value matching and smooth fit at the critical price $S^{**}$ then fix both $S^{**}$ and $A_1$.
+  S6. The result is \begin{equation} P_A(S)=P_E(S)+A_1\Big(\frac S{S^{**}}\Big)^{q_1}\
+      (S>S^{**}),\qquad A_1=-\frac{S^{**}}{q_1}\Big[1-e^{(b-r)T}\Phi\big(-d_1(S^{**})\big)\Big],
+      \end{equation} where $S^{**}$ solves
+      $K-S^{**}=P_E(S^{**})-\big[1-e^{(b-r)T}\Phi(-d_1(S^{**}))\big]S^{**}/q_1$ and $b=r-q$.
+  S7. The neglected term vanishes only if $\kappa$ were constant in time, so the approximation
+      degrades as the maturity grows, as Table~\ref{tbl:baw} shows.
+  S8. The formula also has a single critical price, whereas the true boundary depends on time, which
+      is why it is best at short and medium maturities.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Table tbl:baw. Equation numbering free.
+
+PITFALLS / DO NOT SAY
+The neglected term is the one proportional to d f/d kappa. Quote it as such if you expand the
+derivation.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Appendix I closes the loop on the perpetual put.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

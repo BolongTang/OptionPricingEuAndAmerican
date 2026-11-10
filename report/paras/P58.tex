@@ -1,0 +1,12 @@
+% P58 | Appendix A: derivations | Ito's formula and the solution of GBM
+% guide: dev_notes/paragraph_guides/P58_ito_s_formula_and_the_solution_of_gbm.txt
+The rules of It\^o calculus follow from the quadratic variation of Brownian motion: $(dt)^2=0$, $dt\,dW=0$ and $(dW)^2=dt$.
+For a twice differentiable $f$ and $dS=\mu S\,dt+\sigma S\,dW$ it gives, using $(dS)^2=\sigma^2S^2\,dt$,
+\begin{equation}
+ df(S_t)=f'(S_t)\,dS_t+\tfrac12f''(S_t)\,\sigma^2S_t^2\,dt .
+\end{equation}
+With $f=\ln$ one has $f'=1/S$ and $f''=-1/S^2$, so $d\ln S_t=(\mu-\tfrac12\sigma^2)\,dt+\sigma\,dW_t$.
+Integrating from $0$ to $t$ and exponentiating gives $S_t=S_0\exp\big((\mu-\tfrac12\sigma^2)t+\sigma W_t\big)$.
+To check this, apply It\^o's formula to $g(t,W)=S_0e^{(\mu-\frac12\sigma^2)t+\sigma W}$: $dg=(\mu-\tfrac12\sigma^2)g\,dt+\sigma g\,dW+\tfrac12\sigma^2g\,dt=\mu g\,dt+\sigma g\,dW$.
+Hence $\ln S_t$ is normal with mean $\ln S_0+(\mu-\tfrac12\sigma^2)t$ and variance $\sigma^2t$, and since $\mathbb E[e^{\sigma W_t}]=e^{\sigma^2t/2}$ one gets $\mathbb E[S_t]=S_0e^{\mu t}$ and $\operatorname{Var}[S_t]=S_0^2e^{2\mu t}\big(e^{\sigma^2t}-1\big)$.
+The variance is what sets the size of the Monte Carlo standard errors of Section~\ref{sec:B}.

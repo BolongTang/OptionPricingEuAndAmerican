@@ -1,0 +1,66 @@
+PARAGRAPH P62: Pathwise and likelihood-ratio Greeks
+==============================================================================
+Where it goes : Appendix A: derivations  (draft file report/paras/P62.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 9 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Derives the Monte Carlo estimators used in Table greeks, with the reason each one works and where
+each one fails.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader knows Monte Carlo pricing and the lognormal sampler S_T = S_0 exp((r - sigma^2/2)T +
+sigma sqrt(T) Z).
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Problem: estimate the derivative with respect to a parameter theta of C(theta) = e^{-rT} E[f(S_T(theta))]; two ideas: differentiate the path, or differentiate the density.
+  S3-S4  [2 sentences]  FOCUS: Pathwise: if f is Lipschitz and S_T is differentiable in theta, then d/d theta E f(S_T) = E[f'(S_T) d S_T/d theta]; for the call f'(s) = 1{s > K}.
+  S5-S6  [2 sentences]  FOCUS: Delta and vega: dS_T/dS_0 = S_T/S_0 and dS_T/d sigma = S_T (sqrt(T) Z - sigma T); the estimators are e^{-rT} 1{S_T > K} S_T/S_0 and e^{-rT} 1{S_T > K} S_T (sqrt(T) Z - sigma T).
+  S7-S8  [2 sentences]  FOCUS: Likelihood ratio: write E f = integral f(s) g(s; theta) ds and differentiate g, so d/d theta E f = E[f(S_T) d ln g/d theta]; for the lognormal density the score for the spot is Z/(S_0 sigma sqrt(T)), giving Delta = e^{-rT} E[(S_T - K)^+ Z/(S_0 sigma sqrt(T))].
+  S9  [1 sentence]  FOCUS: Gamma: differentiate the pathwise delta integrand by the likelihood-ratio method, giving e^{-rT} E[1{S_T > K} (S_T/S_0^2)(Z/(sigma sqrt(T)) - 1)]; likelihood ratio has larger variance for smooth payoffs and is indispensable for discontinuous ones.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. We want $\partial_\theta C(\theta)$ for $C(\theta)=e^{-rT}\mathbb E[f(S_T(\theta))]$, where
+      $\theta$ is the spot, the volatility or the rate.
+  S2. There are two ways to move the derivative inside: differentiate the sample path, or
+      differentiate the density of $S_T$.
+  S3. The pathwise method requires $f$ to be Lipschitz and $S_T$ to be differentiable in $\theta$,
+      and then $\partial_\theta\mathbb E f(S_T)=\mathbb E[f'(S_T)\,\partial_\theta S_T]$.
+  S4. For the call $f'(s)=\mathbf 1_{\{s>K\}}$, which exists except at a single point that has
+      probability zero.
+  S5. Since $\partial S_T/\partial S_0=S_T/S_0$ and $\partial S_T/\partial\sigma=S_T(\sqrt TZ-\sigma
+      T)$, the pathwise estimators are
+  S6. \begin{equation}  \hat\Delta=e^{-rT}\mathbf 1_{\{S_T>K\}}\frac{S_T}{S_0},\qquad \hat{\mathcal
+      V}=e^{-rT}\mathbf 1_{\{S_T>K\}}\,S_T\big(\sqrt TZ-\sigma T\big). \end{equation}
+  S7. The likelihood-ratio method writes $\mathbb Ef(S_T)=\int f(s)\,g(s;\theta)\,ds$ and
+      differentiates the density, $\partial_\theta\mathbb Ef(S_T)=\mathbb
+      E[f(S_T)\,\partial_\theta\ln g(S_T;\theta)]$, which needs no smoothness of $f$.
+  S8. For the lognormal density the score with respect to the spot is $Z/(S_0\sigma\sqrt T)$, so
+      $\Delta=e^{-rT}\mathbb E\big[(S_T-K)^+Z/(S_0\sigma\sqrt T)\big]$.
+  S9. For the second derivative we apply the likelihood-ratio idea to the pathwise delta, which
+      gives $\Gamma=e^{-rT}\mathbb E\big[\mathbf
+      1_{\{S_T>K\}}\tfrac{S_T}{S_0^2}\big(\tfrac{Z}{\sigma\sqrt T}-1\big)\big]$, and in general the
+      likelihood-ratio estimators have larger variance for smooth payoffs but remain valid for
+      discontinuous ones.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Table tbl:greeks.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+Gamma via LR on the pathwise delta: $\Delta=\partial_{S_0}\mathbb E[F]$, $F=e^{-rT}\mathbf 1_{\{S_T>K\}}S_T/S_0$. $\partial_{S_0}\mathbb E[F]=\mathbb E[\partial_{S_0}F+F\cdot Z/(S_0\sigma\sqrt T)]$ with $\partial_{S_0}F=-e^{-rT}\mathbf 1_{\{S_T>K\}}S_T/S_0^2$ (the indicator's derivative is handled by the score term).
+
+PITFALLS / DO NOT SAY
+The Gamma derivation above is the standard mixed estimator; its check is numerical (Table greeks
+agrees with Black-Scholes to the shown digits).
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Appendix F derives the hedging-error identity.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

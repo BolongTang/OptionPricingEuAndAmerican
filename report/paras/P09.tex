@@ -1,0 +1,9 @@
+% P09 | 3 Part A: Brownian motion and random walks | Result: quadratic and total variation
+% guide: dev_notes/paragraph_guides/P09_result_quadratic_and_total_variation.txt
+The quadratic variation $\sum_k(\Delta W_k)^2$ of a Brownian path on $[0,1]$ is close to $1$ and its spread shrinks as $N$ grows; at $N=10{,}000$ the mean is \QVBMtenk.
+For the scaled walk it equals $1$ exactly, because every squared step is $T/N$.
+The total variation $\sum_k|\Delta W_k|$ does not converge: at $N=10{,}000$ it is \TVBMtenk\ for the Brownian paths, which matches the theoretical value \TVtheorytenk\ to the digits shown, and it equals $\sqrt N=100$ for the walk.
+Table~\ref{tbl:variation} shows the same $\sqrt N$ growth at every $N$.
+Infinite total variation means that $\int\sigma S\,dW$ cannot be defined path by path as an ordinary integral, which is why It\^o calculus is needed.
+Finite and non-zero quadratic variation is what produces the correction $-\tfrac12\sigma^2$ in the drift of $\ln S_t$ in Section~\ref{sec:B-gbm}.
+The same roughness explains why a hedge that is rebalanced only at discrete dates keeps a residual error (Section~\ref{sec:hedge}).

@@ -1,0 +1,9 @@
+% P26 | 4 Part B summary | What Part B shows about the European call
+% guide: dev_notes/paragraph_guides/P26_what_part_b_shows_about_the_european_call.txt
+For a single European call on one stock, a Leisen--Reimer tree or a smoothed and extrapolated CRR tree is orders of magnitude more accurate than Monte Carlo for the same run time.
+The work--precision comparison in Section~\ref{sec:compare} puts numbers on this.
+Monte Carlo wins when the payoff depends on the whole path or on many underlyings, because its error rate does not depend on the dimension, while the cost of a lattice grows exponentially with it.
+Variance reduction closes part of the gap: a control variate alone was worth a factor of \VRcv\ in variance here.
+The three routes to the Greeks agree, so the choice among them is a matter of cost and variance, not of correctness.
+The hedging error of a short call falls only like $n^{-1/2}$ with the number of rebalances, and an error of $10$ volatility points in the hedge volatility costs more than any reasonable change of frequency.
+Early exercise needs a decision at every date based on the value of waiting, which the tree computes naturally and Monte Carlo can approximate only with a regression, as Part C shows.

@@ -1,0 +1,59 @@
+PARAGRAPH P02: Roadmap of the three parts
+==============================================================================
+Where it goes : 1 Introduction  (draft file report/paras/P02.tex, pulled into report/main.tex with \input)
+Type          : intro
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Gives the reader a map: which question each part answers and how the parts feed the comparison at
+the end.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The motivation of P01. The reader should leave this paragraph knowing the order of Parts A, B, C and
+the comparison, not the details.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Part A: the scaled symmetric random walk and its convergence to Brownian motion, measured by quadratic and total variation, an exact Kolmogorov distance and the law of the running maximum.
+  S3-S4  [2 sentences]  FOCUS: Part B: the one-year at-the-money NVDA call priced by the CRR tree, by Monte Carlo on GBM and by Black-Scholes, followed by tree variants, variance reduction, Greeks, implied volatility and discrete hedging.
+  S5-S6  [2 sentences]  FOCUS: Part C: the American put through the variational PDE, the perpetual put in closed form, the CRR tree with exercise boundary and hedge, three independent validators, early-exercise premium, dividends, and profit-and-loss under both measures.
+  S7  [1 sentence]  FOCUS: Sections 6 and 7: a single comparison of every method on accuracy and run time, and the conclusions with their limits.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Section~\ref{sec:A} shows that a scaled symmetric random walk converges to Brownian motion and
+      measures the convergence in three ways: quadratic and total variation, an exact Kolmogorov
+      distance at the terminal time, and the law of the running maximum.
+  S2. This is the bridge between the discrete and the continuous language, because the binomial tree
+      is a random walk with drift.
+  S3. Section~\ref{sec:B} prices a one-year at-the-money call on NVIDIA with the Cox--Ross--
+      Rubinstein (CRR) tree and with Monte Carlo simulation of geometric Brownian motion, and
+      benchmarks both against Black--Scholes.
+  S4. It then asks what a practitioner would ask next: how to make each method more accurate, how to
+      compute sensitivities, how to read the price as an implied volatility, and how well the option
+      can be hedged in discrete time.
+  S5. Section~\ref{sec:C} turns to the American put: the optimal stopping problem and its
+      variational PDE, the closed-form perpetual put, the CRR tree with its exercise boundary and
+      hedge, and independent checks by a finite-difference solver, least-squares Monte Carlo and a
+      quasi-analytic approximation.
+  S6. It closes with the early-exercise premium, dividends, an American put on the NVIDIA inputs,
+      and the profit and loss of the buyer under the pricing measure and under the real-world
+      measure.
+  S7. Section~\ref{sec:compare} compares every method on accuracy and run time, and
+      Section~\ref{sec:concl} states the conclusions and their limits.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Section labels sec:A, sec:B, sec:C, sec:compare, sec:concl (already defined in main.tex).
+
+PITFALLS / DO NOT SAY
+Do not repeat the motivation. Do not give numerical results; the abstract already does.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Lead into the statement of how the code is organised.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Write as the author talking to a reader who knows basic probability but not this project. Open with
+the concrete problem, not with a definition. Avoid lists of three adjectives and avoid sentences
+that only announce what the next sentence will say.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

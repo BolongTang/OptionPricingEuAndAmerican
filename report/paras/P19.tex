@@ -1,0 +1,9 @@
+% P19 | 4.6 Monte Carlo | Result: Monte Carlo prices by paths and steps
+% guide: dev_notes/paragraph_guides/P19_result_monte_carlo_prices_by_paths_and_steps.txt
+With $5\cdot10^5$ paths and $N=300$ steps the Euler--Maruyama Monte Carlo price is \$\MCbest\ with standard error \$\MCbestSE, which is within \$\MCbestErr\ of the Black--Scholes price.
+The other two step counts at the same sample size are closer to the benchmark, so the ordering of the cells in the last row is noise: all three lie within about a third of a standard error of each other.
+With only 1,000 paths the standard error is above two dollars, about six percent of the price, and the errors in that row are of this size.
+They are statistical fluctuations, not systematic bias, since they change sign across columns.
+Increasing the number of time steps from 100 to 300 changes the price by much less than its standard error.
+The statistical error therefore dominates the Euler bias at these step counts, in line with the weak order of the scheme.
+Because the standard error falls only like $M^{-1/2}$, a standard error of one cent would need about $5\cdot10^{9}$ paths, whereas the tree reaches that accuracy deterministically with a few thousand steps.

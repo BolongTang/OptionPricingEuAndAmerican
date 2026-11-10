@@ -1,0 +1,10 @@
+% P64 | Appendix A: derivations | Least-squares Monte Carlo (Longstaff-Schwartz)
+% guide: dev_notes/paragraph_guides/P64_least_squares_monte_carlo_longstaff_schwartz.txt
+With exercise dates $t_1<\dots<t_n=T$ the value satisfies $V_n(x)=(K-x)^+$ and $V_j(x)=\max\{(K-x)^+,C_j(x)\}$ with the continuation value $C_j(x)=e^{-r\Delta t}\,\mathbb E[V_{j+1}(S_{j+1})\mid S_j=x]$.
+This is the tree recursion with the one-step expectation replaced by a conditional expectation under the simulated law.
+The conditional expectation is approximated by a regression of the discounted realised cash flow on a polynomial basis of the spot, $C_j(x)\approx\sum_{k=0}^{d}\beta_kx^k$, fitted on the paths that are in the money at $t_j$.
+Only in-the-money paths are used because exercise is never optimal otherwise, and this concentrates the fit where the decision is made.
+Working backward from the last date, a path exercises at $t_j$ if its payoff exceeds the fitted continuation value, and its cash flow is then replaced by the payoff.
+The estimate is the average of the discounted cash flows, compared with the immediate payoff at the start.
+Because the fitted rule is a feasible exercise policy, its expected payoff is a lower bound for the Bermudan value, which is why the estimator is biased low.
+Using the same paths for the fit and for the valuation adds a small upward bias of order $1/M$, so in practice the estimate is low-biased up to noise, and the accuracy is controlled by the basis and by the number of exercise dates.

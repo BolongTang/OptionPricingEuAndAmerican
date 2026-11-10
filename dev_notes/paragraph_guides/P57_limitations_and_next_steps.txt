@@ -1,0 +1,50 @@
+PARAGRAPH P57: Limitations and next steps
+==============================================================================
+Where it goes : 7 Conclusions  (draft file report/paras/P57.tex, pulled into report/main.tex with \input)
+Type          : discussion
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Lists honestly what the model cannot do, so a practitioner knows where not to rely on the numbers,
+and says what would come next.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the conclusions. The paragraph should read as a list of conditions, each with its
+consequence.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Constant volatility: real markets show a smile and a term structure of implied volatility; a local-volatility or stochastic-volatility model would replace GBM and the PDE would gain a second dimension.
+  S3-S4  [2 sentences]  FOCUS: Inputs: a historical volatility and a Canadian interest rate were used for a US-dollar stock; dividends were ignored for NVIDIA; each of these would be replaced by market data in practice.
+  S5-S6  [2 sentences]  FOCUS: Frictions and jumps: no transaction costs, continuous markets without jumps, discrete hedging only in one experiment; a jump or gap risk would add a residual that no rebalancing frequency removes.
+  S7  [1 sentence]  FOCUS: Next steps: calibrate to an option chain, add a dividend schedule, and extend the regression Monte Carlo to a basket.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. The model assumes a constant volatility, whereas real markets show an implied-volatility smile
+      and term structure, so a local- or stochastic-volatility model would be the natural next step.
+  S2. The tree would then no longer recombine so simply, and the PDE would gain a second dimension.
+  S3. The inputs are simplified: a historical volatility instead of an implied one, a Canadian rate
+      for a US-dollar stock, and no dividends for NVIDIA.
+  S4. In practice each of these would be replaced by market data, and the sensitivities of
+      Section~\ref{sec:B-greeks} say how much the price would move.
+  S5. There are no transaction costs and no jumps in the model, and discrete hedging is studied only
+      for the call.
+  S6. Jump or gap risk would leave a residual that no rebalancing frequency removes.
+  S7. Natural next steps are to calibrate to an option chain, to add a discrete dividend schedule,
+      and to extend the regression Monte Carlo to a basket of underlyings.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+No references.
+
+PITFALLS / DO NOT SAY
+Every limitation should state its consequence for the reader; do not write a bare list.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+End of the main text; the appendices follow.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+State a claim you would defend to a practitioner, give the evidence in one or two numbers, then say
+where it stops being true. Prefer a concrete recommendation to a summary of what was done.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

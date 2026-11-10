@@ -1,0 +1,12 @@
+% P61 | Appendix A: derivations | Convergence of the CRR tree to geometric Brownian motion
+% guide: dev_notes/paragraph_guides/P61_convergence_of_the_crr_tree_to_geometric_brownia.txt
+In the CRR tree the terminal log-price is $\ln S_N=\ln S_0+\sigma\sqrt{\Delta t}\,(2B-N)$ with $B\sim\mathrm{Bin}(N,p)$.
+Its mean is therefore $N\sigma\sqrt{\Delta t}\,(2p-1)$ and its variance is $4N\sigma^2\Delta t\,p(1-p)$, where $N\Delta t=T$.
+With $y=\sigma\sqrt{\Delta t}$, expanding $e^{r\Delta t}=1+r\Delta t+\dots$ and $e^{\pm y}=1\pm y+\tfrac12y^2+\dots$ in $p=\frac{e^{r\Delta t}-e^{-y}}{e^{y}-e^{-y}}$ gives
+\begin{equation}
+p=\frac12+\frac{(r-\frac12\sigma^2)\sqrt{\Delta t}}{2\sigma}+O(\Delta t).
+\end{equation}
+Hence the mean tends to $N\sigma\sqrt{\Delta t}\cdot\frac{(r-\frac12\sigma^2)\sqrt{\Delta t}}{\sigma}=(r-\tfrac12\sigma^2)T$.
+Since $p\to\tfrac12$ the variance tends to $\sigma^2T$.
+The increments are bounded by $\sigma\sqrt{\Delta t}$, so the Lindeberg condition holds and the central limit theorem for triangular arrays gives a normal limit with these parameters, which is the law of $\ln S_T$ under geometric Brownian motion.
+The payoff is continuous and has linear growth and the tree has uniformly bounded moments, so the tree price converges to the Black--Scholes price, while the rate $1/N$ and the parity effect require a finer analysis of the distribution of the lattice around the strike.

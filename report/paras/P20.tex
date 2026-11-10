@@ -1,0 +1,9 @@
+% P20 | 4.6 Monte Carlo | Result: strong and weak order of Euler-Maruyama
+% guide: dev_notes/paragraph_guides/P20_result_strong_and_weak_order_of_euler_maruyama.txt
+The strong error $\mathbb E|S^{EM}_T-S_T|$ compares each Euler path with the exact path driven by the same noise, whereas the weak error compares the expectation of a payoff and is the only one that matters for pricing.
+We measure both with common random numbers, so the Monte Carlo noise in the difference is small.
+The strong error falls from $0.069$ at $N=1$ to $0.0052$ at $N=256$ (in units of $S_0$), and the log--log slope is \EMstrongSlope, which is order one half.
+This is the textbook strong order of the Euler--Maruyama scheme.
+The bias of the call price halves each time $N$ doubles between $N=4$ and $N=64$, with a log--log slope of \EMweakSlope, which is weak order one.
+At $N=256$ the bias is $+0.0066$ with a standard error of $0.0022$, so it can no longer be separated from zero.
+For a European call a few hundred steps are therefore enough and the number of paths is the decision that matters; at $N=1$ the bias even has the opposite sign, which is a pre-asymptotic effect.

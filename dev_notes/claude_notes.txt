@@ -1,0 +1,104 @@
+CLAUDE WORKING NOTES  (for me; kept in the repo on `dev` only; delete dev_notes/ before merging to main)
+==========================================================================================================
+Last updated: 2026-11-09
+
+0. TASK (from the user, paraphrased)
+-----------------------------------
+Merge two private course-project repos into one public repo (OptionPricingEuAndAmerican, work on a `dev` branch):
+  A = AmericanOptionPricing        -> final write-up ReportTemplate/ReportTemplate.tex, notebook Project2.ipynb
+  E = EuOptionPricing-CRRvsGBM     -> final write-up main.tex,                           notebook project1.ipynb
+Do NOT use the PDFs (old). Remove course-related information. Expand results / derivations / plots to industry
+usefulness. Keep the handwritten classes as they are, build on top of them. Then write one text file per paragraph
+telling the user how to write it (6-9 sentences per paragraph, with sentence counts per focus), because the user will
+humanize the final prose. Prefer completeness and repetition to brevity.
+
+1. WHAT EXISTS (observed 2026-11-09)
+------------------------------------
+Repo E (branch claude/dazzling-fermi-wtj49b == main + nothing new):
+  main.tex (684 lines, amsart, 12pt)  - Part I (BM vs scaled random walk), Part II (NVDA call: CRR vs GBM/Euler-Maruyama vs BS)
+                                        Data in main.tex: S0=K=238.90 (2026-10-05 close), r=0.029, sigma=0.377254, T=1 (252 d).
+                                        Appendix holds the HANDWRITTEN code: BrownianMotion, symmetric_random_walk (subclass),
+                                        CRRBinomialModel (days/252, stock_tree list of lists, simulate_stock/simulate_option,
+                                        plot_*_tree), black_scholes_call, gbm_euler_maruyama, gbm_exact.
+  NOTE: main.tex \includegraphics names (part1_paths.pdf, simulate_stocks.pdf, simulate_options.pdf, gbm_paths.pdf,
+        crr_stock_tree_N*.pdf, crr_option_tree_N*.pdf) do NOT exist in E/figures (those are older names: rw_paths.pdf ...).
+        => all figures must be regenerated. Tables in main.tex are typed in by hand (Tables bin / gbm).
+  project1.ipynb (42 cells) - AI-synthesised notebook with S0=212.13, r=.04, sigma=.30 (OLD parameters, different from main.tex).
+        Useful extra analyses to keep: KS distance of scaled walk vs N(0,1) (exact binomial CDF), EM strong/weak error,
+        MC with CI, 200-repetition study (coverage), pitfall "price with mu instead of r", saw-tooth of CRR (error ~ 6.25/N).
+  README.md, tools/export_code.py, reference/ (course handout + zip template + lecture PNG) -> NOT carried over.
+
+Repo A (branch claude/dazzling-fermi-wtj49b == main + 2 commits "Updated .tex"):
+  ReportTemplate/ReportTemplate.tex (743 lines, amsart) - Part 1 (variational PDE, hedging, perpetual put), Part 2 (CRR tree,
+        convergence, boundary, 2 paths + delta, sigma/r grid, long maturities), Part 3 (P&L, sigma/r grid, mis-specified vol).
+        Baseline S0=K=10, mu=5%, sigma=20%, r=2%, T=1, Mbin=800. The code appendix (cells 1-13) is the final code:
+        plotsmart helper, perp_params/Vinf, CRRBinomialModel (VERBATIM Project 1 class, days/365, defaults .04/.3),
+        CRRTree(CRRBinomialModel) (build_option_tree American max, simulate vectorised, stopping_index), hedgingformula.
+  Project2.ipynb (24 cells) = same code + markdown derivations; Project1.ipynb = old copy of the Eu code (ORIGINAL/AI-FIX comments).
+  IntroSheet/IntroSheet.tex - 190-line tutorial (tree, derivation of p, worked 2-step example, variational PDE, tree<->PDE
+        consistency expansion, perpetual put two derivations, hedging, P&L, summary table). VALUABLE for "fuller derivations".
+  interpretation.txt, ai_disclosure.txt, todo.txt, 1a.py..3c.py (pseudocode), lecture PDFs, handout PDF -> course-specific.
+
+Key differences between the two CRRBinomialModel versions:
+  E: self.T = days/252 ; defaults rate=risk_free_CAD_rate, volatility=annualized_252_volatility (globals), simulate_stock/option plot.
+  A: self.T = days/365 ; defaults rate=0.04, volatility=0.3 ; single simulate().
+  MERGE DECISION: keep the E version verbatim (it is the later hand-written one, has the richest API). CRRTree then calls
+  super().__init__(days=round(252*T)) so that T = days/252 = T exactly. (For A, days=round(365*T)/365 was T too.) The
+  base-class generate_option_tree is a CALL; CRRTree builds the American PUT with its own build_option_tree (unchanged logic).
+  The base class's default arguments refer to globals risk_free_CAD_rate/annualized_252_volatility -> I define them in the setup cell.
+
+Known facts from the old repos worth re-checking when re-running (numbers in the old tex are for the OLD seed <course-number>):
+  A: V(0,S0)=0.7109 (M=800), 0.71101 (M=1600); b(0.5;1)~7.86; Vinf(10)=2.5, S*=5; P&L mean .014 sd .83, tau .874, p_ex .52.
+  E: BS=38.7493 ; CRR N=10000 -> 38.7484 ; EM MC N=300, 5e5 paths -> 38.7579.
+  Old A/todo.txt open issues: (3) wording of 3c (exercise too LATE for real vol < priced vol, as in the simulation),
+  (4) P&L simulated under Q, user maybe wants real-world mu=5%, (5) T=1000 with 800 steps is coarse (dt=1.25).
+
+2. COURSE-RELATED INFORMATION THAT MUST NOT APPEAR IN THE PUBLIC REPO  (checklist; verified by grep before every commit)
+-------------------------------------------------------------------------------------------------------------------
+Files never copied: <course lecture PDFs>, <course project handout PDFs>,
+  reference/ReportTemplate.zip, reference/"Defn of Brownian Motion Lec 3.png", "P^(A) in class vs V(x)/*.png" (lecture screenshots),
+  ai_disclosure.txt (names the course), interpretation.txt (explains the course's pseudocode), 1a.py..3c.py, 2a.py.. (pseudocode),
+  old PDFs, old figures, git HISTORY of the private repos (history contains the above) -> the new repo starts with a fresh history.
+Strings to remove/replace:  "<COURSE CODE>" in any spelling, and the bare course number (also as RNG seed -> use another seed), "Project 1/2", "Part 1/2/3" when
+  they mean assignment parts, "Problem", "handout", "course", "class"/"in class"/"from class"/"lecture", "Lec", "template", "ReportTemplate",
+  "pseudocode", "instruction", "see instruction", "cross reference II4", file labels like I2.py/II2a.py/3c.py in code comments,
+  "AI-FIX"/"ORIGINAL" comments, "co-author names/IDs", "submit", "page limit", "Overleaf-ready", "Amazon" remark, "Bank of Canada" is OK (data source).
+Items the USER must decide (cannot decide for them):
+  (a) author name on a public report (kept "Bolong Tang" as in the originals); (b) licence (I added MIT as a default, easy to change);
+  (c) whether publishing worked solutions of a graded assignment is allowed by the course/university while the course is running
+      (the content is now general, but it derives from graded work) -> flagged in todo.txt;
+  (d) AI-use statement wording (README has a neutral one; the course-specific disclosure was NOT copied).
+
+3. TARGET LAYOUT (new repo, branch dev)
+---------------------------------------
+  README.md, LICENSE, requirements.txt, .gitignore, todo.txt (user-facing)
+  notebooks/option_pricing.ipynb       single executed notebook (handwritten classes first, expansions after, each marked)
+  src/                                  exported code listing for the appendix (generated)
+  report/main.tex, references.bib, figures/*.pdf|png, tables/*.tex, macros.tex (numbers auto-exported)
+  dev_notes/claude_notes.txt (this), dev_notes/paragraph_guides/NN_*.txt (one file per paragraph; LaTeX allowed for derivations)
+
+4. EXPANSION PLAN (industry-useful, each builds ON TOP of the handwritten classes; see section 5 for the status)
+---------------------------------------------------------------------------------------------------------------
+  X1  Black-Scholes toolbox: put/call, Greeks closed form (Delta, Gamma, Vega, Theta, Rho), put-call parity check, implied vol (Brent).
+  X2  Tree quality: saw-tooth of CRR, log-log error, Richardson extrapolation, Tian / Leisen-Reimer trees, Broadie-Detemple smoothing,
+      work-precision plot (CPU time vs error) for tree vs MC.
+  X3  Monte Carlo quality: standard error ~ M^-1/2, antithetic, control variate, Sobol QMC; coverage of 95% CI; EM weak/strong order.
+  X4  Greeks by three routes (BS closed form, tree finite difference/tree node formulas, MC pathwise & likelihood-ratio & bump-and-reval with CRN).
+  X5  Discrete delta hedging of the European call: P&L error vs rebalancing frequency (~ N^-1/2), hedging with the wrong vol (gamma P&L).
+  X6  American put on the NVDA parameters + on the baseline (10,10): early-exercise premium surface and heat maps, boundary vs (sigma,r), put-call parity bounds,
+      American call with continuous dividend yield q (CRRTree subclass overriding p) showing when early exercise of calls matters.
+  X7  Independent American validators: Crank-Nicolson + projected SOR on the variational inequality (the "PDE side" of the tree<->PDE story),
+      Longstaff-Schwartz least-squares MC, Barone-Adesi-Whaley quadratic approximation.  Table: all methods vs 1600-step tree.
+  X8  Perpetual put: closed form (kept), plus convergence of finite-T boundary b(0;T) with the T=1000 coarse-lattice problem fixed (log-time? use more steps / Richardson).
+  X9  P&L studies: baseline and sigma/r grid (kept) + real-world drift mu=5% version, tail-risk metrics (VaR/ES), mis-specified vol surface (priced vol x realised vol).
+  X10 Summary "desk" table: every method / price / error / time.
+Dividend caveat: NVDA pays a tiny dividend; model uses q=0 (stated as an assumption; q is a parameter in X6).
+
+5. STATUS LOG (append below as work proceeds)
+---------------------------------------------
+[2026-11-09] observed all sources; installed deps (pip: numpy scipy matplotlib pandas nbformat nbconvert ipykernel; apt: texlive) ; created dev branch.
+[2026-11-09] built notebooks/option_pricing.ipynb (84 cells, executes without errors, ~4 min); 196 macros; 26 tables; 50 figures.
+[2026-11-09] report/main.tex compiles (47 pages, no undefined refs). 67 paragraph drafts in report/paras and guides in dev_notes/paragraph_guides.
+[2026-11-09] Bugs found and fixed on the way: unescaped & in a table header; variable `res` clobbered between parts; regret std error was
+             underestimated (needs 1e5 paths); PDE boundary read-off included large S; call premium must be American minus European on the SAME lattice;
+             sign of the hedge of a put (replicating portfolio is short, seller holds the opposite).

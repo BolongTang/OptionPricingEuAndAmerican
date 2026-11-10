@@ -1,0 +1,57 @@
+PARAGRAPH P54: Which method for which job
+==============================================================================
+Where it goes : 6 Comparison of methods  (draft file report/paras/P54.tex, pulled into report/main.tex with \input)
+Type          : discussion
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Turns the numbers of the two tables into a decision rule a reader can apply to a contract they have
+not seen.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the two desk tables and the work-precision plot. The paragraph must name contract
+types, not methods in the abstract.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: A single vanilla European option: the closed form if it exists; otherwise a Leisen-Reimer tree or smoothing plus Richardson; Monte Carlo only as a cross-check.
+  S3-S4  [2 sentences]  FOCUS: A single-underlying American option: a CRR tree with Richardson extrapolation for prices, boundary and hedges, or the PDE solver when high accuracy is wanted; the approximation of Barone-Adesi-Whaley for screening.
+  S5-S6  [2 sentences]  FOCUS: Path-dependent or multi-asset payoffs: Monte Carlo with variance reduction, plus regression for early exercise; the tree and the grid are out because the cost grows exponentially with the dimension.
+  S7-S8  [2 sentences]  FOCUS: Sensitivities and risk: Greeks from the same lattice or grid where possible, pathwise estimators in Monte Carlo, and a stress of the volatility input, since the volatility error costs more than any numerical error in this report.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. For a vanilla European option the closed form is the answer when it exists, and otherwise a
+      Leisen--Reimer tree or a smoothed and extrapolated CRR tree is faster and more accurate than
+      any simulation.
+  S2. Monte Carlo serves there only as an independent cross-check.
+  S3. For an American option on one underlying a CRR tree with Richardson extrapolation delivers the
+      price, the exercise boundary and the hedge in tens of milliseconds, and a PDE solver is the
+      better choice when high accuracy is needed.
+  S4. The Barone--Adesi--Whaley formula is good enough for screening and for initialising a root-
+      finder.
+  S5. For path-dependent payoffs or several underlyings, Monte Carlo with variance reduction is the
+      default, with a regression step such as Longstaff--Schwartz if early exercise is allowed.
+  S6. The cost of a tree or a grid grows exponentially with the dimension and rules them out beyond
+      two or three underlyings.
+  S7. Sensitivities come from the same lattice or grid as the price where possible, and from
+      pathwise or likelihood-ratio estimators in Monte Carlo.
+  S8. A stress of the volatility input is more informative than any refinement of the numerics,
+      because in both parts of this report the effect of a wrong volatility dwarfs the numerical
+      error of a reasonable method.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Cross-reference Tables tbl:deskcall and tbl:deskput and Figure fig:workprecision.
+
+PITFALLS / DO NOT SAY
+The last sentence is a judgement supported by Tables hedgewrong and misspecmap; keep it only if you
+agree.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Conclude.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+State a claim you would defend to a practitioner, give the evidence in one or two numbers, then say
+where it stops being true. Prefer a concrete recommendation to a summary of what was done.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

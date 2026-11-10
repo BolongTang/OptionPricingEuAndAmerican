@@ -1,0 +1,10 @@
+% P46 | 5.8 Profit and loss | Result: the buyer's profit and loss under the pricing measure
+% guide: dev_notes/paragraph_guides/P46_result_the_buyer_s_profit_and_loss_under_the_pri.txt
+The buyer pays the fair value $V(0,S_0)=\AmVzero$ and exercises at the first date on which the path enters the exercise region.
+Paths are simulated in the tree with the pricing weights $(p,1-p)$, because under the pricing measure the real-world drift $\mu$ plays no role.
+The mean profit is \PnLmean\ with a standard error of \PnLse, consistent with zero, as it must be by the definition of the fair value.
+A vectorised run with $10^5$ paths gives \PnLQmean\ with a standard error of \PnLQse, which confirms it.
+The standard deviation of the profit is \PnLsd, the mean stopping time is \PnLtau\ years and the probability of exercising before maturity is \PnLpex.
+Roughly half of the paths are therefore stopped early.
+The distribution in Figure~\ref{fig:3a} has a point mass at $-V_0$ for the paths that end out of the money and a long right tail, and Table~\ref{tbl:pnlgrid} repeats the experiment on the nine $(\sigma,r)$ combinations.
+The spread grows with $\sigma$ and shrinks with $r$, the probability of early exercise rises with $\sigma$, and for $r=0$ the option is never exercised early, so that $\tau=T$.

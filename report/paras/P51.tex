@@ -1,0 +1,9 @@
+% P51 | 6 Comparison of methods | Result: the European call on one footing
+% guide: dev_notes/paragraph_guides/P51_result_the_european_call_on_one_footing.txt
+Table~\ref{tbl:deskcall} shows that the vectorised CRR tree with $N=252$ reproduces the price of the list-based class, with an error of \DeskCrrVecErr, in \DeskCrrVecMs\ ms instead of \DeskCrrClassMs\ ms.
+The Leisen--Reimer tree with $N=101$ has an error of \$\DeskLrErr\ in \DeskLrMs\ ms, and CRR with smoothing and Richardson extrapolation at $N=252$ has an error of \$\DeskSmoothErr.
+Plain Monte Carlo with $10^5$ samples has a standard error of \$\DeskMcPlainSE\ (the realised error is \$\DeskMcPlainErr) and takes \DeskMcPlainMs\ ms.
+The control variate brings the standard error to \$\DeskMcCvSE\ at the same cost, and scrambled Sobol points with $2^{16}$ samples reach an error of \$\DeskSobolErr\ in \DeskSobolMs\ ms.
+The Euler--Maruyama simulation with $252$ steps takes about \DeskMcEulerMs\ ms for the same $10^5$ samples, roughly two orders of magnitude more than the exact sampler, and has the same standard error.
+For a European payoff on geometric Brownian motion the extra cost buys nothing, because the exact terminal law is known; the scheme earns its place when the dynamics are not solvable.
+The order of the rows is stable across machines, but the absolute times are not and should be read as orders of magnitude.

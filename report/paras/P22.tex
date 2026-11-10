@@ -1,0 +1,10 @@
+% P22 | 4.7 Greeks | Result: Greeks from three routes
+% guide: dev_notes/paragraph_guides/P22_result_greeks_from_three_routes.txt
+Table~\ref{tbl:greeks} shows that all routes agree: $\Delta$ is \BSdelta\ from Black--Scholes, \TreeDelta\ from the tree and \MCdeltaPW\ from the pathwise Monte Carlo estimator.
+The tree obtains $\Delta$ and $\Gamma$ for free from its first two layers, while vega and rho need a bump of the inputs.
+For $\Gamma$ the tree gives \TreeGamma\ and the Monte Carlo estimator that combines the pathwise and likelihood-ratio ideas gives \MCgammaLR\ with standard error \MCgammaLRSE.
+A bump-and-revalue estimator with common random numbers has a standard error of \MCgammaBumpSE, which is larger because the second difference divides the noise by the square of the bump size.
+For vega the pathwise estimator has a smaller standard error than the likelihood-ratio estimator, because it differentiates the payoff, which is Lipschitz, instead of the density.
+The likelihood-ratio method earns its place when the payoff is too irregular to differentiate, as for the second derivative in $\Gamma$.
+Theta and rho agree between the closed form and the tree, and their size gives a feel for the risks: the call loses about \BSthetaDay\ dollars per calendar day at the money and gains about \BSrhoPct\ dollars for a one-point rise in the rate.
+These are the numbers a desk would use to decide how often to re-price and how sensitive the book is to the input rate.

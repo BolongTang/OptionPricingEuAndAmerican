@@ -1,0 +1,58 @@
+PARAGRAPH P01: Motivation: why numerical option pricing
+==============================================================================
+Where it goes : 1 Introduction  (draft file report/paras/P01.tex, pulled into report/main.tex with \input)
+Type          : intro
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Opens the report. It must make a reader who has not seen the project understand why discrete and
+continuous models are compared and why the cost of a method matters.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader knows what a call and a put are and has met Black-Scholes, but has not thought about how
+an exchange or a bank actually produces a price for thousands of contracts several times a day. No
+notation is needed yet.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: The practical problem: a closed-form price exists only for the simplest contracts, so desks rely on trees, simulation and PDE solvers, and each of these costs computing time and carries an error that has to be controlled.
+  S3-S4  [2 sentences]  FOCUS: The two modelling languages: discrete time (random walk, binomial tree) and continuous time (Brownian motion, geometric Brownian motion). They must agree in the limit; the interesting question is how fast and at what price.
+  S5-S6  [2 sentences]  FOCUS: The two contracts: a European call, which has a closed form and therefore a perfect benchmark, and an American put, which has no closed form because the holder can exercise early and the exercise boundary is part of the unknown.
+  S7  [1 sentence]  FOCUS: The question the report answers, stated as a decision: which method should be used for which job, with measured errors and run times.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Option prices are needed continuously, for thousands of contracts at a time, both to quote
+      them and to measure the risk of a book.
+  S2. A closed-form price exists only for the simplest contracts, so in practice trees, Monte Carlo
+      simulation and PDE solvers do most of the work, and each of them trades accuracy against
+      computing time.
+  S3. These methods come from two modelling languages: a discrete-time language, in which the stock
+      follows a random walk on a lattice, and a continuous-time language, in which it follows a
+      geometric Brownian motion.
+  S4. The two languages describe the same market in the limit of small time steps, so the useful
+      question is not whether they agree but how quickly, and at what computational price.
+  S5. We study two contracts that stress the methods in different ways.
+  S6. The European call on NVIDIA has a closed-form Black--Scholes price and is therefore a clean
+      benchmark, whereas the American put has no closed form because its holder may exercise at any
+      time and the optimal exercise boundary has to be found together with the price.
+  S7. The question we answer is a practical one: which method should be used for which job, given
+      measured errors and measured run times?
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+No figures. Optionally cite one textbook for the binomial model and one for Monte Carlo in
+references.bib (Cox-Ross-Rubinstein 1979, Glasserman 2004).
+
+PITFALLS / DO NOT SAY
+Do not define Black-Scholes or the binomial model here; that belongs to Sections 2 and 4. Do not
+promise results you do not report.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Say in one clause that the next paragraph lists what is actually done in each part.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Write as the author talking to a reader who knows basic probability but not this project. Open with
+the concrete problem, not with a definition. Avoid lists of three adjectives and avoid sentences
+that only announce what the next sentence will say.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

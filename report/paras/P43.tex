@@ -1,0 +1,10 @@
+% P43 | 5.7 Early-exercise premium | Result: the value of the right to exercise early
+% guide: dev_notes/paragraph_guides/P43_result_the_value_of_the_right_to_exercise_early.txt
+The early-exercise premium is the difference between the American and the European value computed on the same lattice, so that the lattice error cancels and the premium is exactly zero when there is no early exercise.
+It is zero for $r=0$ and for a call without dividends.
+At the money in the baseline the premium is \EEPatm, which is \EEPatmPct\% of the European put.
+Figure~\ref{fig:eepcurves} shows that it grows as the put goes deeper into the money and with higher interest rates and lower volatility, which are the conditions under which the holder wants to collect the strike early.
+The map in Figure~\ref{fig:eepmap} shows the premium in price units and as a percentage of the European put.
+Over the region plotted, spot $6$ to $14$ and volatility $10\%$ to $50\%$, the relative premium reaches about \EEPmaxPct\% of the European value.
+The premium at the money also grows with the maturity, as the right panel of Figure~\ref{fig:eepcurves} shows.
+For American options put--call parity becomes the inequality $S_0-K\le C-P_A\le S_0-Ke^{-rT}$, and the numbers are $\ParityLo\le\ParityMid\le\ParityHi$, so the American put respects the bounds.

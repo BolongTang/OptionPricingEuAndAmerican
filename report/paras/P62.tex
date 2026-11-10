@@ -1,0 +1,13 @@
+% P62 | Appendix A: derivations | Pathwise and likelihood-ratio Greeks
+% guide: dev_notes/paragraph_guides/P62_pathwise_and_likelihood_ratio_greeks.txt
+We want $\partial_\theta C(\theta)$ for $C(\theta)=e^{-rT}\mathbb E[f(S_T(\theta))]$, where $\theta$ is the spot, the volatility or the rate.
+There are two ways to move the derivative inside: differentiate the sample path, or differentiate the density of $S_T$.
+The pathwise method requires $f$ to be Lipschitz and $S_T$ to be differentiable in $\theta$, and then $\partial_\theta\mathbb E f(S_T)=\mathbb E[f'(S_T)\,\partial_\theta S_T]$.
+For the call $f'(s)=\mathbf 1_{\{s>K\}}$, which exists except at a single point that has probability zero.
+Since $\partial S_T/\partial S_0=S_T/S_0$ and $\partial S_T/\partial\sigma=S_T(\sqrt TZ-\sigma T)$, the pathwise estimators are
+\begin{equation}
+ \hat\Delta=e^{-rT}\mathbf 1_{\{S_T>K\}}\frac{S_T}{S_0},\qquad \hat{\mathcal V}=e^{-rT}\mathbf 1_{\{S_T>K\}}\,S_T\big(\sqrt TZ-\sigma T\big).
+\end{equation}
+The likelihood-ratio method writes $\mathbb Ef(S_T)=\int f(s)\,g(s;\theta)\,ds$ and differentiates the density, $\partial_\theta\mathbb Ef(S_T)=\mathbb E[f(S_T)\,\partial_\theta\ln g(S_T;\theta)]$, which needs no smoothness of $f$.
+For the lognormal density the score with respect to the spot is $Z/(S_0\sigma\sqrt T)$, so $\Delta=e^{-rT}\mathbb E\big[(S_T-K)^+Z/(S_0\sigma\sqrt T)\big]$.
+For the second derivative we apply the likelihood-ratio idea to the pathwise delta, which gives $\Gamma=e^{-rT}\mathbb E\big[\mathbf 1_{\{S_T>K\}}\tfrac{S_T}{S_0^2}\big(\tfrac{Z}{\sigma\sqrt T}-1\big)\big]$, and in general the likelihood-ratio estimators have larger variance for smooth payoffs but remain valid for discontinuous ones.

@@ -1,0 +1,66 @@
+PARAGRAPH P28: The variational PDE
+==============================================================================
+Where it goes : 5.1 Optimal stopping  (draft file report/paras/P28.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 9 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Derives the free-boundary PDE system from Ito's formula and the supermartingale property. This is
+the central theoretical object of Part C.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the optimal stopping problem. They know Ito's formula. Notation: L V = V_t + r x V_x
++ (1/2) sigma^2 x^2 V_xx.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: European warm-up in four steps: assume g = e^{-rt} P in C^{1,2}; Ito's formula with dS = rS dt + sigma S dW; the dt-coefficient is (L - r)P; a martingale has zero drift.
+  S3-S4  [2 sentences]  FOCUS: American case: e^{-rt} V is only a supermartingale, so its drift is <= 0 everywhere, and the discounted value must dominate the obstacle; in the continuation region the drift is exactly zero.
+  S5-S7  [3 sentences]  FOCUS: The system: (L - r)V <= 0, V >= (K-x)^+, (V - (K-x)^+)(L - r)V = 0, V(T,x) = (K-x)^+; complementarity: at each point either the obstacle binds or the PDE holds; equivalently min{-(L-r)V, V - (K-x)^+} = 0.
+  S8-S9  [2 sentences]  FOCUS: The two regions: in C the PDE holds with equality; in D, V = K - x and (L - r)(K - x) = -rK < 0, so waiting loses money, which is why one exercises.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Consider first a European claim and let $g(t,S_t)=e^{-rt}P(t,S_t)$ be a martingale.
+  S2. Assuming $g\in C^{1,2}$ and applying It\^o's formula with $dS=rS\,dt+\sigma S\,dW$ gives
+      \begin{equation}\label{eq:ito}  d\big(e^{-rt}P\big)=e^{-
+      rt}\big(\partial_tP+rx\,\partial_xP+\tfrac12\sigma^2x^2\partial_{xx}P-rP\big)\,dt+e^{-
+      rt}\sigma x\,\partial_xP\,dW, \end{equation} and a martingale has zero drift, so $(\mathcal
+      L-r)P=0$ with $P(T,x)=h(x)$, which is the Black--Scholes PDE.
+  S3. For the American put the discounted value $e^{-rt}V$ is only a supermartingale, so the drift
+      in Equation~\eqref{eq:ito} is non-positive everywhere.
+  S4. It must also dominate the obstacle $(K-x)^+$, and it is a martingale while the holder waits
+      optimally, so the drift vanishes in the continuation region.
+  S5. Together these facts give the variational inequality, also called a linear complementarity
+      problem:
+  S6. \begin{equation}\label{eq:VI}  (\mathcal L-r)V\le0,\quad V\ge(K-x)^+,\quad
+      \big(V-(K-x)^+\big)(\mathcal L-r)V=0,\quad V(T,x)=(K-x)^+ . \end{equation}
+  S7. At every point either the obstacle binds or the PDE holds with equality, and in a single line
+      the system reads $\min\{-(\mathcal L-r)V,\;V-(K-x)^+\}=0$.
+  S8. In the continuation region $x>b(t)$ the PDE holds with equality, and in the stopping region
+      $V=K-x$, where $(\mathcal L-r)(K-x)=-rx-r(K-x)=-rK$.
+  S9. This is negative for $r>0$, so waiting loses money in the stopping region, which is exactly
+      why the holder exercises there.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equations eq:ito, eq:VI.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+Step 3 of the warm-up: $d(e^{-rt}P)=e^{-rt}\big[-rP\,dt+dP\big]$ and $dP=P_t\,dt+P_x\,dS+\tfrac12P_{xx}(dS)^2$ with $dS=rS\,dt+\sigma S\,dW$, $(dS)^2=\sigma^2S^2dt$.
+Collecting the $dt$-terms gives $(\mathcal L-r)P$; the $dW$-term is $e^{-rt}\sigma S P_x\,dW$.
+Generator on the payoff: $(\mathcal L-r)(K-x)=r x\cdot(-1)-r(K-x)=-rK$.
+
+PITFALLS / DO NOT SAY
+In the usual notation V(t,x) is the time-t value (it already carries e^{-r(tau-t)}); what is
+'discounted' is the process e^{-rt}V(t,S_t). Keep the two apart. Do not write 'equals zero' for the
+drift in D.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Say what pins the boundary and how this connects to hedging.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

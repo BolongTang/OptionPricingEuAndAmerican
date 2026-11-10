@@ -1,0 +1,12 @@
+% P25 | 4.9 Hedging | Result: hedging with the wrong volatility
+% guide: dev_notes/paragraph_guides/P25_result_hedging_with_the_wrong_volatility.txt
+If the stock has realised volatility $\sigma_{real}$ and the hedge uses $\sigma_h$, the discounted profit of the seller is, to leading order,
+\begin{equation}\label{eq:gammapnl}
+ \varepsilon\approx\int_0^Te^{-rt}\,\tfrac12\,\Gamma_t S_t^2\,(\sigma_h^2-\sigma_{real}^2)\,dt,
+\end{equation}
+so the seller loses when the realised variance exceeds the variance used to price and hedge.
+Table~\ref{tbl:hedgewrong} compares the simulated mean profit with the integral in Equation~\eqref{eq:gammapnl} evaluated along the same paths.
+At a realised volatility of $55\%$ the simulation gives \$\WrongVolLoss\ and the formula gives \$\WrongVolTheory.
+At realised volatilities of $25\%$ and $30\%$ the sign reverses and the seller gains by comparable amounts, so the profit is close to linear in the variance gap.
+The size of the error is large compared with the discretisation error of Table~\ref{tbl:hedgefreq}: choosing the wrong volatility costs far more than trading weekly instead of daily.
+Section~\ref{sec:misspec} repeats this experiment for the American put, where a wrong volatility also corrupts the exercise rule.

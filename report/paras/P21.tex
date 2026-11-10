@@ -1,0 +1,10 @@
+% P21 | 4.6 Monte Carlo | Result: variance reduction
+% guide: dev_notes/paragraph_guides/P21_result_variance_reduction.txt
+At $M=\VRM$ samples the antithetic estimator reduces the variance of the plain estimator by a factor of \VRanti\ and the control variate by a factor of \VRcv.
+Scrambled Sobol quasi-Monte Carlo reduces it by a factor of \VRsobol, which is why it nearly disappears from the log--log plot of Figure~\ref{fig:vr}.
+The control variate uses the discounted terminal price, whose expectation $S_0$ is known exactly and which is strongly correlated with the call payoff near the money.
+The coefficient of the correction is estimated from the same sample, which introduces a negligible bias.
+Quasi-Monte Carlo is so effective here because the integrand is a function of a single uniform variable, for which low-discrepancy points give an error close to $1/M$.
+A path-dependent payoff depends on one random number per time step, and the advantage shrinks as this dimension grows unless a Brownian-bridge construction concentrates the variance in the first coordinates.
+The standard errors are trustworthy: the 95\% intervals of the plain estimator cover the Black--Scholes price in \MCcoverage\% of 400 repetitions.
+Simulating with a real-world drift of $10\%$ instead of $r$ would give a price of \$\WrongMuPrice\ instead of \$\BSprice, which is the classical error of pricing under the wrong measure.

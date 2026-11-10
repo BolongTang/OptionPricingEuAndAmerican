@@ -1,0 +1,10 @@
+% P42 | 5.6 Independent validators | Result: least-squares Monte Carlo and the quasi-analytic approximation
+% guide: dev_notes/paragraph_guides/P42_result_least_squares_monte_carlo_and_the_quasi_a.txt
+Least-squares Monte Carlo works backward on simulated paths: at each exercise date it regresses the discounted future cash flow on a polynomial of the spot, using only in-the-money paths, and exercises when the payoff exceeds the fitted continuation value.
+The estimate is biased low, because the regression policy is not the optimal one, and it approaches the Bermudan value as the basis grows.
+With $50$ exercise dates and $2\cdot10^5$ paths the estimate is \LSMfifty\ with standard error \LSMfiftySE, against \BermFifty\ for a Bermudan tree on the same dates.
+The difference is within one standard error, as it is for the other date counts in Table~\ref{tbl:lsm}.
+The last column of Table~\ref{tbl:lsm} shows that the gap between the American and the Bermudan value halves as the number of exercise dates doubles.
+Restricting exercise to fifty dates therefore costs about $0.0006$ in value, which is below the standard error of the regression estimate.
+The Barone--Adesi--Whaley approximation, which approximates the early-exercise premium by a power of the spot, gives \BAWV\ at the baseline, an error of \BAWerr, and a critical price of \BAWSc\ against the tree boundary of about \AmBearly\ at the start.
+Table~\ref{tbl:baw} shows that its absolute error grows with the maturity and reaches about one cent for the three-year put, which is why it serves for quick estimates and not for final prices.

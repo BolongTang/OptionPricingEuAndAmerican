@@ -1,0 +1,9 @@
+% P17 | 4.4 Results | Result: binomial prices against Black-Scholes
+% guide: dev_notes/paragraph_guides/P17_result_binomial_prices_against_black_scholes.txt
+The CRR price converges to the Black--Scholes price of \$\BSprice: at $N=10{,}000$ it is \$\CRRtenk, an error of \$\CRRtenkErr.
+The error is \$\CRRhundredErr\ at $N=100$ and \$\CRRthousandErr\ at $N=1000$, so one hundred steps already give the price to within ten cents.
+The last column of Table~\ref{tbl:bin} shows that $N$ times the absolute error is nearly constant from $N=50$ on.
+This is first-order convergence, as predicted in Section~\ref{sec:B}.
+For small $N$ the error alternates in sign: the tree overprices the call at $N=5$ and $N=25$ and underprices it at $N=10$ and $N=50$.
+This is the parity effect of the kink at the strike and is quantified in the next section.
+The row for $N=10{,}000$ was computed with the vectorised pricer, since the list-based class would have to store about $5\cdot10^{7}$ nodes.

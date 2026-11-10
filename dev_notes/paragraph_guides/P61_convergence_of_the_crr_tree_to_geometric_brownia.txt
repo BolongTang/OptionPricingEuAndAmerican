@@ -1,0 +1,61 @@
+PARAGRAPH P61: Convergence of the CRR tree to geometric Brownian motion
+==============================================================================
+Where it goes : Appendix A: derivations  (draft file report/paras/P61.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Fills the gap between the statement 'the tree converges to GBM' and its proof: the mean and variance
+of the terminal log-price tend to the right limits.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the CRR lattice and the central limit theorem. The expansion of p is the same as in
+the tree-PDE consistency argument of Section 5.3.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Terminal log-price: ln S_N = ln S_0 + sigma sqrt(dt) (2B - N) with B ~ Bin(N, p); so the mean is N sigma sqrt(dt)(2p - 1) and the variance is 4 N sigma^2 dt p (1-p).
+  S3-S4  [2 sentences]  FOCUS: Expansion of p: with y = sigma sqrt(dt), p = (e^{r dt} - e^{-y})/(e^y - e^{-y}) = 1/2 + (r - sigma^2/2) sqrt(dt)/(2 sigma) + O(dt).
+  S5-S6  [2 sentences]  FOCUS: Limits: the mean tends to (r - sigma^2/2)T and the variance to sigma^2 T, since p tends to 1/2.
+  S7-S8  [2 sentences]  FOCUS: Limit law and price: bounded increments satisfy the Lindeberg condition, so the central limit theorem for triangular arrays gives the normal limit; the payoff is continuous with linear growth, so the prices converge; the rate 1/N and the parity effect need a finer analysis.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. In the CRR tree the terminal log-price is $\ln S_N=\ln S_0+\sigma\sqrt{\Delta t}\,(2B-N)$ with
+      $B\sim\mathrm{Bin}(N,p)$.
+  S2. Its mean is therefore $N\sigma\sqrt{\Delta t}\,(2p-1)$ and its variance is $4N\sigma^2\Delta
+      t\,p(1-p)$, where $N\Delta t=T$.
+  S3. With $y=\sigma\sqrt{\Delta t}$, expanding $e^{r\Delta t}=1+r\Delta t+\dots$ and $e^{\pm
+      y}=1\pm y+\tfrac12y^2+\dots$ in $p=\frac{e^{r\Delta t}-e^{-y}}{e^{y}-e^{-y}}$ gives
+  S4. \begin{equation} p=\frac12+\frac{(r-\frac12\sigma^2)\sqrt{\Delta t}}{2\sigma}+O(\Delta t).
+      \end{equation}
+  S5. Hence the mean tends to $N\sigma\sqrt{\Delta t}\cdot\frac{(r-\frac12\sigma^2)\sqrt{\Delta
+      t}}{\sigma}=(r-\tfrac12\sigma^2)T$.
+  S6. Since $p\to\tfrac12$ the variance tends to $\sigma^2T$.
+  S7. The increments are bounded by $\sigma\sqrt{\Delta t}$, so the Lindeberg condition holds and
+      the central limit theorem for triangular arrays gives a normal limit with these parameters,
+      which is the law of $\ln S_T$ under geometric Brownian motion.
+  S8. The payoff is continuous and has linear growth and the tree has uniformly bounded moments, so
+      the tree price converges to the Black--Scholes price, while the rate $1/N$ and the parity
+      effect require a finer analysis of the distribution of the lattice around the strike.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Section 4.1 (Equation eq:crrp) and Section 5.3 (consistency argument).
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+$p=\dfrac{e^{r\Delta t}-e^{-y}}{e^{y}-e^{-y}}$, numerator $\approx r\Delta t+y-\tfrac12y^2+\dots$, denominator $\approx2y+\tfrac13y^3$.
+$p\approx\tfrac12+\dfrac{r\Delta t-\frac12y^2}{2y}=\tfrac12+\dfrac{(r-\frac12\sigma^2)\sqrt{\Delta t}}{2\sigma}$ (since $y^2=\sigma^2\Delta t$).
+Variance: $4N\sigma^2\Delta t\,p(1-p)=4\sigma^2T\big(\tfrac14-O(\Delta t)\big)\to\sigma^2T$.
+
+PITFALLS / DO NOT SAY
+Do not claim the rate 1/N is proved here.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Appendix E derives the Monte Carlo Greeks.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

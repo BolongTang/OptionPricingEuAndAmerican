@@ -1,0 +1,51 @@
+TODO FOR YOU  (user-facing; updated as the work proceeds)
+=======================================================
+Status key: [ ] open   [x] done by me (please still check)
+
+A. DECISIONS ONLY YOU CAN MAKE
+ [ ] 1. Public release / academic integrity: the repo is public and derives from graded course projects. Check your
+        course and university policy on posting solutions (some forbid it while the course is running). If unsure, keep
+        the repo private until the course ends. Nothing from the course (handouts, lecture notes, template, pseudocode,
+        course name) has been copied here, but the maths and the handwritten code are the assignment solutions.
+ [ ] 2. Author line: the report says "Bolong Tang" (as in your originals). Change or add affiliation if you wish.
+ [ ] 3. Licence: MIT was added as a default (LICENSE). Change it if you prefer something else.
+ [ ] 4. AI-assistance statement: README has a short, neutral statement. The course-specific ai_disclosure.txt was NOT copied.
+ [ ] 5. Real-world drift: the P&L simulations use the risk-neutral measure (mean P&L ~ 0). I added a second version with
+        mu = 5% (real world). Decide which one the report headline should use.
+ [ ] 6. Wording of the mis-specified volatility section: the simulation shows exercise too LATE when realised vol < priced
+        vol (the old pseudocode comment said the opposite). The new text follows the simulation.
+ [ ] 7. NVDA dividends are ignored (q = 0). State it, or supply a yield and rerun (q is a parameter in the notebook).
+
+B. THINGS I COULD NOT DO HERE
+ [ ] 8. Live market data: the sandbox has no yfinance/market access. S0 = 238.90 (2026-10-05 close), r = 2.9%,
+        sigma = 37.7254% are copied from your main.tex. The yfinance code is kept (RUN_LIVE_DATA = False). Re-run with
+        True if you want to refresh them, then re-run the notebook and re-compile the report.
+ [ ] 9. Humanise the prose: every paragraph has a guide in dev_notes/paragraph_guides/ (one file per paragraph, 6-9 sentences,
+        sentence counts per focus). The draft sentences in report/paras/ are placeholders written from those guides.
+
+C. CLEAN-UP BEFORE MERGING dev -> main
+ [ ] 10. Delete dev_notes/ (my notes + paragraph guides) unless you want them public.
+ [ ] 11. Run `grep -rniE "sta ?2503|lecture|handout|course|pseudocode|ReportTemplate" .` -> must print nothing (I ran it; rerun after your edits).
+ [ ] 12. Re-run notebooks/option_pricing.ipynb top to bottom (about 5-10 min) after any change; it rewrites report/figures and report/tables.
+ [ ] 13. Compile: cd report && pdflatex main && bibtex main && pdflatex main && pdflatex main
+
+E. ADDED WHILE BUILDING THE COMBINED PROJECT
+ [ ] 14. Read the 67 paragraph guides (dev_notes/paragraph_guides/00_INDEX.txt) and rewrite report/paras/Pxx.tex in your own voice.
+         Each draft paragraph already has 6-9 sentences that follow the guide's sentence plan; numbers are macros (\Name),
+         so keep the macros when you rewrite and the text stays in sync with the notebook.
+ [ ] 15. references.bib has 18 standard references and main.tex only has \nocite{*}. Add \citep/\citet where you want them and
+         check every entry against the source before you rely on it.
+ [ ] 16. Interest-rate currency: the NVDA inputs use the Canadian 1-year T-bill (2.9%) for a USD stock. Replace it with a USD
+         rate if you prefer (rho = about 1.06 dollars per rate point, so the effect is small); then re-run the notebook.
+ [ ] 17. Check the claims flagged under PITFALLS in the guides (about a dozen sentences quote ratios, e.g. 'twenty times',
+         'two orders of magnitude'); they are true for the committed run and should be re-read after any re-run.
+ [ ] 18. Timings in Section 6 are from this sandbox (one core). They change on your machine; the ranking should not.
+ [ ] 19. The old T = 1000 long-maturity row (b(0;T) = 5.5) was a lattice artefact; it is kept in the report as a documented
+         failure (Table amlongcoarse) and repaired in Section 5.4. Delete it if you do not want to show it.
+ [ ] 20. The mis-specified-volatility regret in the original grid has standard error up to 0.007 at 10,000 paths, so differences of
+         ~0.01 are only 1-2 standard errors; the new map uses 100,000 paths per cell.
+
+D. CARRIED OVER FROM THE OLD american/todo.txt (resolved here)
+ [x] CRRTree tie tolerance 1e-12 kept as is (matters for r = 0 only).
+ [x] 2f long maturities: T = 1000 with 800 steps was coarse; the notebook now also runs a finer-step check and reports b(0;T) on a finer grid.
+ [x] Old "page limit" and "co-author IDs" items dropped (no longer relevant).

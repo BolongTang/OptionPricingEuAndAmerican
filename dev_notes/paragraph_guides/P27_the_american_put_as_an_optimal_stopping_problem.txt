@@ -1,0 +1,56 @@
+PARAGRAPH P27: The American put as an optimal stopping problem
+==============================================================================
+Where it goes : 5.1 Optimal stopping  (draft file report/paras/P27.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Defines the object of Part C and extracts the structural facts (bounds, regions, free boundary) that
+all later numerical results are checked against.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader knows the risk-neutral pricing rule for European claims. They need to see what changes
+when the holder chooses the exercise date.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Definition: V(t,x) = sup over stopping times tau in [t,T] of E[e^{-r(tau - t)} (K - S_tau)^+ | S_t = x] under Q; display.
+  S3-S4  [2 sentences]  FOCUS: Two bounds: V >= (K - x)^+ (exercise now) and V >= V_Eur (the choice tau = T); hence the American price is never below the European price.
+  S5-S6  [2 sentences]  FOCUS: Regions: continuation region C = {V > (K-x)^+} and stopping region D = {V = (K-x)^+} = {x <= b(t)} for a put; the free boundary b(t) must be found together with V; optimal rule tau* = inf{t : S_t <= b(t)}.
+  S7  [1 sentence]  FOCUS: Why a recursion: the discounted value e^{-rt} V(t, S_t) is the smallest supermartingale dominating the discounted payoff (Snell envelope), and both numerical methods discretise this principle.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. An American put may be exercised at any time $\tau\le T$ and then pays $(K-S_\tau)^+$.
+  S2. The holder chooses $\tau$ using only the information available, a stopping time, so under
+      $\mathbb Q$ the fair value is the optimal stopping problem \begin{equation}\label{eq:V}
+      V(t,x)=\sup_{\tau\in[t,T]}\mathbb E\Big[e^{-r(\tau-t)}(K-S_\tau)^+\,\Big|\,S_t=x\Big].
+      \end{equation}
+  S3. Two bounds follow at once: $V(t,x)\ge(K-x)^+$, by exercising immediately, and $V(t,x)\ge
+      V^{Eur}(t,x)$, by choosing $\tau=T$.
+  S4. The American put is therefore never worth less than the European put or than its intrinsic
+      value.
+  S5. The state space splits into a continuation region $C=\{V>(K-x)^+\}$ and a stopping region
+      $D=\{V=(K-x)^+\}$, which for a put has the form $\{x\le b(t)\}$.
+  S6. The boundary $b(t)$ is a free boundary, because it is part of the unknown and has to be found
+      together with $V$, and the optimal rule is $\tau^*=\inf\{t:S_t\le b(t)\}$.
+  S7. Equivalently, the discounted value $e^{-rt}V(t,S_t)$ is the smallest $\mathbb
+      Q$-supermartingale that dominates the discounted payoff, the Snell envelope, and both the tree
+      and the PDE are discretisations of this principle.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equation eq:V.
+
+PITFALLS / DO NOT SAY
+Do not write 'the' optimal stopping time before showing that it is a first hitting time; write 'an'
+optimal stopping time until Section 5.2.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Derive the PDE form of the principle.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

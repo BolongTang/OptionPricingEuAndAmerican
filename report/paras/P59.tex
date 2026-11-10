@@ -1,0 +1,11 @@
+% P59 | Appendix A: derivations | The Black-Scholes formula by direct integration
+% guide: dev_notes/paragraph_guides/P59_the_black_scholes_formula_by_direct_integration.txt
+Under $\mathbb Q$ write $S_T=S_0e^{(r-\frac12\sigma^2)T+\sigma\sqrt TZ}$ with $Z\sim N(0,1)$, so that $C=e^{-rT}\mathbb E[(S_T-K)^+]$.
+The payoff is positive exactly when $Z>-d_2$, where $d_2=\frac{\ln(S_0/K)+(r-\frac12\sigma^2)T}{\sigma\sqrt T}$.
+Splitting the expectation gives $C=e^{-rT}\big(\mathbb E[S_T\mathbf 1_{\{Z>-d_2\}}]-K\,\mathbb P(Z>-d_2)\big)$.
+By symmetry $\mathbb P(Z>-d_2)=\Phi(d_2)$, so the second term is $Ke^{-rT}\Phi(d_2)$.
+For the first term, completing the square gives $e^{\sigma\sqrt Tz}\varphi(z)=e^{\sigma^2T/2}\varphi(z-\sigma\sqrt T)$, so
+\begin{equation}
+ \mathbb E[S_T\mathbf 1_{\{Z>-d_2\}}]=S_0e^{rT}\int_{-d_2}^{\infty}\varphi(z-\sigma\sqrt T)\,dz=S_0e^{rT}\,\Phi(d_2+\sigma\sqrt T)=S_0e^{rT}\,\Phi(d_1).
+\end{equation}
+Combining the two terms gives Equation~\eqref{eq:bs}: $\Phi(d_2)$ is the risk-neutral probability that the call ends in the money, and $\Phi(d_1)$ is the same probability under the measure that takes the stock as numeraire.

@@ -1,0 +1,10 @@
+% P49 | 5.9 Mis-specified volatility | Result: the full map of priced against realised volatility
+% guide: dev_notes/paragraph_guides/P49_result_the_full_map_of_priced_against_realised_v.txt
+The buyer's mean profit splits into the premium mismatch, the difference between the value under the realised volatility and the price paid, and the policy regret, the loss from using the wrong boundary.
+The first term is first-order in the volatility gap, roughly the vega of the put (about \AmVegaTree\ per unit of volatility) times the gap, and the second is second-order.
+The regret matrix in Figure~\ref{fig:misspecmap} is strongly asymmetric: the largest regret, \MapRegretLowHigh, occurs when the price is set at $10\%$ and the realised volatility is $30\%$, so that the buyer exercises too early.
+In the opposite corner, priced at $30\%$ and realised at $10\%$, the buyer exercises too late and the regret is only \MapRegretHighLow.
+The asymmetry has a simple reason: exercising too early gives up an option whose value is large when volatility is high, whereas waiting too long costs only the interest on the strike and some time value.
+The ratio between the two corners is about twenty.
+Each cell uses \MapPaths\ paths, so the standard error of the regret is at most \MapSE, which is small compared with the large entries and comparable with the small ones.
+In the corner priced at $10\%$ and realised at $30\%$ the buyer's mean profit is \MapPnLmismatch, mostly because the option was bought cheaply, which shows that the premium mismatch dominates the regret.

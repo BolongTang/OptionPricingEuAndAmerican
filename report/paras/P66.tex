@@ -1,0 +1,13 @@
+% P66 | Appendix A: derivations | The hitting-time identity for the perpetual put
+% guide: dev_notes/paragraph_guides/P66_the_hitting_time_identity_for_the_perpetual_put.txt
+Let $S$ follow geometric Brownian motion with drift $r$ under $\mathbb Q$, start at $x>b$ and let $\tau_b$ be the first time it hits $b$.
+We claim that $\mathbb E[e^{-r\tau_b}]=(b/x)^{\beta}$ with $\beta=2r/\sigma^2$.
+The process $M_t=e^{-rt}S_t^{-\beta}$ is a martingale, because $f(x)=x^{-\beta}$ solves $\tfrac12\sigma^2x^2f''+rxf'-rf=0$, which is exactly the statement that the $dt$-coefficient in It\^o's formula for $e^{-rt}f(S_t)$ vanishes.
+The coefficient is $f\cdot\big[\tfrac12\sigma^2\beta(\beta+1)-r\beta-r\big]=f\cdot(\beta+1)\big(\tfrac12\sigma^2\beta-r\big)=0$.
+Before $\tau_b$ the price is at least $b$, so $0<M_{t\wedge\tau_b}\le b^{-\beta}$ is bounded and the optional stopping theorem applies.
+It gives
+\begin{equation}
+x^{-\beta}=\mathbb E\big[M_{\tau_b}\big]=b^{-\beta}\,\mathbb E\big[e^{-r\tau_b}\big]\ \Longrightarrow\ \mathbb E\big[e^{-r\tau_b}\big]=(b/x)^{\beta}.
+\end{equation}
+On the event $\{\tau_b=\infty\}$ the discount factor $e^{-r\tau_b}$ is zero, so the identity holds without further conditions.
+It follows that exercising at the first time the price falls to $b$ is worth $(K-b)(b/x)^\beta$, and maximising over $b$ gives the boundary $S^*=\beta K/(\beta+1)$ of Section~\ref{sec:perp}.

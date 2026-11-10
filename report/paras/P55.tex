@@ -1,0 +1,9 @@
+% P55 | 7 Conclusions | Conclusions: the European call and the two languages
+% guide: dev_notes/paragraph_guides/P55_conclusions_the_european_call_and_the_two_langua.txt
+The discrete and the continuous language agree in the limit: the scaled random walk converges to Brownian motion at rate $N^{-1/2}$ in the Kolmogorov distance, and the CRR price converges to the Black--Scholes price at rate $1/N$ with a sign that depends on the parity of $N$.
+The sign pattern is a property of the kink at the strike and can be removed.
+For a vanilla payoff a well-chosen lattice beats Monte Carlo by orders of magnitude in accuracy per unit of time, and variance reduction recovers only a part of the gap.
+The strength of Monte Carlo is its generality, not its accuracy.
+The Greeks can be obtained from the closed form, from the tree and from Monte Carlo, and the three agree.
+The error of a discrete delta hedge falls only like $n^{-1/2}$ in the number of rebalances, and a wrong hedging volatility costs far more than a coarser schedule.
+The point to remember is that, for a reasonable method, the volatility that goes into the model matters more than the numerical scheme that processes it.

@@ -1,0 +1,10 @@
+% P45 | 5.7 Early-exercise premium | Result: an American put on the NVIDIA inputs
+% guide: dev_notes/paragraph_guides/P45_result_an_american_put_on_the_nvidia_inputs.txt
+Put--call parity applied to the Black--Scholes call of Part B gives a European put of \$\NvdaPutEu, which agrees with the direct formula to \ParityNvda.
+The American put is worth \$\NvdaPutAm, an early-exercise premium of \$\NvdaPutEEP\ or \NvdaPutEEPpct\% of the European put.
+Read as a European put, the American price implies a volatility of \NvdaPutIV\%, which is \NvdaPutIVup\ volatility points above the $37.73\%$ of the model.
+A trader who quotes the American put in implied volatility would therefore quote it slightly higher than the European one for the same stock.
+The delta of the American put is \NvdaPutDelta\ against \NvdaPutDeltaEu\ for the European put, and the vega is almost the same.
+Rho and theta differ more, because the right to exercise early shortens the effective life of the option and reduces its exposure to the interest rate.
+At $t=0.5$ the exercise boundary is $\$\NvdaBhalf$, which is \NvdaBhalfPct\% of the strike, far below the $79\%$ of the baseline because the volatility is almost twice as high.
+Figure~\ref{fig:boundaryregimes} shows the boundary divided by the strike for five volatility and rate regimes, and Figure~\ref{fig:amgreeks} the value, delta and gamma of the American and European put against the spot.

@@ -1,0 +1,12 @@
+% P14 | 4.2 GBM and simulation | Geometric Brownian motion and its discretisations
+% guide: dev_notes/paragraph_guides/P14_geometric_brownian_motion_and_its_discretisation.txt
+Applying It\^o's formula to $f(S)=\ln S$, with $f'=1/S$ and $f''=-1/S^2$, gives $d\ln S_t=\frac{dS_t}{S_t}-\frac12\frac{(dS_t)^2}{S_t^2}=(\mu-\tfrac12\sigma^2)\,dt+\sigma\,dW_t$, hence
+\begin{equation}\label{eq:gbmsol}
+ S_t=S_0\exp\!\Big((\mu-\tfrac12\sigma^2)t+\sigma W_t\Big).
+\end{equation}
+Hence $S_t$ is lognormal, strictly positive, with $\mathbb E[S_t]=S_0e^{\mu t}$.
+Under $\mathbb Q$ the drift $\mu$ is replaced by $r$, and the call is priced as $e^{-rT}\,\mathbb E[(S_T-K)^+]$, estimated by a Monte Carlo average over simulated terminal values.
+The Euler--Maruyama scheme updates $S_{n+1}=S_n+\mu S_n\Delta t+\sigma S_n\Delta W_n$, which is cheap and generic but can in principle produce negative prices, whereas the exact step $S_{n+1}=S_n\exp\big((\mu-\tfrac12\sigma^2)\Delta t+\sigma\sqrt{\Delta t}\,Z_n\big)$ keeps the price positive and has no discretisation error.
+Both are driven by the same random numbers in Figure~\ref{fig:gbm}, so any difference between the two panels is discretisation error alone.
+The functions \texttt{gbm\_euler\_maruyama} and \texttt{gbm\_exact} return full paths, which is what the figures need.
+For the price tables we add a version that keeps only the current vector of prices, because $5\cdot10^5$ paths with 300 steps would otherwise occupy more than a gigabyte, and we check that it reproduces the original function when both receive the same random numbers.

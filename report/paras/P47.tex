@@ -1,0 +1,10 @@
+% P47 | 5.8 Profit and loss | Result: profit and loss under the real-world measure, and tail risk
+% guide: dev_notes/paragraph_guides/P47_result_profit_and_loss_under_the_real_world_meas.txt
+Under a real-world drift of $\mu=5\%$ the mean profit of the buyer is \PnLPmean, and at $\mu=10\%$ it is \PnLPmeanTen.
+A drift above the risk-free rate makes the stock rise faster than under the pricing measure, so the put pays out less often than the price assumes.
+The probability that the buyer loses the entire premium rises from \PnLQtot\% under the pricing measure to \PnLPtot\% at $\mu=5\%$.
+The probability of exercising early falls to \PnLPpex, and the mean stopping time rises to \PnLPtau\ years.
+The buyer's loss is capped at the premium, so the tail risk is on the seller's side, where the loss equals the buyer's profit.
+The $99\%$ quantile of the buyer's profit is \PnLPqNinetyNine\ under the real-world measure and \PnLQqNinetyNine\ under the pricing measure, and the expected shortfall at $95\%$ is \PnLPes\ against \PnLQes, so the right tail hardly moves.
+The real-world drift changes how often the put pays out, not how much it pays, which is why the mean moves while the tail does not.
+A seller who hedges dynamically is insulated from the drift, as Section~\ref{sec:hedge} showed for the call, whereas an unhedged seller keeps the drift risk.

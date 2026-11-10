@@ -1,0 +1,63 @@
+PARAGRAPH P14: Geometric Brownian motion and its discretisations
+==============================================================================
+Where it goes : 4.2 GBM and simulation  (draft file report/paras/P14.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Derives the closed-form solution of GBM and explains the two simulation schemes whose accuracy is
+compared later.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has seen the SDE (Eq. gbm) and knows Ito's formula. They need the solution, the law, the
+Q-version, and the exact difference between Euler-Maruyama and the exact step.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Apply Ito's formula to ln S: d ln S = (mu - sigma^2/2) dt + sigma dW, hence S_t = S_0 exp((mu - sigma^2/2) t + sigma W_t); display it.
+  S3-S4  [2 sentences]  FOCUS: Law and pricing measure: S_t is lognormal and strictly positive with E S_t = S_0 e^{mu t}; under Q mu is replaced by r, and the price is the discounted Monte Carlo average of (S_T - K)^+.
+  S5-S6  [2 sentences]  FOCUS: Euler-Maruyama S_{n+1} = S_n + mu S_n dt + sigma S_n dW_n versus the exact log-step S_{n+1} = S_n exp((mu - sigma^2/2)dt + sigma sqrt(dt) Z_n); Euler can leave the positive half-line, the exact step cannot.
+  S7-S8  [2 sentences]  FOCUS: Implementation: the two simulators store full paths; for the price table a terminal-value-only version with O(M) memory is added because 500,000 paths with 300 steps need more than a gigabyte.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Applying It\^o's formula to $f(S)=\ln S$, with $f'=1/S$ and $f''=-1/S^2$, gives $d\ln
+      S_t=\frac{dS_t}{S_t}-\frac12\frac{(dS_t)^2}{S_t^2}=(\mu-\tfrac12\sigma^2)\,dt+\sigma\,dW_t$,
+      hence
+  S2. \begin{equation}\label{eq:gbmsol}  S_t=S_0\exp\!\Big((\mu-\tfrac12\sigma^2)t+\sigma W_t\Big).
+      \end{equation}
+  S3. Hence $S_t$ is lognormal, strictly positive, with $\mathbb E[S_t]=S_0e^{\mu t}$.
+  S4. Under $\mathbb Q$ the drift $\mu$ is replaced by $r$, and the call is priced as
+      $e^{-rT}\,\mathbb E[(S_T-K)^+]$, estimated by a Monte Carlo average over simulated terminal
+      values.
+  S5. The Euler--Maruyama scheme updates $S_{n+1}=S_n+\mu S_n\Delta t+\sigma S_n\Delta W_n$, which
+      is cheap and generic but can in principle produce negative prices, whereas the exact step
+      $S_{n+1}=S_n\exp\big((\mu-\tfrac12\sigma^2)\Delta t+\sigma\sqrt{\Delta t}\,Z_n\big)$ keeps the
+      price positive and has no discretisation error.
+  S6. Both are driven by the same random numbers in Figure~\ref{fig:gbm}, so any difference between
+      the two panels is discretisation error alone.
+  S7. The functions \texttt{gbm\_euler\_maruyama} and \texttt{gbm\_exact} return full paths, which
+      is what the figures need.
+  S8. For the price tables we add a version that keeps only the current vector of prices, because
+      $5\cdot10^5$ paths with 300 steps would otherwise occupy more than a gigabyte, and we check
+      that it reproduces the original function when both receive the same random numbers.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equations eq:gbm, eq:gbmsol; Figure fig:gbm.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+Ito for $f=\ln S$: $d\ln S=\dfrac1S dS-\dfrac1{2S^2}(dS)^2=\Big(\mu-\dfrac{\sigma^2}2\Big)dt+\sigma dW$ since $(dS)^2=\sigma^2S^2dt$.
+Lognormal moments: $\mathbb E[e^{\sigma W_t}]=e^{\sigma^2t/2}\Rightarrow\mathbb E[S_t]=S_0e^{\mu t}$.
+
+PITFALLS / DO NOT SAY
+Never simulate with mu when pricing: the mistake is quantified in the variance-reduction paragraph.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Introduce the benchmark formula and the Greeks.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

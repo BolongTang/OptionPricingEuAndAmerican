@@ -1,0 +1,17 @@
+% P28 | 5.1 Optimal stopping | The variational PDE
+% guide: dev_notes/paragraph_guides/P28_the_variational_pde.txt
+Consider first a European claim and let $g(t,S_t)=e^{-rt}P(t,S_t)$ be a martingale.
+Assuming $g\in C^{1,2}$ and applying It\^o's formula with $dS=rS\,dt+\sigma S\,dW$ gives
+\begin{equation}\label{eq:ito}
+ d\big(e^{-rt}P\big)=e^{-rt}\big(\partial_tP+rx\,\partial_xP+\tfrac12\sigma^2x^2\partial_{xx}P-rP\big)\,dt+e^{-rt}\sigma x\,\partial_xP\,dW,
+\end{equation}
+and a martingale has zero drift, so $(\mathcal L-r)P=0$ with $P(T,x)=h(x)$, which is the Black--Scholes PDE.
+For the American put the discounted value $e^{-rt}V$ is only a supermartingale, so the drift in Equation~\eqref{eq:ito} is non-positive everywhere.
+It must also dominate the obstacle $(K-x)^+$, and it is a martingale while the holder waits optimally, so the drift vanishes in the continuation region.
+Together these facts give the variational inequality, also called a linear complementarity problem:
+\begin{equation}\label{eq:VI}
+ (\mathcal L-r)V\le0,\quad V\ge(K-x)^+,\quad \big(V-(K-x)^+\big)(\mathcal L-r)V=0,\quad V(T,x)=(K-x)^+ .
+\end{equation}
+At every point either the obstacle binds or the PDE holds with equality, and in a single line the system reads $\min\{-(\mathcal L-r)V,\;V-(K-x)^+\}=0$.
+In the continuation region $x>b(t)$ the PDE holds with equality, and in the stopping region $V=K-x$, where $(\mathcal L-r)(K-x)=-rx-r(K-x)=-rK$.
+This is negative for $r>0$, so waiting loses money in the stopping region, which is exactly why the holder exercises there.

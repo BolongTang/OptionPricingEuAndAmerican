@@ -1,0 +1,9 @@
+% P50 | 5 Part C summary | What Part C shows about the American put
+% guide: dev_notes/paragraph_guides/P50_what_part_c_shows_about_the_american_put.txt
+The CRR tree, a finite-difference solver for the variational inequality and least-squares Monte Carlo agree with each other within their numerical errors, and the tree approaches the closed-form perpetual put as the maturity and the number of steps grow.
+The one row that disagreed, $T=1000$ with $800$ steps, was a lattice artefact, and the refined computation says so.
+Early exercise adds a few percent to an at-the-money put and much more deep in the money, and it is zero for $r=0$ and for calls without dividends.
+For the NVIDIA put it adds about \NvdaPutEEPpct\% to the European price.
+The buyer's expected profit under the real-world measure depends on the drift, which the price does not.
+A wrong volatility corrupts the exercise rule asymmetrically, because exercising too early costs much more than exercising too late.
+In practice the tree is the natural tool for prices, boundaries and hedges, a PDE solver is better when accuracy is needed in one or two dimensions, regression Monte Carlo takes over when the dimension is high, and Barone--Adesi--Whaley serves for a quick estimate.

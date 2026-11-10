@@ -1,0 +1,64 @@
+PARAGRAPH P12: The CRR lattice and the risk-neutral probability
+==============================================================================
+Where it goes : 4.1 CRR model  (draft file report/paras/P12.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Derives the tree used throughout the report: the lattice, the risk-neutral probability, the one-step
+replication and the backward recursion.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader knows the model and the pricing principle of Section 2. They need to see that the
+probability p is forced by no-arbitrage, not chosen, and that pricing and hedging coincide at every
+node.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: The lattice: dt = T/N, u = exp(sigma sqrt(dt)), d = 1/u, S_{j,i} = S0 u^{2i-j}; recombining so layer j has j+1 nodes; u matches the variance of the log-return.
+  S3-S4  [2 sentences]  FOCUS: Derivation of p: the discounted stock must be a martingale under the pricing probability; solve p u + (1-p) d = e^{r dt}; state when 0 < p < 1.
+  S5-S6  [2 sentences]  FOCUS: One-step replication: find shares Delta and bond B so that the portfolio matches V_u and V_d; subtract to get Delta = (V_u - V_d)/((u-d)S); the cost equals the discounted p-expectation, so price and hedge coincide.
+  S7-S8  [2 sentences]  FOCUS: Backward induction: V_{N,i} = (S_{N,i} - K)^+ and V_{j,i} = e^{-r dt}(p V_{j+1,i+1} + (1-p) V_{j+1,i}); class builds the stock tree forward and the option tree backward; cost O(N^2); vectorised pricer O(N) memory.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Divide $[0,T]$ into $N$ steps of length $\Delta t=T/N$ and let the stock move in each step to
+      $uS$ or $dS$ with $u=e^{\sigma\sqrt{\Delta t}}$ and $d=1/u$, so that after $j$ steps with $i$
+      up-moves the price is $S_{j,i}=S_0u^{2i-j}$.
+  S2. Because $ud=1$ the tree recombines, layer $j$ has only $j+1$ nodes, and the choice of $u$
+      makes the variance of the one-step log-return equal to $\sigma^2\Delta t$.
+  S3. No arbitrage forces the discounted stock to be a martingale under the pricing probability $p$
+      of an up-move, $S=e^{-r\Delta t}\big(p\,uS+(1-p)\,dS\big)$, which is solved by
+  S4. \begin{equation}\label{eq:crrp}  p=\frac{e^{r\Delta t}-d}{u-d},\qquad 0<p<1\iff d<e^{r\Delta
+      t}<u, \end{equation} and the second condition holds for all small enough $\Delta t$.
+  S5. To see why this is also a hedging price, choose a number of shares $\Delta$ and a bond holding
+      $B$ with $\Delta uS+Be^{r\Delta t}=V_u$ and $\Delta dS+Be^{r\Delta t}=V_d$; subtracting gives
+      $\Delta=\frac{V_u-V_d}{(u-d)S}$.
+  S6. Substituting $p$ shows that the cost $\Delta S+B$ of this portfolio equals $e^{-r\Delta
+      t}\big(pV_u+(1-p)V_d\big)$, so the price and the hedge are the same calculation.
+  S7. The option tree is filled backward from the payoff $V_{N,i}=(S_{N,i}-K)^+$ with
+      $V_{j,i}=e^{-r\Delta t}\big(pV_{j+1,i+1}+(1-p)V_{j+1,i}\big)$, and the price is $V_{0,0}$.
+  S8. The class \texttt{CRRBinomialModel} stores every node, which costs $O(N^2)$ time and memory
+      and is ideal for drawing trees and sample paths, whereas the vectorised pricer added for the
+      experiments produces identical prices with $O(N)$ memory.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equation eq:crrp. Figures in the appendix: crr_stock_tree_N*.pdf, crr_option_tree_N*.pdf.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+Martingale condition: $pu+(1-p)d=e^{r\Delta t}\Rightarrow p=\dfrac{e^{r\Delta t}-d}{u-d}$.
+Replication: $\Delta=\dfrac{V_u-V_d}{(u-d)S}$, $B=e^{-r\Delta t}\dfrac{uV_d-dV_u}{u-d}$. Cost: $\Delta S+B=e^{-r\Delta t}\Big(\dfrac{e^{r\Delta t}-d}{u-d}V_u+\dfrac{u-e^{r\Delta t}}{u-d}V_d\Big)$.
+
+PITFALLS / DO NOT SAY
+Do not call p a 'probability of going up in reality'; it is the pricing probability. The tree class
+in the code is for a call; the American put tree is a different method of the subclass.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Explain why this tree converges to GBM and why its error oscillates.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

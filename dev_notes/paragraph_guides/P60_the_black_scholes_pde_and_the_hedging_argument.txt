@@ -1,0 +1,59 @@
+PARAGRAPH P60: The Black-Scholes PDE and the hedging argument
+==============================================================================
+Where it goes : Appendix A: derivations  (draft file report/paras/P60.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Derives the PDE satisfied by the option price from a hedging argument, the continuous-time
+counterpart of the one-step replication of the tree.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has Ito's formula and the idea of a self-financing portfolio.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Set-up: the option value V(t,S_t) and a portfolio short one option and long Delta shares; the value of the portfolio is Pi = Delta S - V.
+  S3-S4  [2 sentences]  FOCUS: It\^o gives dV = V_t dt + V_S dS + (1/2) V_SS sigma^2 S^2 dt; choosing Delta = V_S removes the dW terms.
+  S5-S6  [2 sentences]  FOCUS: No arbitrage: a riskless portfolio must earn the riskless rate, d Pi = r Pi dt = r(S V_S - V) dt; equating gives the PDE; display.
+  S7-S8  [2 sentences]  FOCUS: The drift mu has disappeared; the terminal condition V(T,S) = (S - K)^+ selects the call; the Feynman-Kac formula says that the solution is the discounted Q-expectation of Section 2.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Let $V(t,S_t)$ be the value of the option and consider a portfolio that is short one option
+      and long $\Delta$ shares, so that $\Pi=\Delta S-V$.
+  S2. We choose $\Delta$ so that the portfolio has no exposure to the Brownian motion.
+  S3. It\^o's formula gives $dV=V_t\,dt+V_S\,dS+\tfrac12\sigma^2S^2V_{SS}\,dt$ under the real-world
+      dynamics~\eqref{eq:gbm}.
+  S4. With $\Delta=V_S$ the terms in $dS$ cancel in $d\Pi=\Delta\,dS-dV$, which leaves the
+      deterministic increment $d\Pi=-\big(V_t+\tfrac12\sigma^2S^2V_{SS}\big)\,dt$.
+  S5. A portfolio without risk must earn the riskless rate, so $d\Pi=r\Pi\,dt=r(SV_S-V)\,dt$.
+  S6. Equating the two expressions gives the Black--Scholes PDE \begin{equation}\label{eq:bspde}
+      V_t+rSV_S+\tfrac12\sigma^2S^2V_{SS}-rV=0 . \end{equation}
+  S7. The real-world drift $\mu$ has disappeared from the equation, which is the continuous-time
+      form of the statement that the price does not depend on $\mu$.
+  S8. With the terminal condition $V(T,S)=(S-K)^+$ the solution is, by the Feynman--Kac formula, the
+      discounted risk-neutral expectation $e^{-r(T-t)}\mathbb E^{\mathbb Q}[(S_T-K)^+\mid S_t=S]$ of
+      Section~\ref{sec:setting}.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equations eq:gbm, eq:bspde.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+$d\Pi=\Delta\,dS-dV=(\Delta-V_S)\,dS-(V_t+\tfrac12\sigma^2S^2V_{SS})\,dt$. With $\Delta=V_S$ the first term vanishes.
+Equate: $-(V_t+\tfrac12\sigma^2S^2V_{SS})=r(SV_S-V)\Rightarrow V_t+rSV_S+\tfrac12\sigma^2S^2V_{SS}-rV=0$.
+Greeks form: $\Theta+rS\Delta+\tfrac12\sigma^2S^2\Gamma=rV$.
+
+PITFALLS / DO NOT SAY
+The portfolio here is short the option, long delta shares: keep the sign convention consistent with
+the hedging section (seller).
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Appendix D justifies the convergence of the tree.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

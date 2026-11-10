@@ -1,0 +1,63 @@
+PARAGRAPH P05: Data and parameters
+==============================================================================
+Where it goes : 2 Setting and notation  (draft file report/paras/P05.tex, pulled into report/main.tex with \input)
+Type          : method
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+States the inputs of the two benchmark problems and the one questionable choice (a Canadian rate for
+a US stock).
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the model. They need the numbers, where they come from and how sensitive the answers
+are to them.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: European problem inputs: NVDA close on 2026-10-05, strike equal to spot, maturity one year of 252 trading days.
+  S3-S4  [2 sentences]  FOCUS: Volatility: annualised standard deviation of the last 250 daily log returns, times sqrt(252), giving sigma; assumption of no regime change.
+  S5-S6  [2 sentences]  FOCUS: Interest rate: the Bank of Canada one-year T-bill yield of 2.9 percent. Caveat: a Canadian rate for a US dollar asset; sensitivity via rho.
+  S7-S8  [2 sentences]  FOCUS: American baseline: S_0 = K = 10, sigma = 20 percent, r = 2 percent, T = 1, real-world drift 5 percent; why a unit-free baseline is useful (scale-free boundary b/K).
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. The European problem uses the NVIDIA (NVDA) closing price of \$\NvdaS\ on 2026-10-05, a strike
+      $K=S_0$ (at the money) and a maturity of one year, which is 252 trading days.
+  S2. Time is measured in trading years, so a tree step of one day is $\Delta t=1/252$.
+  S3. The volatility is the standard deviation of the last 250 daily log returns multiplied by
+      $\sqrt{252}$, which gives $\sigma=\NvdaSigma\%$.
+  S4. Using a historical volatility assumes that the next year looks like the last one; an implied
+      volatility from market quotes would replace it in practice.
+  S5. The risk-free rate is the Bank of Canada one-year Treasury-bill yield, $r=\NvdaR\%$, chosen to
+      match the one-year maturity.
+  S6. A Canadian rate is not the natural choice for a US-dollar asset, but the call is not very
+      sensitive to it: its rho is about \BSrhoPct\ dollars per percentage point of the rate
+      (Section~\ref{sec:B-greeks}).
+  S7. The American put uses a deliberately simple baseline, $S_0=K=10$, $\sigma=20\%$, $r=2\%$,
+      $T=1$ and a real-world drift $\mu=5\%$, for which the perpetual limit is known exactly.
+  S8. Because the exercise boundary scaled by the strike depends only on $\sigma$, $r$ and the time
+      to maturity, results for this baseline carry over to any strike; Table~\ref{tbl:params} lists
+      both parameter sets.
+
+NUMBERS USED (LaTeX macro -> value in the last notebook run; they update automatically when the notebook is re-run)
+  \BSrhoPct  ->  1.057
+  \NvdaR  ->  2.9
+  \NvdaS  ->  238.90
+  \NvdaSigma  ->  37.73
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Table tbl:params (parameter table of both problems, defined in main.tex).
+
+PITFALLS / DO NOT SAY
+Do not claim the yfinance data was refreshed in the sandbox: the values are frozen from the original
+runs (RUN_LIVE_DATA = False). Do not say NVDA pays no dividend.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Begin Part A.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Write what you did and why you chose it, in the first person plural or passive as your field
+prefers. Name the object (class, function, scheme) in the sentence where it first matters. Every
+formula must be introduced by one sentence in words and followed by what it means for the numbers.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

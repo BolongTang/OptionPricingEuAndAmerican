@@ -1,0 +1,63 @@
+PARAGRAPH P32: Why the tree solves the variational inequality
+==============================================================================
+Where it goes : 5.3 CRR tree for the American put  (draft file report/paras/P32.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Closes the loop between the two descriptions of the American put: the tree is an explicit finite-
+difference scheme for the variational inequality.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has both objects. They know Taylor expansion and the expansion of p from Section 4.1.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Idea: expand one step of the recursion in the continuation region and show that it reproduces (L - r)V = 0 as dt tends to 0.
+  S3-S4  [2 sentences]  FOCUS: Taylor expansions of V(t + dt, x u) and V(t + dt, x d) to order dt, with x u - x = x(y + y^2/2 + ...); display.
+  S5-S6  [2 sentences]  FOCUS: Probability: from p u + (1-p) d = e^{r dt} one gets 2p - 1 = (r - sigma^2/2) sqrt(dt)/sigma + o(sqrt dt); the sqrt(dt)-terms then combine to (r - sigma^2/2) x dt V_x, and the (1/2) sigma^2 dt x V_x terms complete r x V_x dt.
+  S7-S8  [2 sentences]  FOCUS: Conclusion: multiplying by e^{-r dt} = 1 - r dt + ... and requiring the right-hand side of the recursion to equal V gives (L - r)V = 0; where exercise is better the max sets V = K - x; complementarity is automatic, so the tree is an explicit finite-difference scheme for the variational inequality.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. We show that, in the continuation region, one step of the recursion reproduces the PDE as
+      $\Delta t\to0$.
+  S2. Write $y=\sigma\sqrt{\Delta t}$ so that $u=e^y$ and expand the value function at the two
+      successor nodes.
+  S3. A Taylor expansion to order $\Delta t$ gives the two successor values
+  S4. \begin{align} V(t+\Delta t,xu)&=V+V_t\Delta t+V_x\,x\big(\sigma\sqrt{\Delta
+      t}+\tfrac12\sigma^2\Delta t\big)+\tfrac12V_{xx}x^2\sigma^2\Delta t+\dots\\ V(t+\Delta
+      t,xd)&=V+V_t\Delta t+V_x\,x\big(-\sigma\sqrt{\Delta t}+\tfrac12\sigma^2\Delta
+      t\big)+\tfrac12V_{xx}x^2\sigma^2\Delta t+\dots \end{align}
+  S5. From $pu+(1-p)d=e^{r\Delta t}$ one obtains $2p-1=\frac{(r-\frac12\sigma^2)\sqrt{\Delta
+      t}}{\sigma}+o(\sqrt{\Delta t})$.
+  S6. Hence the $\sqrt{\Delta t}$-terms contribute $(r-\tfrac12\sigma^2)x\,\Delta t\,V_x$, the
+      $\tfrac12\sigma^2\Delta t\,xV_x$ terms complete this to $rxV_x\Delta t$, and
+      $pV_u+(1-p)V_d=V+\big(V_t+rxV_x+\tfrac12\sigma^2x^2V_{xx}\big)\Delta t+o(\Delta t)$.
+  S7. Multiplying by $e^{-r\Delta t}=1-r\Delta t+\dots$ and requiring the right-hand side of
+      Equation~\eqref{eq:crr} to equal $V$ gives $(\mathcal L-r)V=0$ in the continuation region,
+      while in the stopping region the maximum sets $V=K-x$.
+  S8. Complementarity is therefore automatic, the tree is an explicit finite-difference scheme for
+      the variational inequality~\eqref{eq:VI}, and both give the same price as $M_{bin}\to\infty$.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equations eq:crr, eq:VI.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+$pV_u+(1-p)V_d=V+V_t\Delta t+V_xx\Big[(p-(1-p))\sigma\sqrt{\Delta t}+\tfrac12\sigma^2\Delta t\Big]+\tfrac12V_{xx}x^2\sigma^2\Delta t+o(\Delta t)$.
+$(2p-1)\sigma\sqrt{\Delta t}=(r-\tfrac12\sigma^2)\Delta t+o(\Delta t)$, so the bracket equals $r\Delta t$.
+Requirement $V=e^{-r\Delta t}(pV_u+(1-p)V_d)$ $\Rightarrow$ $0=V_t+rxV_x+\tfrac12\sigma^2x^2V_{xx}-rV$ at order $\Delta t$.
+
+PITFALLS / DO NOT SAY
+'o(dt)' hides terms of order dt^{3/2} that cancel by symmetry of the lattice; do not claim a
+convergence rate from this expansion alone.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Present the numerical results, beginning with the perpetual put.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

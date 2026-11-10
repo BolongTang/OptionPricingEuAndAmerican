@@ -1,0 +1,56 @@
+PARAGRAPH P50: What Part C shows about the American put
+==============================================================================
+Where it goes : 5 Part C summary  (draft file report/paras/P50.tex, pulled into report/main.tex with \input)
+Type          : discussion
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Collects the findings of Part C as claims a practitioner could act on, with the condition under
+which each stops being true.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has seen all results of Part C. They need decisions, not a recap.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Correctness: tree, finite-difference solver and Longstaff-Schwartz agree within their errors; the perpetual limit is approached as the lattice and maturity grow, and the T = 1000 anomaly was a lattice effect.
+  S3-S4  [2 sentences]  FOCUS: Where the premium matters: early exercise adds a few percent for an at-the-money put and much more deep in the money; it is zero for r = 0 and for a call without dividends, and it appears for the call only with dividends.
+  S5-S6  [2 sentences]  FOCUS: Risk: the buyer's expected profit under the real-world measure depends on the drift, and the volatility used to set the exercise rule matters asymmetrically: exercising too early costs more than too late.
+  S7  [1 sentence]  FOCUS: Method choice: use the tree for prices, boundaries and hedges; use the PDE solver when high accuracy is needed in one or two dimensions; use Longstaff-Schwartz when the dimension is high; use Barone-Adesi-Whaley for a quick estimate.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. The CRR tree, a finite-difference solver for the variational inequality and least-squares
+      Monte Carlo agree with each other within their numerical errors, and the tree approaches the
+      closed-form perpetual put as the maturity and the number of steps grow.
+  S2. The one row that disagreed, $T=1000$ with $800$ steps, was a lattice artefact, and the refined
+      computation says so.
+  S3. Early exercise adds a few percent to an at-the-money put and much more deep in the money, and
+      it is zero for $r=0$ and for calls without dividends.
+  S4. For the NVIDIA put it adds about \NvdaPutEEPpct\% to the European price.
+  S5. The buyer's expected profit under the real-world measure depends on the drift, which the price
+      does not.
+  S6. A wrong volatility corrupts the exercise rule asymmetrically, because exercising too early
+      costs much more than exercising too late.
+  S7. In practice the tree is the natural tool for prices, boundaries and hedges, a PDE solver is
+      better when accuracy is needed in one or two dimensions, regression Monte Carlo takes over
+      when the dimension is high, and Barone--Adesi--Whaley serves for a quick estimate.
+
+NUMBERS USED (LaTeX macro -> value in the last notebook run; they update automatically when the notebook is re-run)
+  \NvdaPutEEPpct  ->  2.03
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Cross-reference Table tbl:deskput (Section 6).
+
+PITFALLS / DO NOT SAY
+'Tree for hedges' holds for the delta; the tree's gamma is noisy near the boundary (see Figure
+amgreeks).
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Compare every method on one footing in Section 6.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+State a claim you would defend to a practitioner, give the evidence in one or two numbers, then say
+where it stops being true. Prefer a concrete recommendation to a summary of what was done.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

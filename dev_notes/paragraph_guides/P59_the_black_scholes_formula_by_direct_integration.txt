@@ -1,0 +1,58 @@
+PARAGRAPH P59: The Black-Scholes formula by direct integration
+==============================================================================
+Where it goes : Appendix A: derivations  (draft file report/paras/P59.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Derives Equation bs from the risk-neutral expectation, so the benchmark of Part B is not taken on
+trust.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the Q-law of S_T from Appendix A (with mu replaced by r).
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Set-up: under Q S_T = S_0 exp((r - sigma^2/2)T + sigma sqrt(T) Z), Z standard normal; C = e^{-rT} E[(S_T - K)^+]; the payoff is positive exactly when Z > -d_2.
+  S3  [1 sentence]  FOCUS: Split the expectation: C = e^{-rT}(E[S_T 1{Z > -d_2}] - K P(Z > -d_2)).
+  S4  [1 sentence]  FOCUS: Second term: P(Z > -d_2) = Phi(d_2) by symmetry, giving K e^{-rT} Phi(d_2).
+  S5-S6  [2 sentences]  FOCUS: First term: complete the square, e^{sigma sqrt(T) z} phi(z) = e^{sigma^2 T/2} phi(z - sigma sqrt(T)); the integral over z > -d_2 becomes Phi(d_2 + sigma sqrt(T)) = Phi(d_1).
+  S7  [1 sentence]  FOCUS: Result and interpretation: C = S_0 Phi(d_1) - K e^{-rT} Phi(d_2); Phi(d_2) is the Q-probability of exercise and Phi(d_1) is the same probability after changing to the measure that takes the stock as numeraire.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Under $\mathbb Q$ write $S_T=S_0e^{(r-\frac12\sigma^2)T+\sigma\sqrt TZ}$ with $Z\sim N(0,1)$,
+      so that $C=e^{-rT}\mathbb E[(S_T-K)^+]$.
+  S2. The payoff is positive exactly when $Z>-d_2$, where
+      $d_2=\frac{\ln(S_0/K)+(r-\frac12\sigma^2)T}{\sigma\sqrt T}$.
+  S3. Splitting the expectation gives $C=e^{-rT}\big(\mathbb E[S_T\mathbf 1_{\{Z>-d_2\}}]-K\,\mathbb
+      P(Z>-d_2)\big)$.
+  S4. By symmetry $\mathbb P(Z>-d_2)=\Phi(d_2)$, so the second term is $Ke^{-rT}\Phi(d_2)$.
+  S5. For the first term, completing the square gives $e^{\sigma\sqrt
+      Tz}\varphi(z)=e^{\sigma^2T/2}\varphi(z-\sigma\sqrt T)$, so
+  S6. \begin{equation}  \mathbb E[S_T\mathbf
+      1_{\{Z>-d_2\}}]=S_0e^{rT}\int_{-d_2}^{\infty}\varphi(z-\sigma\sqrt
+      T)\,dz=S_0e^{rT}\,\Phi(d_2+\sigma\sqrt T)=S_0e^{rT}\,\Phi(d_1). \end{equation}
+  S7. Combining the two terms gives Equation~\eqref{eq:bs}: $\Phi(d_2)$ is the risk-neutral
+      probability that the call ends in the money, and $\Phi(d_1)$ is the same probability under the
+      measure that takes the stock as numeraire.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equation eq:bs.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+$d_1=d_2+\sigma\sqrt T$.  $\int_{-d_2}^\infty\varphi(z-a)\,dz=\mathbb P(Z+a>-d_2+a\ \text{shifted})=\Phi(d_2+a)$ with $a=\sigma\sqrt T$.
+$e^{az}\varphi(z)=\frac1{\sqrt{2\pi}}e^{-z^2/2+az}=e^{a^2/2}\varphi(z-a)$.
+
+PITFALLS / DO NOT SAY
+Only 7 sentences here by design (one-sentence steps). If you merge steps, check the count.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Appendix C derives the same formula from the PDE side.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

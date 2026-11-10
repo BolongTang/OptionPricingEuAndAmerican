@@ -1,0 +1,64 @@
+PARAGRAPH P30: The perpetual put in closed form
+==============================================================================
+Where it goes : 5.2 Perpetual put  (draft file report/paras/P30.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Derives the one case of the American put that has a closed form. It is the limit against which long-
+maturity trees are checked, and it is derived twice so the smooth-fit condition is understood and
+not just assumed.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the variational system. For T = infinity nothing depends on t, so b(t) is a constant
+S*.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Setting: time-homogeneous, b(t) = S*; the system becomes an ODE in x with V = K - x for x <= S*; display.
+  S3-S4  [2 sentences]  FOCUS: Solution: try V = A x^{-beta}; (beta + 1)((1/2) sigma^2 beta - r) = 0 so beta = 2r/sigma^2; equivalently kappa = r/sigma^2, Delta = sqrt((kappa - 1/2)^2 + 2 kappa) = kappa + 1/2, beta = kappa - 1/2 + Delta = 2 kappa.
+  S5-S6  [2 sentences]  FOCUS: Smooth fit: matching value and slope at S*, A S*^{-beta} = K - S* and -beta A S*^{-beta-1} = -1, gives S* = beta K/(beta+1) and V_inf(x) = K/(beta+1) (S*/x)^beta; display.
+  S7-S8  [2 sentences]  FOCUS: Second derivation without smooth fit: exercising at the first time the price hits a threshold b is worth (K - b)(b/x)^beta because E e^{-r tau_b} = (b/x)^beta; maximising over b gives the same S*, so smooth fit is the first-order condition of the stopping problem.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. If $T=\infty$ nothing depends on $t$, so the boundary is a constant $b(t)\equiv S^*$ and the
+      system~\eqref{eq:VI} becomes an ODE,
+  S2. \begin{equation}\label{eq:perp}  \tfrac12\sigma^2x^2V''+rxV'-rV=0\ (x>S^*),\qquad V=K-x\ (x\le
+      S^*),\qquad V\ge(K-x)^+, \end{equation} with $V$ and $V'$ continuous at $S^*$.
+  S3. Trying $V=Ax^{-\beta}$ with $\beta>0$, so that $V\to0$ as $x\to\infty$, turns the ODE into
+      $(\beta+1)\big(\tfrac12\sigma^2\beta-r\big)=0$, hence $\beta=2r/\sigma^2$.
+  S4. In the notation $\kappa=r/\sigma^2$ and
+      $\Delta=\sqrt{(\kappa-\frac12)^2+2\kappa}=\kappa+\frac12$ this reads
+      $\beta=\kappa-\frac12+\Delta=2\kappa$.
+  S5. Matching the value and the slope at $S^*$, that is $A(S^*)^{-\beta}=K-S^*$ and $-\beta
+      A(S^*)^{-\beta-1}=-1$, determines both constants:
+  S6. \begin{equation}\label{eq:Vinf}  S^*=\frac{\beta K}{\beta+1},\qquad
+      V_\infty(x)=\frac{K}{\beta+1}\Big(\frac{S^*}{x}\Big)^{\beta}\quad(x>S^*). \end{equation}
+  S7. A second derivation avoids smooth fit: exercising at the first time the price falls to a
+      threshold $b$ is worth $V_b(x)=(K-b)(b/x)^\beta$, because $\mathbb
+      E[e^{-r\tau_b}]=(b/x)^\beta$.
+  S8. Maximising $(K-b)b^\beta$ over $b$ gives $b=\beta K/(\beta+1)=S^*$, so smooth fit is nothing
+      but the first-order condition of the stopping problem.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equations eq:perp, eq:Vinf.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+ODE check: $V=Ax^{-\beta}$: $V'=-\beta Ax^{-\beta-1}$, $V''=\beta(\beta+1)Ax^{-\beta-2}$; $\tfrac12\sigma^2x^2V''+rxV'-rV=Ax^{-\beta}\big[\tfrac12\sigma^2\beta(\beta+1)-r\beta-r\big]=Ax^{-\beta}(\beta+1)\big(\tfrac12\sigma^2\beta-r\big)$.
+Hitting time of a lower level for GBM with drift $r-\sigma^2/2$: $\mathbb E[e^{-r\tau_b}]=(b/x)^{2r/\sigma^2}$.
+Maximise $(K-b)b^\beta$: derivative $-b^\beta+\beta(K-b)b^{\beta-1}=0\Rightarrow b=\beta K/(\beta+1)$.
+
+PITFALLS / DO NOT SAY
+The condition beta > 0 is what selects the decaying solution; the other root is -1 and gives the
+growing branch. Do not claim uniqueness without that remark.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Turn to the numerical method: the CRR tree for the American put.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

@@ -1,0 +1,48 @@
+PARAGRAPH P07: How the paths were simulated
+==============================================================================
+Where it goes : 3 Part A: Brownian motion and random walks  (draft file report/paras/P07.tex, pulled into report/main.tex with \input)
+Type          : method
+Length        : 6 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Documents the simulation classes and the extension experiments, so the figures and tables of Part A
+can be reproduced.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The definitions of P06. The reader needs to know which part is the original hand-written class and
+which part was added.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: BrownianMotion: one path is built step by step from independent N(0, dt) increments, N1 = 10,000 steps on [0,1].
+  S3-S4  [2 sentences]  FOCUS: symmetric_random_walk: a subclass that only overrides the step, using plus or minus sqrt(dt); N2 in {10, 50, 200, 1000}.
+  S5-S6  [2 sentences]  FOCUS: Extensions: vectorised path generators for 2000 paths per N to measure variation, the exact binomial CDF for the Kolmogorov distance, and the exact lattice reflection formula for the maximum.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. The class \texttt{BrownianMotion} builds a path step by step from independent $N(0,\Delta t)$
+      increments on $[0,1]$, with $N_1=10{,}000$ steps.
+  S2. Five independent paths are drawn for the figure.
+  S3. The subclass \texttt{symmetric\_random\_walk} overrides only the step, replacing the Gaussian
+      draw by $\pm\sqrt{\Delta t}$ with probability one half each.
+  S4. It is run with $N_2\in\{10,50,200,1000\}$ steps on the same time interval.
+  S5. For the quantitative checks we add vectorised generators that draw 2000 paths per $N$ and
+      compute quadratic and total variation.
+  S6. The Kolmogorov distance and the law of the running maximum are computed exactly from the
+      binomial distribution, so they carry no sampling error.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Appendix code listing (handwritten.py) for the two classes.
+
+PITFALLS / DO NOT SAY
+Only 6 sentences here: do not pad.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Present the sample paths.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Write what you did and why you chose it, in the first person plural or passive as your field
+prefers. Name the object (class, function, scheme) in the sentence where it first matters. Every
+formula must be introduced by one sentence in words and followed by what it means for the numbers.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

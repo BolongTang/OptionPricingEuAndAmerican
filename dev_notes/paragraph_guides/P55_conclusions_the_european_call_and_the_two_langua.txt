@@ -1,0 +1,50 @@
+PARAGRAPH P55: Conclusions: the European call and the two languages
+==============================================================================
+Where it goes : 7 Conclusions  (draft file report/paras/P55.tex, pulled into report/main.tex with \input)
+Type          : discussion
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+States what Parts A and B establish about the discrete and continuous languages, in terms a reader
+can quote.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+No new numbers. The reader has the whole of Parts A and B.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: The two languages agree: the walk converges to Brownian motion at rate N^{-1/2} and the CRR tree prices converge to Black-Scholes at rate 1/N, with an oscillation that depends on the parity of N.
+  S3-S4  [2 sentences]  FOCUS: Accuracy per unit of time: for a vanilla payoff the right lattice beats Monte Carlo by orders of magnitude; Monte Carlo's strength is generality, and variance reduction recovers a part of the gap.
+  S5-S6  [2 sentences]  FOCUS: Sensitivities and hedging: the Greeks can be obtained by three routes that agree; discrete hedging error falls like n^{-1/2}; a wrong hedging volatility costs much more than a coarse rebalancing schedule.
+  S7  [1 sentence]  FOCUS: What a reader should remember: the choice of model input (the volatility) matters more than the choice of numerical method.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. The discrete and the continuous language agree in the limit: the scaled random walk converges
+      to Brownian motion at rate $N^{-1/2}$ in the Kolmogorov distance, and the CRR price converges
+      to the Black--Scholes price at rate $1/N$ with a sign that depends on the parity of $N$.
+  S2. The sign pattern is a property of the kink at the strike and can be removed.
+  S3. For a vanilla payoff a well-chosen lattice beats Monte Carlo by orders of magnitude in
+      accuracy per unit of time, and variance reduction recovers only a part of the gap.
+  S4. The strength of Monte Carlo is its generality, not its accuracy.
+  S5. The Greeks can be obtained from the closed form, from the tree and from Monte Carlo, and the
+      three agree.
+  S6. The error of a discrete delta hedge falls only like $n^{-1/2}$ in the number of rebalances,
+      and a wrong hedging volatility costs far more than a coarser schedule.
+  S7. The point to remember is that, for a reasonable method, the volatility that goes into the
+      model matters more than the numerical scheme that processes it.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+No new references.
+
+PITFALLS / DO NOT SAY
+Do not repeat numbers from Section 4; every sentence should be a claim.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Conclude Part C.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+State a claim you would defend to a practitioner, give the evidence in one or two numbers, then say
+where it stops being true. Prefer a concrete recommendation to a summary of what was done.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

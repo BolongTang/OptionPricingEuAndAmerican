@@ -1,0 +1,8 @@
+% P07 | 3 Part A: Brownian motion and random walks | How the paths were simulated
+% guide: dev_notes/paragraph_guides/P07_how_the_paths_were_simulated.txt
+The class \texttt{BrownianMotion} builds a path step by step from independent $N(0,\Delta t)$ increments on $[0,1]$, with $N_1=10{,}000$ steps.
+Five independent paths are drawn for the figure.
+The subclass \texttt{symmetric\_random\_walk} overrides only the step, replacing the Gaussian draw by $\pm\sqrt{\Delta t}$ with probability one half each.
+It is run with $N_2\in\{10,50,200,1000\}$ steps on the same time interval.
+For the quantitative checks we add vectorised generators that draw 2000 paths per $N$ and compute quadratic and total variation.
+The Kolmogorov distance and the law of the running maximum are computed exactly from the binomial distribution, so they carry no sampling error.

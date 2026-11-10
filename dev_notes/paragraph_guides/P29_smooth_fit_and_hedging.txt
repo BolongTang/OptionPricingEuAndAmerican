@@ -1,0 +1,58 @@
+PARAGRAPH P29: Smooth fit and hedging
+==============================================================================
+Where it goes : 5.1 Optimal stopping  (draft file report/paras/P29.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Adds the extra condition that determines the free boundary, and the hedging statement that makes the
+American price the cost of a replicating strategy up to the exercise date.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the variational inequality. The market is complete (Section 2).
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Smooth fit: b(t) is part of the unknown; the extra condition is that the derivative is continuous across it, V_x(t, b(t)) = -1; heuristic: a jump in V_x means the stopping rule could be improved by moving the boundary.
+  S3  [1 sentence]  FOCUS: Numerical consequence: neither the tree nor a projected finite-difference scheme imposes smooth fit; the max (or projection) solves the obstacle problem directly.
+  S4-S5  [2 sentences]  FOCUS: Hedging: complete market, so by the second fundamental theorem of asset pricing the claim exercised at tau* is replicable by holding Delta_t = V_x(t,S_t) shares; the formula is the European delta, the function is the American value; Delta = -1 in the stopping region.
+  S6-S7  [2 sentences]  FOCUS: Exact up to tau*; if the holder exercises suboptimally the seller keeps a surplus (the hedge super-replicates every exercise date); this is checked numerically in the tree.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. The boundary $b(t)$ is part of the unknown, and the condition that fixes it is smooth fit:
+      $\partial_xV$ is continuous across the boundary, so $\partial_xV(t,b(t))=-1$.
+  S2. Heuristically, if $\partial_xV$ jumped at the boundary, the stopping rule could be improved by
+      moving the boundary slightly.
+  S3. A numerical solver never has to impose smooth fit, because the maximum in the tree recursion,
+      or the projection in a finite-difference scheme, solves the obstacle problem directly.
+  S4. Because the market is complete, the second fundamental theorem of asset pricing implies that
+      the claim exercised at $\tau^*$ can be replicated by holding $\Delta_t=\partial_xV(t,S_t)$
+      shares and the rest in the bond.
+  S5. This is the delta hedge of the European option with the American value function: the formula
+      is the same, the function is different, and $\Delta=-1$ in the stopping region because there
+      $V=K-x$.
+  S6. The replication is exact up to $\tau^*$, and if the holder exercises at any other time the
+      seller is left with a surplus, so the hedge super-replicates every exercise date.
+  S7. Section~\ref{sec:replication} checks this statement numerically in the tree.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Section 5.8 (replication check).
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+Smooth fit heuristic: let $V_b(x)$ be the value of exercising at the first time $S\le b$. Then $\partial_bV_b(x)|_{b=b^*}=0$; for the perpetual put this is exactly $\frac d{db}[(K-b)b^\beta]=0$ (Section on the perpetual put).
+Hedge: wealth $X_t=V(t,S_t)$ is self-financing while $S_t\in C$ because the $dt$-coefficient of $dV$ vanishes there.
+
+PITFALLS / DO NOT SAY
+'Replicable' is exact only up to the optimal exercise time. A holder who exercises late or early
+leaves value with the seller.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Solve the system in closed form for T = infinity.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

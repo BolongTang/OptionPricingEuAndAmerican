@@ -1,0 +1,56 @@
+PARAGRAPH P26: What Part B shows about the European call
+==============================================================================
+Where it goes : 4 Part B summary  (draft file report/paras/P26.tex, pulled into report/main.tex with \input)
+Type          : discussion
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Collects the findings of Part B as claims a practitioner could act on, with the condition under
+which each stops being true.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has seen all results of Part B. They need decisions, not a recap.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Accuracy per unit time: for a single European call a tree with a Leisen-Reimer lattice or with smoothing plus Richardson is orders of magnitude more accurate than Monte Carlo for the same run time.
+  S3-S4  [2 sentences]  FOCUS: Where Monte Carlo wins: path-dependent or high-dimensional payoffs, because its error does not depend on the dimension while the cost of a lattice grows exponentially with it.
+  S5-S6  [2 sentences]  FOCUS: Sensitivities and hedging: the three routes to the Greeks agree, and the hedging error falls only like n^{-1/2}, so the choice of hedge volatility matters much more than the rebalancing frequency.
+  S7  [1 sentence]  FOCUS: Link to Part C: early exercise needs a recursion backward in time, which the tree does naturally and Monte Carlo can do only with a regression step.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. For a single European call on one stock, a Leisen--Reimer tree or a smoothed and extrapolated
+      CRR tree is orders of magnitude more accurate than Monte Carlo for the same run time.
+  S2. The work--precision comparison in Section~\ref{sec:compare} puts numbers on this.
+  S3. Monte Carlo wins when the payoff depends on the whole path or on many underlyings, because its
+      error rate does not depend on the dimension, while the cost of a lattice grows exponentially
+      with it.
+  S4. Variance reduction closes part of the gap: a control variate alone was worth a factor of
+      \VRcv\ in variance here.
+  S5. The three routes to the Greeks agree, so the choice among them is a matter of cost and
+      variance, not of correctness.
+  S6. The hedging error of a short call falls only like $n^{-1/2}$ with the number of rebalances,
+      and an error of $10$ volatility points in the hedge volatility costs more than any reasonable
+      change of frequency.
+  S7. Early exercise needs a decision at every date based on the value of waiting, which the tree
+      computes naturally and Monte Carlo can approximate only with a regression, as Part C shows.
+
+NUMBERS USED (LaTeX macro -> value in the last notebook run; they update automatically when the notebook is re-run)
+  \VRcv  ->  7.7
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Cross-reference Table tbl:deskcall and Figure fig:workprecision (Section 6).
+
+PITFALLS / DO NOT SAY
+The claim 'an error of 10 vol points costs more than any frequency change' is supported by Table
+hedgewrong vs Table hedgefreq. Re-check after a re-run.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Start Part C.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+State a claim you would defend to a practitioner, give the evidence in one or two numbers, then say
+where it stops being true. Prefer a concrete recommendation to a summary of what was done.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

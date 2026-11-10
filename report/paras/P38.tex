@@ -1,0 +1,9 @@
+% P38 | 5.4 Results | Result: long maturities, as first computed
+% guide: dev_notes/paragraph_guides/P38_result_long_maturities_as_first_computed.txt
+With $M_{bin}=800$ steps for every maturity, the price $V(0,S_0)$ increases with $T$ towards the perpetual value of $2.5$: it is $1.72$ at $T=10$, $2.06$ at $T=20$, $2.38$ at $T=50$ and $2.47$ at $T=100$.
+The curves $V(0,x)$ in Figure~\ref{fig:fVx} approach $V_\infty(x)$ for all $x$.
+The boundary at date zero decreases from $5.8$ at $T=10$ to $5.1$ at $T=100$, towards $S^*=5$.
+Plotted against the time to maturity $T-t$, the curves $b(t;T)$ for different $T$ coincide and flatten at $S^*$ (Figure~\ref{fig:fb}).
+The row for $T=1000$ breaks the pattern: it gives $b(0;1000)=5.5$, above the value $5.1$ at $T=100$, and a price that has stopped improving.
+An option that is almost perpetual cannot have a boundary that moves away from $S^*$, so the row must be a numerical artefact.
+The artefact is the lattice: with $M_{bin}=800$ and $T=1000$ the step is $\Delta t=1.25$ and $u=1.25$, far too coarse to resolve a boundary near $5$, and the next paragraph repeats the experiment with a finer lattice.

@@ -1,0 +1,10 @@
+% P37 | 5.4 Results | Result: dependence on volatility and interest rate
+% guide: dev_notes/paragraph_guides/P37_result_dependence_on_volatility_and_interest_rat.txt
+Higher volatility lowers the boundary: at $t=0.5$ and $r=2\%$ it equals \BhalfLow, \BhalfMid\ and \BhalfHigh\ for $\sigma=10\%$, $20\%$ and $30\%$.
+The option to wait is worth more when the stock is more volatile, so the holder is willing to wait longer, and the price rises with $\sigma$ (Table~\ref{tbl:amsr}).
+A higher interest rate raises the boundary, from \BhalfMid\ to \BhalfRhigh\ when $r$ goes from $2\%$ to $4\%$ at $\sigma=20\%$, because the strike earns interest once the option is exercised.
+The price falls with $r$ for the same reason that a put loses value when interest rates rise.
+For $r=0$ the boundary is empty in Table~\ref{tbl:amsr} because waiting never costs anything, so the American put equals the European put.
+Exercising early would give up optionality and gain no interest.
+The hedge ratio at the start, $\Delta(0,S_0)$, lies between \DeltaRangeLo\ and \DeltaRangeHi\ and depends only mildly on $(\sigma,r)$.
+Higher volatility flattens $\Delta(t,\cdot)$ as a function of spot, and for $r>0$ the plateau at $-1$ starts at the boundary, which is higher for larger $r$ and smaller $\sigma$ (Figure~\ref{fig:eh}).

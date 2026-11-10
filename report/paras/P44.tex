@@ -1,0 +1,9 @@
+% P44 | 5.7 Early-exercise premium | Result: dividends make early exercise of a call worthwhile
+% guide: dev_notes/paragraph_guides/P44_result_dividends_make_early_exercise_of_a_call_w.txt
+A continuous dividend yield $q$ lowers the risk-neutral drift of the stock to $r-q$, so the tree uses $p=(e^{(r-q)\Delta t}-d)/(u-d)$ while discounting stays at $r$.
+The subclass \texttt{CRRTreeGen} changes only this probability and the payoff, so the boundary, the hedge and the stopping rule are inherited from \texttt{CRRTree}.
+With $q=0$ the tree never exercises the American call early, and its price equals the European price on the same lattice.
+This is the classical result that early exercise of a call is never optimal without dividends.
+Table~\ref{tbl:div} shows that the premium grows with the yield, from zero to \DivPremSix\ at $q=6\%$.
+The exercise region of a call is $\{x\ge b(t)\}$ with $b(t)$ above the strike, and Figure~\ref{fig:divboundary} shows that the boundary comes down as the yield rises.
+The intuition is that waiting costs the dividends $qS$ per year and earns interest $rK$ on the deferred strike payment, so early exercise becomes attractive when the yield is large relative to the interest rate.

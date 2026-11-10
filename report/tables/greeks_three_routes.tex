@@ -1,0 +1,15 @@
+\begin{tabular}{lccccc}
+\toprule
+Greek & Black-Scholes & Tree ($N=1000$) & MC estimator & MC value & s.e. \\
+\midrule
+$\Delta$ & 0.60469 & 0.60466 & pathwise & 0.60476 & 0.00070 \\
+$\Delta$ & 0.60469 & 0.60466 & LR & 0.60653 & 0.00163 \\
+$\Delta$ & 0.60469 & 0.60466 & bump (CRN) & 0.60474 & 0.00070 \\
+$\Gamma$ & 0.00427 & 0.00428 & LR x pathwise & 0.00428 & 0.00001 \\
+$\Gamma$ & 0.00427 & 0.00428 & bump (CRN) & 0.00424 & 0.00003 \\
+vega & 92.00674 & 91.98375 & pathwise & 92.22585 & 0.22333 \\
+vega & 92.00674 & 91.98375 & LR & 93.04232 & 0.72616 \\
+$\Theta$ (per year) & -20.4206 & -20.4347 & -- & -- & -- \\
+$\rho$ & 105.711 & 105.713 & -- & -- & -- \\
+\bottomrule
+\end{tabular}

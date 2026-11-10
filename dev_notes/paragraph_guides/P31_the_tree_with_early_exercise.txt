@@ -1,0 +1,61 @@
+PARAGRAPH P31: The tree with early exercise
+==============================================================================
+Where it goes : 5.3 CRR tree for the American put  (draft file report/paras/P31.tex, pulled into report/main.tex with \input)
+Type          : method
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Defines the numerical method of Part C and every object that is read off it: price, exercise
+boundary, hedge and stopping rule.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader knows the CRR lattice from Section 4.1. The only change is a max in the backward
+recursion.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: The recursion: V_{M,i} = (K - S_{M,i})^+ and V_{j,i} = max{(K - S_{j,i})^+, e^{-r dt}(p V_{j+1,i+1} + (1-p) V_{j+1,i})}; display; the first term is exercise now, the second is waiting.
+  S3-S4  [2 sentences]  FOCUS: The boundary and ties: b(t_j) is the largest node at which exercising is strictly better; ties continue (tolerance 1e-12), which matters for r = 0 where exercise and continuation coincide deep in the money; nodes alternate between two grids, so the boundary is plotted on even layers.
+  S5-S6  [2 sentences]  FOCUS: The hedge and the stopping time: Delta_{j,i} = (V_{j+1,i+1} - V_{j+1,i})/(S_{j+1,i+1} - S_{j+1,i}); the optimal stopping time of a simulated path is the first date at which it lies in the exercise region.
+  S7-S8  [2 sentences]  FOCUS: Implementation: CRRTree extends CRRBinomialModel and only adds the American recursion, a vectorised simulation and the stopping rule; the base class counts days over 252 so the subclass passes days = round(252 T); each layer is computed with array operations.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. With $\Delta t=T/M_{bin}$, the CRR parameters of Section~\ref{sec:B} and
+      $V_{M,i}=(K-S_{M,i})^+$, the American put is priced by
+  S2. \begin{equation}\label{eq:crr}  V_{j,i}=\max\Big\{(K-S_{j,i})^+,\;e^{-r\Delta
+      t}\big(p\,V_{j+1,i+1}+(1-p)\,V_{j+1,i}\big)\Big\}, \end{equation} where the first term is the
+      value of exercising now and the second the value of waiting.
+  S3. The exercise boundary $b(t_j)$ is the largest node at which exercising is strictly better than
+      waiting, with a tolerance of $10^{-12}$ so that ties are resolved in favour of waiting.
+  S4. The tolerance matters for $r=0$, where exercise and continuation coincide deep in the money,
+      and because the nodes of a CRR tree alternate between two grids on odd and even layers the
+      boundary is plotted on even layers only.
+  S5. The hedge at node $(j,i)$ is the ratio
+      $\Delta_{j,i}=\frac{V_{j+1,i+1}-V_{j+1,i}}{S_{j+1,i+1}-S_{j+1,i}}$ of the changes in option
+      value and stock price over one step.
+  S6. The optimal stopping time of a simulated path is the first date at which the path lies in the
+      exercise region, and it is held to maturity if it never does.
+  S7. The class \texttt{CRRTree} extends \texttt{CRRBinomialModel} of Section~\ref{sec:B}: it adds
+      the American recursion, a vectorised simulation of paths and the stopping rule, and inherits
+      the lattice.
+  S8. The base class counts maturity in trading days, so the subclass passes
+      \texttt{days=round(252*T)}, and each layer of the recursion is evaluated with array
+      operations.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equation eq:crr. Code listing (handwritten.py): CRRTree, hedgingformula.
+
+PITFALLS / DO NOT SAY
+The tie tolerance is a modelling choice, not a numerical accident. Explain it in one clause; do not
+apologise for it.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Show that the recursion approximates the variational PDE.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Write what you did and why you chose it, in the first person plural or passive as your field
+prefers. Name the object (class, function, scheme) in the sentence where it first matters. Every
+formula must be introduced by one sentence in words and followed by what it means for the numbers.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

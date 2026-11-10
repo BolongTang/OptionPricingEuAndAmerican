@@ -1,0 +1,57 @@
+PARAGRAPH P64: Least-squares Monte Carlo (Longstaff-Schwartz)
+==============================================================================
+Where it goes : Appendix A: derivations  (draft file report/paras/P64.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Explains the algorithm used in Section 5.6, why it is biased low and what controls its accuracy.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the dynamic programming principle for the American put (Section 5.1).
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Dynamic programming: with exercise dates t_1 < ... < t_n, V_n = payoff and V_j(x) = max{payoff(x), C_j(x)} with continuation value C_j(x) = e^{-r dt} E[V_{j+1}(S_{j+1}) | S_j = x].
+  S3-S4  [2 sentences]  FOCUS: Regression: project the discounted realised cash flow on a polynomial basis of the spot using in-the-money paths: C_j(x) approx sum_k beta_k x^k.
+  S5-S6  [2 sentences]  FOCUS: Algorithm: backward from the last date, exercise on a path if the payoff exceeds the fitted C_j and replace its cash flow by the payoff; the price is the average of the discounted cash flows, compared with the immediate payoff at t_0.
+  S7-S8  [2 sentences]  FOCUS: Bias: the fitted rule is a feasible exercise policy, so its true value is a lower bound of the Bermudan value; using the same paths for fitting and valuation adds a small upward bias of order 1/M, so the estimate is low-biased up to noise; accuracy is controlled by the basis and the number of dates.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. With exercise dates $t_1<\dots<t_n=T$ the value satisfies $V_n(x)=(K-x)^+$ and
+      $V_j(x)=\max\{(K-x)^+,C_j(x)\}$ with the continuation value $C_j(x)=e^{-r\Delta t}\,\mathbb
+      E[V_{j+1}(S_{j+1})\mid S_j=x]$.
+  S2. This is the tree recursion with the one-step expectation replaced by a conditional expectation
+      under the simulated law.
+  S3. The conditional expectation is approximated by a regression of the discounted realised cash
+      flow on a polynomial basis of the spot, $C_j(x)\approx\sum_{k=0}^{d}\beta_kx^k$, fitted on the
+      paths that are in the money at $t_j$.
+  S4. Only in-the-money paths are used because exercise is never optimal otherwise, and this
+      concentrates the fit where the decision is made.
+  S5. Working backward from the last date, a path exercises at $t_j$ if its payoff exceeds the
+      fitted continuation value, and its cash flow is then replaced by the payoff.
+  S6. The estimate is the average of the discounted cash flows, compared with the immediate payoff
+      at the start.
+  S7. Because the fitted rule is a feasible exercise policy, its expected payoff is a lower bound
+      for the Bermudan value, which is why the estimator is biased low.
+  S8. Using the same paths for the fit and for the valuation adds a small upward bias of order
+      $1/M$, so in practice the estimate is low-biased up to noise, and the accuracy is controlled
+      by the basis and by the number of exercise dates.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Tables tbl:lsm and tbl:deskput.
+
+PITFALLS / DO NOT SAY
+Say 'Bermudan' for the simulated problem; the American value is approached only as the number of
+dates grows.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Appendix H derives the quasi-analytic approximation.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

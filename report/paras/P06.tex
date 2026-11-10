@@ -1,0 +1,12 @@
+% P06 | 3 Part A: Brownian motion and random walks | Brownian motion and the scaled random walk
+% guide: dev_notes/paragraph_guides/P06_brownian_motion_and_the_scaled_random_walk.txt
+A process $W=\{W_t\}_{t\ge0}$ is a Brownian motion on $(\Omega,\mathcal F,\{\mathcal F_t\},\mathbb P)$ if it is adapted with $W_0=0$, if $W_t-W_s\sim N(0,t-s)$ for $0\le s\le t$, if $W_t-W_s$ is independent of $\mathcal F_s$, and if $t\mapsto W_t(\omega)$ is continuous.
+Independence and the Gaussian law of increments fix all finite-dimensional distributions, and continuity of the paths is what separates Brownian motion from other processes with the same increments.
+The scaled symmetric random walk replaces the Gaussian increments by coin flips: with $\xi_i=\pm1$ equally likely,
+\begin{equation}\label{eq:scaledwalk}
+ W^{(N)}_{t_k}=\sqrt{T/N}\sum_{i=1}^{k}\xi_i,\qquad t_k=kT/N,
+\end{equation}
+so that $\mathbb E\,W^{(N)}_{t_k}=0$ and $\operatorname{Var}W^{(N)}_{t_k}=t_k$ for every $N$.
+Mean, variance and independence of increments therefore agree with Brownian motion for every $N$, whereas the lattice support and the non-Gaussian increments do not.
+Donsker's theorem states that the whole path $W^{(N)}$ converges in law to $W$ as $N\to\infty$, which is the statement we test numerically.
+This matters for pricing because the CRR tree of Section~\ref{sec:B} is exactly such a walk with a drift, so its convergence to geometric Brownian motion is a consequence of the convergence studied here.

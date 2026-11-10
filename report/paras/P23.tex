@@ -1,0 +1,9 @@
+% P23 | 4.8 Implied volatility | Result: implied volatility of the numerical prices
+% guide: dev_notes/paragraph_guides/P23_result_implied_volatility_of_the_numerical_price.txt
+The implied volatility of an observed price is the $\hat\sigma$ that solves $C_{BS}(\hat\sigma)=C_{obs}$.
+The root is unique because the Black--Scholes price is strictly increasing in $\sigma$, since vega is positive, and we find it with Brent's method.
+Applied to the tree prices, the implied volatility differs from the true $37.73\%$ by \IVcrrHundred\ volatility points at $N=100$ (the tree underprices the call), and it inherits the saw-tooth of the price, as Figure~\ref{fig:iv} shows.
+At $N=10{,}000$ the difference is below one hundredth of a volatility point.
+For the best Monte Carlo price the 95\% interval of the price maps to an implied-volatility interval of \IVmcLo\% to \IVmcHi\%.
+This is consistent with dividing the standard error of the price by vega, which is the quickest way to judge whether a simulation is accurate enough for a given tolerance in volatility.
+Expressing numerical error in volatility points makes it directly comparable with the uncertainty in the volatility input itself, which is usually far larger.

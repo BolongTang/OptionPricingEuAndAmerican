@@ -1,0 +1,74 @@
+INDEX OF PARAGRAPH GUIDES (document order)
+============================================================
+Each guide: sentence plan (counts per focus), draft sentences, numbers, references, derivation skeleton, pitfalls, transition.
+Each draft paragraph lives in report/paras/<ID>.tex; main.tex contains only structure, equations, figures and tables.
+
+P00  [8 sent., intro     ] Abstract               Abstract
+P01  [7 sent., intro     ] 1 Introduction         Motivation: why numerical option pricing
+P02  [7 sent., intro     ] 1 Introduction         Roadmap of the three parts
+P03  [7 sent., method    ] 1 Introduction         How the work is organised and reproduced
+P04  [8 sent., method    ] 2 Setting and notation The market model and risk-neutral pricing
+P05  [8 sent., method    ] 2 Setting and notation Data and parameters
+P06  [7 sent., method    ] 3 Part A: Brownian motion and random walks Brownian motion and the scaled random walk
+P07  [6 sent., method    ] 3 Part A: Brownian motion and random walks How the paths were simulated
+P08  [7 sent., result    ] 3 Part A: Brownian motion and random walks Result: sample paths
+P09  [7 sent., result    ] 3 Part A: Brownian motion and random walks Result: quadratic and total variation
+P10  [7 sent., result    ] 3 Part A: Brownian motion and random walks Result: distance between the terminal laws
+P11  [7 sent., result    ] 3 Part A: Brownian motion and random walks Result: the running maximum and the reflection principle
+P12  [8 sent., derivation] 4.1 CRR model          The CRR lattice and the risk-neutral probability
+P13  [7 sent., derivation] 4.1 CRR model          Why the tree converges and why its error oscillates
+P14  [8 sent., derivation] 4.2 GBM and simulation Geometric Brownian motion and its discretisations
+P15  [7 sent., derivation] 4.3 Black-Scholes benchmark The Black-Scholes formula and the Greeks
+P16  [7 sent., result    ] 4.4 Results            Result: sample paths in the tree and in GBM
+P17  [7 sent., result    ] 4.4 Results            Result: binomial prices against Black-Scholes
+P18  [8 sent., result    ] 4.5 Tree quality       Result: the saw-tooth and the faster trees
+P19  [7 sent., result    ] 4.6 Monte Carlo        Result: Monte Carlo prices by paths and steps
+P20  [7 sent., result    ] 4.6 Monte Carlo        Result: strong and weak order of Euler-Maruyama
+P21  [8 sent., result    ] 4.6 Monte Carlo        Result: variance reduction
+P22  [8 sent., result    ] 4.7 Greeks             Result: Greeks from three routes
+P23  [7 sent., result    ] 4.8 Implied volatility Result: implied volatility of the numerical prices
+P24  [8 sent., result    ] 4.9 Hedging            Result: delta hedging in discrete time
+P25  [7 sent., result    ] 4.9 Hedging            Result: hedging with the wrong volatility
+P26  [7 sent., discussion] 4 Part B summary       What Part B shows about the European call
+P27  [7 sent., derivation] 5.1 Optimal stopping   The American put as an optimal stopping problem
+P28  [9 sent., derivation] 5.1 Optimal stopping   The variational PDE
+P29  [7 sent., derivation] 5.1 Optimal stopping   Smooth fit and hedging
+P30  [8 sent., derivation] 5.2 Perpetual put      The perpetual put in closed form
+P31  [8 sent., method    ] 5.3 CRR tree for the American put The tree with early exercise
+P32  [8 sent., derivation] 5.3 CRR tree for the American put Why the tree solves the variational inequality
+P33  [7 sent., result    ] 5.4 Results            Result: the perpetual put
+P34  [6 sent., result    ] 5.4 Results            Result: a two-step tree worked by hand
+P35  [8 sent., result    ] 5.4 Results            Result: convergence in the number of steps and the exercise boundary
+P36  [7 sent., result    ] 5.4 Results            Result: two sample paths and the delta hedge
+P37  [8 sent., result    ] 5.4 Results            Result: dependence on volatility and interest rate
+P38  [7 sent., result    ] 5.4 Results            Result: long maturities, as first computed
+P39  [8 sent., result    ] 5.4 Results            Result: long maturities with a refined lattice
+P40  [6 sent., result    ] 5.5 Replication check  Result: the replication property in the tree
+P41  [8 sent., result    ] 5.6 Independent validators Result: a finite-difference solver for the variational inequality
+P42  [8 sent., result    ] 5.6 Independent validators Result: least-squares Monte Carlo and the quasi-analytic approximation
+P43  [8 sent., result    ] 5.7 Early-exercise premium Result: the value of the right to exercise early
+P44  [7 sent., result    ] 5.7 Early-exercise premium Result: dividends make early exercise of a call worthwhile
+P45  [8 sent., result    ] 5.7 Early-exercise premium Result: an American put on the NVIDIA inputs
+P46  [8 sent., result    ] 5.8 Profit and loss    Result: the buyer's profit and loss under the pricing measure
+P47  [8 sent., result    ] 5.8 Profit and loss    Result: profit and loss under the real-world measure, and tail risk
+P48  [8 sent., result    ] 5.9 Mis-specified volatility Result: pricing at 20 percent when the realised volatility differs
+P49  [8 sent., result    ] 5.9 Mis-specified volatility Result: the full map of priced against realised volatility
+P50  [7 sent., discussion] 5 Part C summary       What Part C shows about the American put
+P51  [7 sent., result    ] 6 Comparison of methods Result: the European call on one footing
+P52  [7 sent., result    ] 6 Comparison of methods Result: work-precision for the European call
+P53  [7 sent., result    ] 6 Comparison of methods Result: the American put on one footing
+P54  [8 sent., discussion] 6 Comparison of methods Which method for which job
+P55  [7 sent., discussion] 7 Conclusions          Conclusions: the European call and the two languages
+P56  [7 sent., discussion] 7 Conclusions          Conclusions: the American put
+P57  [7 sent., discussion] 7 Conclusions          Limitations and next steps
+P58  [8 sent., derivation] Appendix A: derivations Ito's formula and the solution of GBM
+P59  [7 sent., derivation] Appendix A: derivations The Black-Scholes formula by direct integration
+P60  [8 sent., derivation] Appendix A: derivations The Black-Scholes PDE and the hedging argument
+P61  [8 sent., derivation] Appendix A: derivations Convergence of the CRR tree to geometric Brownian motion
+P62  [9 sent., derivation] Appendix A: derivations Pathwise and likelihood-ratio Greeks
+P63  [8 sent., derivation] Appendix A: derivations The hedging-error identity
+P64  [8 sent., derivation] Appendix A: derivations Least-squares Monte Carlo (Longstaff-Schwartz)
+P65  [8 sent., derivation] Appendix A: derivations The Barone-Adesi-Whaley approximation
+P66  [8 sent., derivation] Appendix A: derivations The hitting-time identity for the perpetual put
+
+Total paragraphs: 67, total draft sentences: 501

@@ -1,0 +1,9 @@
+% P36 | 5.4 Results | Result: two sample paths and the delta hedge
+% guide: dev_notes/paragraph_guides/P36_result_two_sample_paths_and_the_delta_hedge.txt
+Path 1 in Figure~\ref{fig:paths} first enters the exercise region at $t=\PathOneTau$ and is stopped there, whereas Path 2 never enters it and is held to maturity.
+Both paths were selected from a random search with fixed seed to illustrate the two cases.
+Along Path 1 the hedge ratio starts at \DeltaStart\ and moves to \DeltaPathOneEnd\ as the path approaches the boundary, so the replicating portfolio ends up short almost one full share, and the seller of the put holds almost one full share (Figure~\ref{fig:delta}).
+This is the smooth-fit condition seen from the hedger's side: the slope of the value function tends to $-1$ at the boundary.
+Along Path 2 the stock moves away from the strike, the put loses value, and the hedge ratio returns towards $0$ near maturity.
+The hedge for an option that ends out of the money is therefore unwound without ever reaching the exercise region.
+A European put has no such plateau: its hedge ratio stays strictly above $-1$ at every spot and every date.

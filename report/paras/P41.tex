@@ -1,0 +1,10 @@
+% P41 | 5.6 Independent validators | Result: a finite-difference solver for the variational inequality
+% guide: dev_notes/paragraph_guides/P41_result_a_finite_difference_solver_for_the_variat.txt
+We solve the variational inequality~\eqref{eq:VI} on a uniform grid in $\ln x$ with Crank--Nicolson time stepping, started by four implicit half steps to smooth the kink of the payoff.
+The obstacle is enforced by the penalty method, which iterates on the set of nodes where the value is at the payoff, and the exercise boundary is read from that set.
+As a sanity check, the same code without the obstacle reproduces the Black--Scholes European put with an error of \PdeEuErr.
+This tests the grid, the boundary conditions and the time stepping separately from the obstacle.
+Table~\ref{tbl:pde} shows that the PDE price converges to \PdeV, against \TreeRichV\ for the Richardson-extrapolated tree, a difference of \PdeTreeDiff.
+The PDE converges faster than the tree and its finest grid takes about a second.
+Figure~\ref{fig:pdetree} overlays the exercise boundaries of the two methods, and they differ by at most \BoundGap\ for $t<0.97$.
+This is smaller than the spacing of the tree's nodes near the strike, so the two boundaries agree within the resolution of the tree.

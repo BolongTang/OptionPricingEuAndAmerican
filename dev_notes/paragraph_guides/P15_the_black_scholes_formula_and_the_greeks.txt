@@ -1,0 +1,73 @@
+PARAGRAPH P15: The Black-Scholes formula and the Greeks
+==============================================================================
+Where it goes : 4.3 Black-Scholes benchmark  (draft file report/paras/P15.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Gives the closed-form benchmark and the sensitivities that later sections estimate numerically.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader knows the model and the Q-pricing rule. They need the formulas and the plain-language
+meaning of each Greek.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Formula: C = S0 Phi(d1) - K e^{-rT} Phi(d2) with d1, d2; it is the discounted Q-expectation of the lognormal call payoff; the put follows from parity.
+  S3-S4  [2 sentences]  FOCUS: Greeks in closed form: Delta = Phi(d1), Gamma = phi(d1)/(S sigma sqrt T), vega = S phi(d1) sqrt T, rho = K T e^{-rT} Phi(d2), Theta; give the values at the money.
+  S5-S6  [2 sentences]  FOCUS: Meaning of each Greek: delta the hedge ratio, gamma how fast the hedge changes and therefore how large the hedging error is, vega exposure to volatility, theta time decay, rho exposure to the rate.
+  S7  [1 sentence]  FOCUS: Role as benchmark: the Black-Scholes price (macro BSprice) is the reference for every numerical result in Part B.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Evaluating $e^{-rT}\mathbb E^{\mathbb Q}[(S_T-K)^+]$ for the lognormal $S_T$ gives
+  S2. \begin{equation}\label{eq:bs}  C=S_0\Phi(d_1)-Ke^{-rT}\Phi(d_2),\qquad
+      d_{1,2}=\frac{\ln(S_0/K)+(r\pm\frac12\sigma^2)T}{\sigma\sqrt T}, \end{equation} and the put
+      follows from put--call parity $C-P=S_0-Ke^{-rT}$.
+  S3. The sensitivities are $\Delta=\Phi(d_1)$, $\Gamma=\varphi(d_1)/(S_0\sigma\sqrt T)$, $\mathcal
+      V=S_0\varphi(d_1)\sqrt T$, $\rho=KTe^{-rT}\Phi(d_2)$ and
+      $\Theta=-\frac{S_0\varphi(d_1)\sigma}{2\sqrt T}-rKe^{-rT}\Phi(d_2)$, where $\varphi$ is the
+      standard normal density.
+  S4. For the NVIDIA call they take the values $\Delta=\BSdelta$, $\Gamma=\BSgamma$, vega $\BSvega$
+      (that is, \BSvegaPct\ dollars per volatility point), $\Theta=\BStheta$ per year and
+      $\rho=\BSrho$.
+  S5. Delta is the number of shares that hedges the option, gamma measures how quickly that number
+      changes and therefore how large the hedging error is when rebalancing is discrete, and vega is
+      the exposure to the volatility input, which is the least certain one.
+  S6. Theta is the loss of value from the passage of time alone, about \BSthetaDay\ dollars per
+      calendar day at the money, and rho the exposure to the interest rate.
+  S7. The price \$\BSprice\ from Equation~\eqref{eq:bs} is the reference against which every
+      numerical estimate in this part is measured.
+
+NUMBERS USED (LaTeX macro -> value in the last notebook run; they update automatically when the notebook is re-run)
+  \BSdelta  ->  0.6047
+  \BSgamma  ->  0.00427
+  \BSprice  ->  38.7493
+  \BSrho  ->  105.71
+  \BStheta  ->  -20.42
+  \BSthetaDay  ->  -0.056
+  \BSvega  ->  92.01
+  \BSvegaPct  ->  0.920
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equation eq:bs. Figures bs_greeks.pdf (Greeks against spot) and bs_surface.pdf (price and vega
+surfaces).
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+Evaluate: $\mathbb E[(S_T-K)^+]=S_0e^{rT}\Phi(d_1)-K\Phi(d_2)$ with $S_T=S_0e^{(r-\sigma^2/2)T+\sigma\sqrt TZ}$ (complete the square in the Gaussian integral over $\{Z>-d_2\}$).
+Delta: $\partial_SC=\Phi(d_1)$ (the terms from differentiating $d_1,d_2$ cancel: $S\varphi(d_1)=Ke^{-rT}\varphi(d_2)$).
+Gamma: $\partial_S\Phi(d_1)=\varphi(d_1)/(S\sigma\sqrt T)$.  Vega: $\partial_\sigma C=S\varphi(d_1)\sqrt T$.
+
+PITFALLS / DO NOT SAY
+Quote theta per year and per calendar day (divide by 365), not per trading day. Do not mix per-unit
+vega with per-point vega.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Show the numerical pictures, then the tables.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

@@ -1,0 +1,9 @@
+% P16 | 4.4 Results | Result: sample paths in the tree and in GBM
+% guide: dev_notes/paragraph_guides/P16_result_sample_paths_in_the_tree_and_in_gbm.txt
+Figure~\ref{fig:binpaths} shows five stock paths and five option-value paths in the tree with $N=100$, simulated with the risk-neutral probability $p$.
+The stock paths fan out like a random walk with drift $r$, and at this resolution the lattice is no longer visible.
+The option value follows the stock but is a convex function of it, so it moves faster than the stock when the call is in the money and flattens when it is out of the money.
+Every path of the option value ends at the payoff $(S_T-K)^+$.
+Figure~\ref{fig:gbm} compares Euler--Maruyama with the exact solution for the same random numbers and $N=2000$ steps.
+The two panels are indistinguishable by eye, and the largest difference between a pair of paths is about a dollar on a price of $\$240$.
+These figures say nothing about the accuracy of prices, which is the subject of the tables that follow.

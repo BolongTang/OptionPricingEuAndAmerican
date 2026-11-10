@@ -1,0 +1,74 @@
+PARAGRAPH P00: Abstract
+==============================================================================
+Where it goes : Abstract  (draft file report/paras/P00.tex, pulled into report/main.tex with \input)
+Type          : intro
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Summarises the whole report for a reader who will read nothing else. Every sentence carries a result
+or a decision, and no sentence needs a reference to be understood.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+No notation is assumed; the reader knows what a European and an American option are. Numbers must
+match the body (they are macros, so they do).
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1  [1 sentence]  FOCUS: What is studied: discrete-time (binomial tree) and continuous-time (Brownian motion, PDE) models for pricing and hedging, tested on a one-year European call on NVIDIA and an American put.
+  S2-S3  [2 sentences]  FOCUS: Part A result: a scaled random walk converges to Brownian motion; the terminal law at rate N^{-1/2} with exact constant, path functionals such as the running maximum converge at the same slow rate.
+  S4-S5  [2 sentences]  FOCUS: Part B result: the CRR tree and Monte Carlo against Black-Scholes: tree error at 10,000 steps, Monte Carlo standard error at 500,000 paths, and what the faster trees and variance reduction buy.
+  S6-S7  [2 sentences]  FOCUS: Part C result: the American put tree confirmed by a finite-difference solver of the variational inequality and by least-squares Monte Carlo; early-exercise premium; American put on the NVDA inputs.
+  S8  [1 sentence]  FOCUS: Risk: daily delta hedging leaves a standard deviation of about (macro HedgeSDdailyPct) percent of the premium, and pricing with the wrong volatility distorts the exercise rule asymmetrically, with early exercise costing much more than late exercise.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. We compare discrete-time and continuous-time models for pricing and hedging options on two
+      problems: a one-year at-the-money European call on NVIDIA and an American put.
+  S2. A scaled symmetric random walk converges to Brownian motion, with a Kolmogorov distance at the
+      terminal time that falls like $N^{-1/2}$ with the exact constant \KSconst.
+  S3. Path functionals such as the running maximum converge at the same slow rate, which is why
+      discretely monitored barriers need a correction.
+  S4. The CRR tree reaches the Black--Scholes price of \$\BSprice\ to within \$\CRRtenkErr\ at
+      $N=10{,}000$ steps, whereas the Euler--Maruyama Monte Carlo price has a standard error of
+      \$\MCbestSE\ at $5\cdot10^5$ paths.
+  S5. A Leisen--Reimer tree with only 101 steps is accurate to \$\DeskLrErr, and a control variate
+      reduces the Monte Carlo variance by a factor of \VRcv.
+  S6. For the American put, a CRR tree, a finite-difference solver for the variational inequality
+      and least-squares Monte Carlo agree on a value of about \TreeRichV\ for the baseline contract,
+      and the early-exercise premium is \EEPatmPct\% of the European put at the money.
+  S7. On the NVIDIA inputs the American put is worth \$\NvdaPutAm, \NvdaPutEEPpct\% more than the
+      European put.
+  S8. Daily delta hedging of the call leaves a hedging error with a standard deviation of
+      \HedgeSDdailyPct\% of the premium, and a wrong volatility distorts the American exercise rule
+      asymmetrically: exercising too early costs about twenty times as much as exercising too late
+      in our worst cases.
+
+NUMBERS USED (LaTeX macro -> value in the last notebook run; they update automatically when the notebook is re-run)
+  \BSprice  ->  38.7493
+  \CRRtenkErr  ->  0.0009
+  \DeskLrErr  ->  0.0002
+  \EEPatmPct  ->  2.5
+  \HedgeSDdailyPct  ->  4.9
+  \KSconst  ->  0.399
+  \MCbestSE  ->  0.096
+  \NvdaPutAm  ->  32.5674
+  \NvdaPutEEPpct  ->  2.03
+  \TreeRichV  ->  0.71108
+  \VRcv  ->  7.7
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+No references; the abstract is the only place where a number is quoted without its table.
+
+PITFALLS / DO NOT SAY
+The 'twenty times' comes from the ratio of the two corners of the mis-specification map (0.326 to
+0.017); re-check it. Do not include the NVDA date in the abstract; it belongs in Section 2.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+None: the introduction starts on a new section.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Write as the author talking to a reader who knows basic probability but not this project. Open with
+the concrete problem, not with a definition. Avoid lists of three adjectives and avoid sentences
+that only announce what the next sentence will say.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

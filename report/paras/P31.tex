@@ -1,0 +1,13 @@
+% P31 | 5.3 CRR tree for the American put | The tree with early exercise
+% guide: dev_notes/paragraph_guides/P31_the_tree_with_early_exercise.txt
+With $\Delta t=T/M_{bin}$, the CRR parameters of Section~\ref{sec:B} and $V_{M,i}=(K-S_{M,i})^+$, the American put is priced by
+\begin{equation}\label{eq:crr}
+ V_{j,i}=\max\Big\{(K-S_{j,i})^+,\;e^{-r\Delta t}\big(p\,V_{j+1,i+1}+(1-p)\,V_{j+1,i}\big)\Big\},
+\end{equation}
+where the first term is the value of exercising now and the second the value of waiting.
+The exercise boundary $b(t_j)$ is the largest node at which exercising is strictly better than waiting, with a tolerance of $10^{-12}$ so that ties are resolved in favour of waiting.
+The tolerance matters for $r=0$, where exercise and continuation coincide deep in the money, and because the nodes of a CRR tree alternate between two grids on odd and even layers the boundary is plotted on even layers only.
+The hedge at node $(j,i)$ is the ratio $\Delta_{j,i}=\frac{V_{j+1,i+1}-V_{j+1,i}}{S_{j+1,i+1}-S_{j+1,i}}$ of the changes in option value and stock price over one step.
+The optimal stopping time of a simulated path is the first date at which the path lies in the exercise region, and it is held to maturity if it never does.
+The class \texttt{CRRTree} extends \texttt{CRRBinomialModel} of Section~\ref{sec:B}: it adds the American recursion, a vectorised simulation of paths and the stopping rule, and inherits the lattice.
+The base class counts maturity in trading days, so the subclass passes \texttt{days=round(252*T)}, and each layer of the recursion is evaluated with array operations.

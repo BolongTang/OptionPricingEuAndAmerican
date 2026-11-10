@@ -1,0 +1,13 @@
+% P32 | 5.3 CRR tree for the American put | Why the tree solves the variational inequality
+% guide: dev_notes/paragraph_guides/P32_why_the_tree_solves_the_variational_inequality.txt
+We show that, in the continuation region, one step of the recursion reproduces the PDE as $\Delta t\to0$.
+Write $y=\sigma\sqrt{\Delta t}$ so that $u=e^y$ and expand the value function at the two successor nodes.
+A Taylor expansion to order $\Delta t$ gives the two successor values
+\begin{align}
+V(t+\Delta t,xu)&=V+V_t\Delta t+V_x\,x\big(\sigma\sqrt{\Delta t}+\tfrac12\sigma^2\Delta t\big)+\tfrac12V_{xx}x^2\sigma^2\Delta t+\dots\\
+V(t+\Delta t,xd)&=V+V_t\Delta t+V_x\,x\big(-\sigma\sqrt{\Delta t}+\tfrac12\sigma^2\Delta t\big)+\tfrac12V_{xx}x^2\sigma^2\Delta t+\dots
+\end{align}
+From $pu+(1-p)d=e^{r\Delta t}$ one obtains $2p-1=\frac{(r-\frac12\sigma^2)\sqrt{\Delta t}}{\sigma}+o(\sqrt{\Delta t})$.
+Hence the $\sqrt{\Delta t}$-terms contribute $(r-\tfrac12\sigma^2)x\,\Delta t\,V_x$, the $\tfrac12\sigma^2\Delta t\,xV_x$ terms complete this to $rxV_x\Delta t$, and $pV_u+(1-p)V_d=V+\big(V_t+rxV_x+\tfrac12\sigma^2x^2V_{xx}\big)\Delta t+o(\Delta t)$.
+Multiplying by $e^{-r\Delta t}=1-r\Delta t+\dots$ and requiring the right-hand side of Equation~\eqref{eq:crr} to equal $V$ gives $(\mathcal L-r)V=0$ in the continuation region, while in the stopping region the maximum sets $V=K-x$.
+Complementarity is therefore automatic, the tree is an explicit finite-difference scheme for the variational inequality~\eqref{eq:VI}, and both give the same price as $M_{bin}\to\infty$.

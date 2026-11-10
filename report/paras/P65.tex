@@ -1,0 +1,14 @@
+% P65 | Appendix A: derivations | The Barone-Adesi-Whaley approximation
+% guide: dev_notes/paragraph_guides/P65_the_barone_adesi_whaley_approximation.txt
+Write the American put as $P_A=P_E+\varepsilon$, the European put plus the early-exercise premium.
+Both $P_A$ and $P_E$ satisfy the Black--Scholes PDE in the continuation region, hence so does $\varepsilon$.
+Barone-Adesi and Whaley set $\varepsilon=\kappa(T)f(S)$ with $\kappa=1-e^{-rT}$ and neglect a term that is small, which turns the PDE into an Euler equation $S^2f''+NSf'-\frac{M}{\kappa}f=0$ with $M=2r/\sigma^2$ and $N=2(r-q)/\sigma^2$.
+Its decaying solution is a power of the spot, $f=A_1S^{q_1}$, where $q_1=\tfrac12\big[-(N-1)-\sqrt{(N-1)^2+4M/\kappa}\big]<0$.
+Value matching and smooth fit at the critical price $S^{**}$ then fix both $S^{**}$ and $A_1$.
+The result is
+\begin{equation}
+P_A(S)=P_E(S)+A_1\Big(\frac S{S^{**}}\Big)^{q_1}\ (S>S^{**}),\qquad A_1=-\frac{S^{**}}{q_1}\Big[1-e^{(b-r)T}\Phi\big(-d_1(S^{**})\big)\Big],
+\end{equation}
+where $S^{**}$ solves $K-S^{**}=P_E(S^{**})-\big[1-e^{(b-r)T}\Phi(-d_1(S^{**}))\big]S^{**}/q_1$ and $b=r-q$.
+The neglected term vanishes only if $\kappa$ were constant in time, so the approximation degrades as the maturity grows, as Table~\ref{tbl:baw} shows.
+The formula also has a single critical price, whereas the true boundary depends on time, which is why it is best at short and medium maturities.

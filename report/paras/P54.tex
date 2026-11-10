@@ -1,0 +1,10 @@
+% P54 | 6 Comparison of methods | Which method for which job
+% guide: dev_notes/paragraph_guides/P54_which_method_for_which_job.txt
+For a vanilla European option the closed form is the answer when it exists, and otherwise a Leisen--Reimer tree or a smoothed and extrapolated CRR tree is faster and more accurate than any simulation.
+Monte Carlo serves there only as an independent cross-check.
+For an American option on one underlying a CRR tree with Richardson extrapolation delivers the price, the exercise boundary and the hedge in tens of milliseconds, and a PDE solver is the better choice when high accuracy is needed.
+The Barone--Adesi--Whaley formula is good enough for screening and for initialising a root-finder.
+For path-dependent payoffs or several underlyings, Monte Carlo with variance reduction is the default, with a regression step such as Longstaff--Schwartz if early exercise is allowed.
+The cost of a tree or a grid grows exponentially with the dimension and rules them out beyond two or three underlyings.
+Sensitivities come from the same lattice or grid as the price where possible, and from pathwise or likelihood-ratio estimators in Monte Carlo.
+A stress of the volatility input is more informative than any refinement of the numerics, because in both parts of this report the effect of a wrong volatility dwarfs the numerical error of a reasonable method.

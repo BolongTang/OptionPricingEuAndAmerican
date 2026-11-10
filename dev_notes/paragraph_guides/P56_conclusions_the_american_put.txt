@@ -1,0 +1,52 @@
+PARAGRAPH P56: Conclusions: the American put
+==============================================================================
+Where it goes : 7 Conclusions  (draft file report/paras/P56.tex, pulled into report/main.tex with \input)
+Type          : discussion
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+States what Part C establishes about early exercise, the variational PDE and the risk of a wrong
+volatility.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+No new numbers. The reader has the whole of Part C.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Theory and numerics agree: the tree is an explicit scheme for the variational inequality and three independent methods give the same price; the perpetual put is the limit of the long-dated put, and a coarse lattice can produce an artefact that looks like a counterexample.
+  S3-S4  [2 sentences]  FOCUS: Economics of early exercise: the premium is a few percent at the money and larger deep in the money; it needs a positive interest rate for puts and a dividend for calls; the boundary falls with volatility and rises with the rate.
+  S5-S6  [2 sentences]  FOCUS: Risk: the buyer's profit under the real-world measure depends on the drift while the price does not; the cost of a wrong volatility is asymmetric, with early exercise much more costly than late exercise.
+  S7  [1 sentence]  FOCUS: Practical consequence: monitor the volatility input and the exercise rule together, since an error in the first propagates into the second.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. The CRR tree is an explicit finite-difference scheme for the variational inequality, and the
+      tree, a finite-difference solver and least-squares Monte Carlo agree on the price of the
+      American put.
+  S2. The perpetual put is the limit of the long-dated put, and the one case that seemed to
+      contradict this, a thousand-year maturity on a coarse lattice, was an artefact of the lattice.
+  S3. Early exercise adds a few percent at the money and more deep in the money, and it needs a
+      positive interest rate for a put and a dividend for a call.
+  S4. The boundary falls when volatility rises and rises when the interest rate rises, which is what
+      the cost and the value of waiting predict.
+  S5. The price does not depend on the real-world drift but the buyer's expected profit does, and a
+      seller who does not hedge carries that dependence.
+  S6. A wrong volatility corrupts the exercise rule, and the loss is asymmetric: exercising too
+      early costs much more than exercising too late.
+  S7. In practice the volatility input and the exercise rule should be monitored together, because
+      an error in the first propagates into the second.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+No new references.
+
+PITFALLS / DO NOT SAY
+Do not claim that the three methods are 'independent' without the caveat in the PDE paragraph.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+State the limits.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+State a claim you would defend to a practitioner, give the evidence in one or two numbers, then say
+where it stops being true. Prefer a concrete recommendation to a summary of what was done.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

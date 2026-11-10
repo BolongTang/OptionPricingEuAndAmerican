@@ -1,0 +1,13 @@
+% P12 | 4.1 CRR model | The CRR lattice and the risk-neutral probability
+% guide: dev_notes/paragraph_guides/P12_the_crr_lattice_and_the_risk_neutral_probability.txt
+Divide $[0,T]$ into $N$ steps of length $\Delta t=T/N$ and let the stock move in each step to $uS$ or $dS$ with $u=e^{\sigma\sqrt{\Delta t}}$ and $d=1/u$, so that after $j$ steps with $i$ up-moves the price is $S_{j,i}=S_0u^{2i-j}$.
+Because $ud=1$ the tree recombines, layer $j$ has only $j+1$ nodes, and the choice of $u$ makes the variance of the one-step log-return equal to $\sigma^2\Delta t$.
+No arbitrage forces the discounted stock to be a martingale under the pricing probability $p$ of an up-move, $S=e^{-r\Delta t}\big(p\,uS+(1-p)\,dS\big)$, which is solved by
+\begin{equation}\label{eq:crrp}
+ p=\frac{e^{r\Delta t}-d}{u-d},\qquad 0<p<1\iff d<e^{r\Delta t}<u,
+\end{equation}
+and the second condition holds for all small enough $\Delta t$.
+To see why this is also a hedging price, choose a number of shares $\Delta$ and a bond holding $B$ with $\Delta uS+Be^{r\Delta t}=V_u$ and $\Delta dS+Be^{r\Delta t}=V_d$; subtracting gives $\Delta=\frac{V_u-V_d}{(u-d)S}$.
+Substituting $p$ shows that the cost $\Delta S+B$ of this portfolio equals $e^{-r\Delta t}\big(pV_u+(1-p)V_d\big)$, so the price and the hedge are the same calculation.
+The option tree is filled backward from the payoff $V_{N,i}=(S_{N,i}-K)^+$ with $V_{j,i}=e^{-r\Delta t}\big(pV_{j+1,i+1}+(1-p)V_{j+1,i}\big)$, and the price is $V_{0,0}$.
+The class \texttt{CRRBinomialModel} stores every node, which costs $O(N^2)$ time and memory and is ideal for drawing trees and sample paths, whereas the vectorised pricer added for the experiments produces identical prices with $O(N)$ memory.

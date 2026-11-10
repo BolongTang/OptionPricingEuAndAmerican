@@ -1,0 +1,9 @@
+% P52 | 6 Comparison of methods | Result: work-precision for the European call
+% guide: dev_notes/paragraph_guides/P52_result_work_precision_for_the_european_call.txt
+Figure~\ref{fig:workprecision} plots the error of each method against the CPU time it uses, on logarithmic axes.
+The tree errors fall with slope about $-1$ (CRR) or $-2$ (Leisen--Reimer) in the number of steps, the Monte Carlo standard errors fall with slope $-\tfrac12$ in the time, and the Sobol points have a much steeper slope because the integral is one-dimensional.
+To bring the error below \$\WPtol, plain CRR needs $N=\WPcrrN$ steps and \WPcrrMs\ ms, CRR with smoothing and Richardson needs $N=\WPsmN$ and \WPsmMs\ ms, and the Leisen--Reimer tree needs $N=\WPlrN$ and \WPlrMs\ ms.
+The gap between the first and the last is therefore a factor of several hundred in time.
+Plain Monte Carlo needs about $\WPmcM$ samples for a standard error of \$\WPtol, which is about \WPmcSec\ seconds by extrapolation, and the control variate needs about \WPcvSec\ seconds.
+Scrambled Sobol points reach the same accuracy with \WPsobolM\ points in a few milliseconds.
+This ranking is specific to a one-dimensional European payoff, and it reverses for many underlyings or for path-dependent payoffs, where lattices become infeasible and Monte Carlo keeps its rate.

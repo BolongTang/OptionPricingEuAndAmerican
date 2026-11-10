@@ -1,0 +1,59 @@
+PARAGRAPH P63: The hedging-error identity
+==============================================================================
+Where it goes : Appendix A: derivations  (draft file report/paras/P63.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Derives Equation gammapnl, which explains the numbers of Tables hedgefreq and hedgewrong.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the Black-Scholes PDE (Appendix C). The seller prices and hedges with volatility
+sigma_h; the stock has volatility sigma_r.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Set-up: V solves the BS PDE with sigma_h; the stock follows dS = mu S dt + sigma_r S dW; the seller holds Delta = V_S.
+  S3-S4  [2 sentences]  FOCUS: Ito for the discounted option value under the true dynamics: d(e^{-rt}V) = e^{-rt}[(V_t + mu S V_S + (1/2) sigma_r^2 S^2 V_SS - rV) dt + sigma_r S V_S dW].
+  S5-S6  [2 sentences]  FOCUS: Use the PDE: V_t = rV - rS V_S - (1/2) sigma_h^2 S^2 V_SS, so the dt-coefficient equals (mu - r) S V_S + (1/2)(sigma_r^2 - sigma_h^2) S^2 V_SS.
+  S7-S8  [2 sentences]  FOCUS: Subtract: d(e^{-rt}V) - Delta d(e^{-rt}S) = e^{-rt}(1/2)(sigma_r^2 - sigma_h^2) S^2 Gamma dt; integrate and change sign to get the seller's profit epsilon.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Let $V(t,S)$ solve the Black--Scholes PDE~\eqref{eq:bspde} with hedging volatility $\sigma_h$,
+      and let the stock follow $dS=\mu S\,dt+\sigma_rS\,dW$ with realised volatility $\sigma_r$.
+  S2. The seller receives $V(0,S_0)$ and holds $\Delta_t=V_S(t,S_t)$ shares.
+  S3. It\^o's formula for the discounted value under the true dynamics gives
+  S4. \begin{equation} d\big(e^{-rt}V\big)=e^{-rt}\Big[\big(V_t+\mu
+      SV_S+\tfrac12\sigma_r^2S^2V_{SS}-rV\big)dt+\sigma_rSV_S\,dW\Big]. \end{equation}
+  S5. Substituting $V_t=rV-rSV_S-\tfrac12\sigma_h^2S^2V_{SS}$ from the PDE turns the coefficient of
+      $dt$ into $(\mu-r)SV_S+\tfrac12(\sigma_r^2-\sigma_h^2)S^2V_{SS}$.
+  S6. The first term is exactly the drift of the hedge: the gain from holding $\Delta=V_S$ shares is
+      $\Delta\,d(e^{-rt}S)=e^{-rt}V_S\big((\mu-r)S\,dt+\sigma_rS\,dW\big)$.
+  S7. Subtracting the gains from the change in value leaves
+      $d(e^{-rt}V)-\Delta\,d(e^{-rt}S)=e^{-rt}\tfrac12(\sigma_r^2-\sigma_h^2)S^2\Gamma\,dt$, with
+      $\Gamma=V_{SS}$.
+  S8. Integrating from $0$ to $T$ and using $V(T,S_T)=(S_T-K)^+$, the seller's discounted profit is
+      $\varepsilon=\int_0^Te^{-rt}\tfrac12(\sigma_h^2-\sigma_r^2)S_t^2\Gamma_t\,dt$, which is
+      Equation~\eqref{eq:gammapnl}.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equations eq:bspde, eq:gammapnl; Tables tbl:hedgefreq, tbl:hedgewrong.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+Zero if $\sigma_r=\sigma_h$ (continuous hedging). Weight $S^2\Gamma=S\,\varphi(d_1)/(\sigma_h\sqrt{T-t})$ is largest at the money and near maturity.
+Discrete hedging: the Taylor remainder of order $(\Delta S)^3$ and the term $\tfrac12\Gamma S^2((\Delta W)^2-\sigma^2\Delta t)$ give $\operatorname{sd}(\varepsilon)\propto\sqrt{\Delta t}$.
+
+PITFALLS / DO NOT SAY
+The identity is exact only in continuous time; in discrete time the same expression is the leading
+term.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Appendix G describes the regression Monte Carlo algorithm.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

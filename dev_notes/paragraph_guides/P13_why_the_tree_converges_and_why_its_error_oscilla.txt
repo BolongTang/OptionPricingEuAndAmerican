@@ -1,0 +1,62 @@
+PARAGRAPH P13: Why the tree converges and why its error oscillates
+==============================================================================
+Where it goes : 4.1 CRR model  (draft file report/paras/P13.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 7 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Explains the order of convergence and the saw-tooth, because the numerical tables of Section 4.4
+cannot be understood without them.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the tree. They know the central limit theorem and that a call payoff has a kink at
+the strike.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Convergence to GBM: ln S_N is a sum of N independent steps +/- sigma sqrt(dt) with drift, so by the CLT it tends to the normal law with mean ln S0 + (r - sigma^2/2)T and variance sigma^2 T, i.e. the GBM law.
+  S3-S4  [2 sentences]  FOCUS: Order of convergence: the error is of order 1/N, i.e. first order, but not monotone: it carries a factor (-1)^N because of the kink.
+  S5-S6  [2 sentences]  FOCUS: Four remedies: averaging N and N+1; Broadie-Detemple smoothing (replace the last layer by the Black-Scholes value of one step); Richardson extrapolation 2V_{2N} - V_N; the Leisen-Reimer tree, centred on the strike, of order 1/N^2.
+  S7  [1 sentence]  FOCUS: Why it matters for the rest of the report: early exercise needs a lattice, so the plain CRR tree is kept for Part C and the accelerations are used only where exercise is European.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. The terminal log-price of the tree is $\ln S_0+\sigma\sqrt{\Delta t}\,(2B-N)$ with
+      $B\sim\mathrm{Bin}(N,p)$, a sum of $N$ independent steps.
+  S2. By the central limit theorem it converges to a normal law with mean $\ln
+      S_0+(r-\tfrac12\sigma^2)T$ and variance $\sigma^2T$, which is the law of $\ln S_T$ under
+      geometric Brownian motion, so the tree price converges to the Black--Scholes price.
+  S3. The error of the tree price is of order $1/N$, but it is not monotone in $N$.
+  S4. With $K=S_0$ a terminal node sits exactly at the strike when $N$ is even and the kink falls
+      half-way between two nodes when $N$ is odd, so the error behaves like $(-1)^Nc/N$ rather than
+      $c/N$.
+  S5. Four standard remedies are compared in Section~\ref{sec:B-quality}: averaging the prices for
+      $N$ and $N+1$ steps; Broadie--Detemple smoothing, which replaces the last layer by the Black--
+      Scholes value of the one-step claim; Richardson extrapolation $2V_{2N}-V_N$; and the Leisen--
+      Reimer tree, which is built so that the strike coincides with a node boundary.
+  S6. The first three remove the oscillation and the Leisen--Reimer tree additionally raises the
+      order of convergence from one to two.
+  S7. Accelerations that use a closed form at the last step apply only to European payoffs, so for
+      the American put of Part C we keep the plain CRR lattice and control the error by refinement
+      and extrapolation.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Figures crr_sawtooth.pdf and tree_variants.pdf (shown in Section 4.5).
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+Terminal log price: $\ln S_N=\ln S_0+\sigma\sqrt{\Delta t}\,(2B-N)$, $B\sim\mathrm{Bin}(N,p)$.
+Mean: $N\sigma\sqrt{\Delta t}(2p-1)\to(r-\tfrac12\sigma^2)T$ because $2p-1=\dfrac{(r-\frac12\sigma^2)\sqrt{\Delta t}}{\sigma}+o(\sqrt{\Delta t})$; variance $\to\sigma^2T$.
+Leisen-Reimer: $p=h(d_2)$, $p^*=h(d_1)$ with the Peizer-Pratt inversion $h$; $u=e^{r\Delta t}p^*/p$, $d=(e^{r\Delta t}-pu)/(1-p)$.
+
+PITFALLS / DO NOT SAY
+Do not state the saw-tooth constant here; it is a result (next sections).
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Switch to the continuous-time side: GBM.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

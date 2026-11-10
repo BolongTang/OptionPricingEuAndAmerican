@@ -1,0 +1,9 @@
+% P11 | 3 Part A: Brownian motion and random walks | Result: the running maximum and the reflection principle
+% guide: dev_notes/paragraph_guides/P11_result_the_running_maximum_and_the_reflection_pr.txt
+For a Brownian motion the reflection principle gives $\mathbb P(\max_{s\le1}W_s\ge a)=2\,(1-\Phi(a))$.
+For the simple symmetric walk the same argument works exactly on the lattice and gives $\mathbb P(\max_{n\le N}S_n\ge k)=\mathbb P(S_N\ge k)+\mathbb P(S_N>k)$.
+Figure~\ref{fig:runmax} shows that the survival function of the walk's maximum lies below the Brownian one, with a largest gap of \MaxGapTen\ at $N_2=10$ and \MaxGapTwoHundred\ at $N_2=200$.
+The gap shrinks only like $N_2^{-1/2}$, the same slow rate as for the terminal law.
+A discrete walk can cross a level only at a monitoring date, so it misses the excursions that happen between dates and its maximum is biased downwards.
+The same bias appears whenever a path-dependent payoff is computed on a lattice or on a simulated grid.
+For a barrier option this means that a tree or a simulation overstates the value of a knock-out and understates that of a knock-in unless the barrier is shifted by an amount of order $0.58\,\sigma\sqrt{\Delta t}$.

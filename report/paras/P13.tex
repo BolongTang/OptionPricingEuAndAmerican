@@ -1,0 +1,9 @@
+% P13 | 4.1 CRR model | Why the tree converges and why its error oscillates
+% guide: dev_notes/paragraph_guides/P13_why_the_tree_converges_and_why_its_error_oscilla.txt
+The terminal log-price of the tree is $\ln S_0+\sigma\sqrt{\Delta t}\,(2B-N)$ with $B\sim\mathrm{Bin}(N,p)$, a sum of $N$ independent steps.
+By the central limit theorem it converges to a normal law with mean $\ln S_0+(r-\tfrac12\sigma^2)T$ and variance $\sigma^2T$, which is the law of $\ln S_T$ under geometric Brownian motion, so the tree price converges to the Black--Scholes price.
+The error of the tree price is of order $1/N$, but it is not monotone in $N$.
+With $K=S_0$ a terminal node sits exactly at the strike when $N$ is even and the kink falls half-way between two nodes when $N$ is odd, so the error behaves like $(-1)^Nc/N$ rather than $c/N$.
+Four standard remedies are compared in Section~\ref{sec:B-quality}: averaging the prices for $N$ and $N+1$ steps; Broadie--Detemple smoothing, which replaces the last layer by the Black--Scholes value of the one-step claim; Richardson extrapolation $2V_{2N}-V_N$; and the Leisen--Reimer tree, which is built so that the strike coincides with a node boundary.
+The first three remove the oscillation and the Leisen--Reimer tree additionally raises the order of convergence from one to two.
+Accelerations that use a closed form at the last step apply only to European payoffs, so for the American put of Part C we keep the plain CRR lattice and control the error by refinement and extrapolation.

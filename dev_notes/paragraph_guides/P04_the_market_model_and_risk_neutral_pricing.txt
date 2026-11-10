@@ -1,0 +1,62 @@
+PARAGRAPH P04: The market model and risk-neutral pricing
+==============================================================================
+Where it goes : 2 Setting and notation  (draft file report/paras/P04.tex, pulled into report/main.tex with \input)
+Type          : method
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Fixes the model, the measure change and the pricing principle that every later section uses.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader knows stochastic calculus at the level of It\^o's formula. Everything else (risk-neutral
+measure, completeness) must be stated briefly with the reason it holds.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: The model: a bond B_t = e^{rt} and a stock with dS_t = mu S_t dt + sigma S_t dW_t under the real-world measure P. Display this as an equation.
+  S3-S4  [2 sentences]  FOCUS: Pricing measure: under Q the drift becomes r, the discounted stock e^{-rt}S_t is a martingale, and the price of a claim is the discounted expectation of its payoff.
+  S5-S6  [2 sentences]  FOCUS: Assumptions: constant sigma and r, no dividends, no transaction costs, continuous trading. State that these are the textbook assumptions and which later section relaxes which.
+  S7-S8  [2 sentences]  FOCUS: Completeness: with one stock and one bond the market is complete, so Q is unique and every claim can be replicated, which is what turns a price into a hedge.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. The market has a bond $B_t=e^{rt}$ and a stock whose price follows, under the real-world
+      measure $\mathbb P$,
+  S2. \begin{equation}\label{eq:gbm}  dS_t=\mu S_t\,dt+\sigma S_t\,dW_t, \end{equation} where $W$ is
+      a Brownian motion, $\mu$ is the real-world drift and $\sigma$ the volatility.
+  S3. Under the risk-neutral measure $\mathbb Q$ the drift $\mu$ is replaced by $r$, so that
+      $e^{-rt}S_t$ is a martingale, and the arbitrage-free price at time $0$ of a European claim
+      paying $h(S_T)$ is $e^{-rT}\mathbb E^{\mathbb Q}[h(S_T)]$.
+  S4. The drift $\mu$ therefore plays no role in pricing; it matters only when we simulate profit
+      and loss under $\mathbb P$ in Section~\ref{sec:C}.
+  S5. We assume a constant volatility and interest rate, no dividends, no transaction costs and
+      trading in continuous time, which are the textbook assumptions and are violated in real
+      markets in ways that Section~\ref{sec:concl} lists.
+  S6. Dividends are introduced in Section~\ref{sec:div} and discrete trading in
+      Section~\ref{sec:hedge}.
+  S7. With one stock driven by one Brownian motion and one bond the market is complete, so $\mathbb
+      Q$ is unique and every claim is replicable by a self-financing portfolio.
+  S8. This is what makes the price of an option the cost of its hedge, and it is the principle
+      behind the hedging experiments of Sections~\ref{sec:hedge} and~\ref{sec:replication}.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Equation eq:gbm. Labels sec:div, sec:hedge, sec:replication.
+
+DERIVATION / LATEX MATERIAL (use as the skeleton of the displayed equations)
+Discounted price: $\tilde S_t=e^{-rt}S_t$. Ito: $d\tilde S_t=\tilde S_t(\mu-r)\,dt+\sigma\tilde S_t\,dW_t$.
+Girsanov: $W^{\mathbb Q}_t=W_t+\frac{\mu-r}{\sigma}t$ is a Q-Brownian motion, hence $d\tilde S_t=\sigma\tilde S_t\,dW^{\mathbb Q}_t$ (martingale).
+Price: $V_0=e^{-rT}\mathbb E^{\mathbb Q}[h(S_T)]$.
+
+PITFALLS / DO NOT SAY
+Do not say the market 'is' complete in reality; it is complete in the model. Do not introduce the
+Greeks here.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+Next paragraph gives the numbers used.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Write what you did and why you chose it, in the first person plural or passive as your field
+prefers. Name the object (class, function, scheme) in the sentence where it first matters. Every
+formula must be introduced by one sentence in words and followed by what it means for the numbers.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

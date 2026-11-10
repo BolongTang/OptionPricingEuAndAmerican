@@ -1,0 +1,9 @@
+% P01 | 1 Introduction | Motivation: why numerical option pricing
+% guide: dev_notes/paragraph_guides/P01_motivation_why_numerical_option_pricing.txt
+Option prices are needed continuously, for thousands of contracts at a time, both to quote them and to measure the risk of a book.
+A closed-form price exists only for the simplest contracts, so in practice trees, Monte Carlo simulation and PDE solvers do most of the work, and each of them trades accuracy against computing time.
+These methods come from two modelling languages: a discrete-time language, in which the stock follows a random walk on a lattice, and a continuous-time language, in which it follows a geometric Brownian motion.
+The two languages describe the same market in the limit of small time steps, so the useful question is not whether they agree but how quickly, and at what computational price.
+We study two contracts that stress the methods in different ways.
+The European call on NVIDIA has a closed-form Black--Scholes price and is therefore a clean benchmark, whereas the American put has no closed form because its holder may exercise at any time and the optimal exercise boundary has to be found together with the price.
+The question we answer is a practical one: which method should be used for which job, given measured errors and measured run times?

@@ -1,0 +1,57 @@
+PARAGRAPH P66: The hitting-time identity for the perpetual put
+==============================================================================
+Where it goes : Appendix A: derivations  (draft file report/paras/P66.tex, pulled into report/main.tex with \input)
+Type          : derivation
+Length        : 8 sentences (target range 6-9). The sentence plan below sums to exactly this number.
+
+ROLE IN THE ARGUMENT
+Proves the one identity that the second derivation of the perpetual put relied on, E[e^{-r tau_b}] =
+(b/x)^beta.
+
+CONTEXT THE READER ALREADY HAS / WHAT YOU MUST ESTABLISH
+The reader has the perpetual-put derivation of Section 5.2 and the optional stopping theorem.
+
+SENTENCE PLAN (write in this order; the numbers in brackets are sentence counts)
+  S1-S2  [2 sentences]  FOCUS: Claim: for GBM started at x > b and tau_b the first time the price hits b, E[e^{-r tau_b}] = (b/x)^beta with beta = 2r/sigma^2.
+  S3-S4  [2 sentences]  FOCUS: Martingale: M_t = e^{-rt} S_t^{-beta} is a martingale because x^{-beta} solves (1/2) sigma^2 x^2 f'' + r x f' - r f = 0; apply Ito and check that the dt-coefficient vanishes.
+  S5-S6  [2 sentences]  FOCUS: Optional stopping: before tau_b the price is at least b, so M is bounded by b^{-beta} and optional stopping applies: x^{-beta} = E[M_{tau_b}] = b^{-beta} E[e^{-r tau_b}].
+  S7-S8  [2 sentences]  FOCUS: Consequence: the value of exercising at the first time the price falls to b is (K - b)(b/x)^beta; maximising over b gives the perpetual boundary S*.
+
+DRAFT SENTENCES CURRENTLY IN THE TEX FILE (placeholders to rewrite in your own words, one per line)
+  S1. Let $S$ follow geometric Brownian motion with drift $r$ under $\mathbb Q$, start at $x>b$ and
+      let $\tau_b$ be the first time it hits $b$.
+  S2. We claim that $\mathbb E[e^{-r\tau_b}]=(b/x)^{\beta}$ with $\beta=2r/\sigma^2$.
+  S3. The process $M_t=e^{-rt}S_t^{-\beta}$ is a martingale, because $f(x)=x^{-\beta}$ solves
+      $\tfrac12\sigma^2x^2f''+rxf'-rf=0$, which is exactly the statement that the $dt$-coefficient
+      in It\^o's formula for $e^{-rt}f(S_t)$ vanishes.
+  S4. The coefficient is $f\cdot\big[\tfrac12\sigma^2\beta(\beta+1)-r\beta-
+      r\big]=f\cdot(\beta+1)\big(\tfrac12\sigma^2\beta-r\big)=0$.
+  S5. Before $\tau_b$ the price is at least $b$, so $0<M_{t\wedge\tau_b}\le b^{-\beta}$ is bounded
+      and the optional stopping theorem applies.
+  S6. It gives \begin{equation} x^{-\beta}=\mathbb E\big[M_{\tau_b}\big]=b^{-\beta}\,\mathbb
+      E\big[e^{-r\tau_b}\big]\ \Longrightarrow\ \mathbb E\big[e^{-r\tau_b}\big]=(b/x)^{\beta}.
+      \end{equation}
+  S7. On the event $\{\tau_b=\infty\}$ the discount factor $e^{-r\tau_b}$ is zero, so the identity
+      holds without further conditions.
+  S8. It follows that exercising at the first time the price falls to $b$ is worth
+      $(K-b)(b/x)^\beta$, and maximising over $b$ gives the boundary $S^*=\beta K/(\beta+1)$ of
+      Section~\ref{sec:perp}.
+
+FIGURES / TABLES / EQUATIONS TO REFER TO
+Section 5.2 (second derivation).
+
+PITFALLS / DO NOT SAY
+The statement for hitting b from above needs beta > 0, i.e. r > 0. For r = 0 the hitting time is
+finite almost surely and the identity gives 1.
+
+TRANSITION INTO THE NEXT PARAGRAPH
+End of appendix A.
+
+HUMANISING NOTES FOR THIS TYPE OF PARAGRAPH
+Keep the algebra in display equations and the reasoning in the sentences between them. State the
+idea of the derivation before the first line of algebra and state the conclusion after the last.
+Check every step by differentiating or expanding once yourself before you keep the sentence.
+General: vary sentence length (mix a 6-word sentence with a 35-word one), keep one idea per
+sentence, put the hedge where the doubt actually is, and delete any sentence you cannot defend with
+a number, an equation or a reference. If the paragraph ends up outside 6-9 sentences, split or merge
+it rather than padding.

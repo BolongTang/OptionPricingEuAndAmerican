@@ -1,0 +1,13 @@
+% P60 | Appendix A: derivations | The Black-Scholes PDE and the hedging argument
+% guide: dev_notes/paragraph_guides/P60_the_black_scholes_pde_and_the_hedging_argument.txt
+Let $V(t,S_t)$ be the value of the option and consider a portfolio that is short one option and long $\Delta$ shares, so that $\Pi=\Delta S-V$.
+We choose $\Delta$ so that the portfolio has no exposure to the Brownian motion.
+It\^o's formula gives $dV=V_t\,dt+V_S\,dS+\tfrac12\sigma^2S^2V_{SS}\,dt$ under the real-world dynamics~\eqref{eq:gbm}.
+With $\Delta=V_S$ the terms in $dS$ cancel in $d\Pi=\Delta\,dS-dV$, which leaves the deterministic increment $d\Pi=-\big(V_t+\tfrac12\sigma^2S^2V_{SS}\big)\,dt$.
+A portfolio without risk must earn the riskless rate, so $d\Pi=r\Pi\,dt=r(SV_S-V)\,dt$.
+Equating the two expressions gives the Black--Scholes PDE
+\begin{equation}\label{eq:bspde}
+ V_t+rSV_S+\tfrac12\sigma^2S^2V_{SS}-rV=0 .
+\end{equation}
+The real-world drift $\mu$ has disappeared from the equation, which is the continuous-time form of the statement that the price does not depend on $\mu$.
+With the terminal condition $V(T,S)=(S-K)^+$ the solution is, by the Feynman--Kac formula, the discounted risk-neutral expectation $e^{-r(T-t)}\mathbb E^{\mathbb Q}[(S_T-K)^+\mid S_t=S]$ of Section~\ref{sec:setting}.

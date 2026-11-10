@@ -1,0 +1,9 @@
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+pandas>=2.1
+nbformat>=5.9
+nbconvert>=7.0
+ipykernel>=6.25
+# optional, only for RUN_LIVE_DATA = True
+# yfinance

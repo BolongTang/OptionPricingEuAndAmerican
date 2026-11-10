@@ -1,0 +1,9 @@
+% P10 | 3 Part A: Brownian motion and random walks | Result: distance between the terminal laws
+% guide: dev_notes/paragraph_guides/P10_result_distance_between_the_terminal_laws.txt
+At $t=1$ the walk equals $(2B-N)/\sqrt N$ with $B\sim\mathrm{Bin}(N,\tfrac12)$, so its distribution function is a step function that is known exactly.
+We therefore compute the Kolmogorov distance $\sup_x|F_N(x)-\Phi(x)|$ exactly, checking both sides of every jump, with no sampling error.
+Table~\ref{tbl:ks} shows that the distance decreases like $N^{-1/2}$: the product of the distance and $\sqrt N$ settles at \KSconst\ as $N$ grows.
+This constant is $1/\sqrt{2\pi}=\varphi(0)$, half the probability mass of the central lattice cell, which is the size of the jump of the distribution function at its mode.
+The histograms of Figure~\ref{fig:rwhist} show the lattice structure at $N_2=10$ and an almost perfect bell shape from $N_2=200$ on.
+The log--log plot in Figure~\ref{fig:ksrate} has slope $-\tfrac12$, in agreement with the Berry--Esseen bound.
+The error in the law of the terminal value is of order $N^{-1/2}$, which is slower than the $O(1/N)$ error of the CRR call price in Section~\ref{sec:B}, because the price averages a Lipschitz payoff over the lattice.

@@ -1,0 +1,12 @@
+% P27 | 5.1 Optimal stopping | The American put as an optimal stopping problem
+% guide: dev_notes/paragraph_guides/P27_the_american_put_as_an_optimal_stopping_problem.txt
+An American put may be exercised at any time $\tau\le T$ and then pays $(K-S_\tau)^+$.
+The holder chooses $\tau$ using only the information available, a stopping time, so under $\mathbb Q$ the fair value is the optimal stopping problem
+\begin{equation}\label{eq:V}
+ V(t,x)=\sup_{\tau\in[t,T]}\mathbb E\Big[e^{-r(\tau-t)}(K-S_\tau)^+\,\Big|\,S_t=x\Big].
+\end{equation}
+Two bounds follow at once: $V(t,x)\ge(K-x)^+$, by exercising immediately, and $V(t,x)\ge V^{Eur}(t,x)$, by choosing $\tau=T$.
+The American put is therefore never worth less than the European put or than its intrinsic value.
+The state space splits into a continuation region $C=\{V>(K-x)^+\}$ and a stopping region $D=\{V=(K-x)^+\}$, which for a put has the form $\{x\le b(t)\}$.
+The boundary $b(t)$ is a free boundary, because it is part of the unknown and has to be found together with $V$, and the optimal rule is $\tau^*=\inf\{t:S_t\le b(t)\}$.
+Equivalently, the discounted value $e^{-rt}V(t,S_t)$ is the smallest $\mathbb Q$-supermartingale that dominates the discounted payoff, the Snell envelope, and both the tree and the PDE are discretisations of this principle.
